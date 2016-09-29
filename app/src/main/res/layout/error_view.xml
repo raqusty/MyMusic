@@ -12,7 +12,7 @@
         android:layout_margin="25dp"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
-        android:text="找不到页面\n检查网络后请点击此页面刷新"
+        android:text="@string/not_web"
          />
 
     <ImageView
@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/error_view_tv_text_tips"
         android:layout_centerHorizontal="true"
+        android:contentDescription="@string/contentDescription"
         android:src="@mipmap/no_net" />
 
 </RelativeLayout>

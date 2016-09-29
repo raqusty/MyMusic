@@ -6,11 +6,13 @@
 一： 划分好各个模块，分好各个包: 1、common, 2、module 3、util  4、widget
 
     1: common
-        --  引入之前做好的基础activity ，Fragment
+        1.1：
+           --  引入之前做好的基础activity ，Fragment
+        1.2: util
+        1.3: widget
 
     2: module
-    3: util
-    4: widget
+
 
 
 

@@ -163,10 +163,6 @@ public class MultiStateView extends FrameLayout {
     }
 
     /**
-     * Returns the {@link View} associated with the {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param state The {@link com.kennyc.view.MultiStateView.ViewState} with to return the view for
-     * @return The {@link View} associated with the {@link com.kennyc.view.MultiStateView.ViewState}, null if no view is present
      */
     @Nullable
     public View getView(ViewState state) {
@@ -189,18 +185,14 @@ public class MultiStateView extends FrameLayout {
     }
 
     /**
-     * Returns the current {@link com.kennyc.view.MultiStateView.ViewState}
      *
-     * @return
+     * @return ViewState
      */
     public ViewState getViewState() {
         return mViewState;
     }
 
     /**
-     * Sets the current {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param state The {@link com.kennyc.view.MultiStateView.ViewState} to set {@link MultiStateView} to
      */
     public void setViewState(ViewState state) {
         if (state != mViewState) {
@@ -210,7 +202,6 @@ public class MultiStateView extends FrameLayout {
     }
 
     /**
-     * Shows the {@link View} based on the {@link com.kennyc.view.MultiStateView.ViewState}
      */
     private void setView() {
         switch (mViewState) {
@@ -266,22 +257,15 @@ public class MultiStateView extends FrameLayout {
      * Checks if the given {@link View} is valid for the Content View
      *
      * @param view The {@link View} to check
-     * @return
+     * @return boolean
      */
     private boolean isValidContentView(View view) {
-        if (mContentView != null && mContentView != view) {
-            return false;
-        }
-
-        return view != mLoadingView && view != mErrorView && view != mEmptyView;
+        return !(mContentView != null &&  mContentView != view) &&  view != mLoadingView && view != mErrorView && view != mEmptyView;
     }
 
     /**
      * Sets the view for the given view state
      *
-     * @param view          The {@link View} to use
-     * @param state         The {@link com.kennyc.view.MultiStateView.ViewState}to set
-     * @param switchToState If the {@link com.kennyc.view.MultiStateView.ViewState} should be switched to
      */
     public void setViewForState(View view, ViewState state, boolean switchToState) {
         switch (state) {
@@ -314,21 +298,12 @@ public class MultiStateView extends FrameLayout {
     }
 
     /**
-     * Sets the {@link View} for the given {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param view  The {@link View} to use
-     * @param state The {@link com.kennyc.view.MultiStateView.ViewState} to set
      */
     public void setViewForState(View view, ViewState state) {
         setViewForState(view, state, false);
     }
 
     /**
-     * Sets the {@link View} for the given {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param layoutRes     Layout resource id
-     * @param state         The {@link com.kennyc.view.MultiStateView.ViewState} to set
-     * @param switchToState If the {@link com.kennyc.view.MultiStateView.ViewState} should be switched to
      */
     public void setViewForState(@LayoutRes int layoutRes, ViewState state, boolean switchToState) {
         if (mInflater == null) mInflater = LayoutInflater.from(getContext());
@@ -337,10 +312,6 @@ public class MultiStateView extends FrameLayout {
     }
 
     /**
-     * Sets the {@link View} for the given {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param layoutRes Layout resource id
-     * @param state     The {@link View} state to set
      */
     public void setViewForState(@LayoutRes int layoutRes, ViewState state) {
         setViewForState(layoutRes, state, false);

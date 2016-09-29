@@ -5,4 +5,17 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="Import">Import</string>
+    <string name="Gallery">Gallery</string>
+    <string name="Slideshow">Slideshow</string>
+    <string name="Tools">Tools</string>
+    <string name="Communicate">Communicate</string>
+    <string name="Share">Share</string>
+    <string name="Send">Send</string>
+    <string name="contentDescription">null</string>
+
+    <string name="not_data">没有数据</string>
+    <string name="not_web">找不到页面\n检查网络后请点击此页面刷新</string>
+
 </resources>

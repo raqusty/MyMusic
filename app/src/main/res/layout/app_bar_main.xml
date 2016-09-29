@@ -21,7 +21,18 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <music.hayasi.android.com.mymusic.common.widget.MultiStateView
+        android:id="@+id/common_lv_multi_state_view"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:msv_emptyView="@layout/empty_view"
+        app:msv_errorView="@layout/error_view"
+        app:msv_loadingView="@layout/loading_view"
+        app:msv_viewState="content">
+
     <include layout="@layout/content_main" />
+
+    </music.hayasi.android.com.mymusic.common.widget.MultiStateView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

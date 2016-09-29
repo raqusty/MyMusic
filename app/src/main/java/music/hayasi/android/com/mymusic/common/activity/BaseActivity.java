@@ -57,7 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
     private void initBar() {
         mToolbar = setToolBar();
         if (mToolbar != null) {
-            initToolBar(new ToolBarManager(this, mToolbar));
+            initToolBar(new ToolBarManager( mToolbar));
             //在这里初始化toolbar，下面那句一定要在最后
             setSupportActionBar(mToolbar);
         }

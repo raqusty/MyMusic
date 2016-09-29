@@ -12,8 +12,7 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:lineSpacingExtra="10dp"
-        android:text="没有数据"
-        />
+        android:text="@string/not_data" />
 
     <ImageView
         android:id="@+id/empty_view_iv_empty_photo"
@@ -21,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/empty_view_tv_text_tips"
         android:layout_centerHorizontal="true"
+        android:contentDescription="@string/contentDescription"
         android:src="@mipmap/no_report" />
 
 </RelativeLayout>

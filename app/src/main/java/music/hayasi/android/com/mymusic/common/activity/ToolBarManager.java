@@ -1,15 +1,11 @@
 package music.hayasi.android.com.mymusic.common.activity;
 
-import android.app.Activity;
 import android.support.v7.widget.Toolbar;
 
 import music.hayasi.android.com.mymusic.R;
 
 
 public class ToolBarManager {
-
-    // 上下文
-    private Activity context;
 
     // 导航栏实例
     private final Toolbar mToolbar;
@@ -19,8 +15,7 @@ public class ToolBarManager {
      *
      * @param toolbar 导航栏实例
      */
-    public ToolBarManager(Activity context, Toolbar toolbar) {
-        this.context = context;
+    public ToolBarManager(Toolbar toolbar) {
         this.mToolbar = toolbar;
 
         init();
