@@ -1,6 +1,7 @@
 package music.hayasi.android.com.mymusic.common.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -31,8 +32,8 @@ public abstract class BaseFragment extends Fragment implements
     protected abstract int getContentViewResId();
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
         // 获取自身所属Activity实例
         mContext = getActivity();
         //判断某些条件，成立就不初始化界面

@@ -30,24 +30,11 @@ public class MultiStateView extends FrameLayout {
     private static final int EMPTY_VIEW = 2;
 
     private static final int LOADING_VIEW = 3;
-
-    public enum ViewState {
-        CONTENT,
-        LOADING,
-        EMPTY,
-        ERROR
-    }
-
     private LayoutInflater mInflater;
-
     private View mContentView;
-
     private View mLoadingView;
-
     private View mErrorView;
-
     private View mEmptyView;
-
     private ViewState mViewState = ViewState.CONTENT;
 
     public MultiStateView(Context context) {
@@ -315,5 +302,12 @@ public class MultiStateView extends FrameLayout {
      */
     public void setViewForState(@LayoutRes int layoutRes, ViewState state) {
         setViewForState(layoutRes, state, false);
+    }
+
+    public enum ViewState {
+        CONTENT,
+        LOADING,
+        EMPTY,
+        ERROR
     }
 }

@@ -12,8 +12,7 @@
         android:layout_margin="25dp"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
-        android:text="@string/not_web"
-         />
+        android:text="@string/not_web" />
 
     <ImageView
         android:id="@+id/error_view_iv_error_photo"

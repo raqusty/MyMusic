@@ -14,28 +14,24 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.io.IOException;
-
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseActivity;
 import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
+import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
+import music.hayasi.android.com.mymusic.common.net.callback.DialogCallback;
 import music.hayasi.android.com.mymusic.common.widget.MultiStateView;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+import okhttp3.Call;
 import okhttp3.Response;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    final MyHandler handler = new MyHandler();
     @Bind(R.id.toolbar)
     Toolbar mToolBar;
-
     @Bind(R.id.common_lv_multi_state_view)
     MultiStateView mMultiStateView;
-
-    final OkHttpClient client = new OkHttpClient();
-    final MyHandler handler = new MyHandler();
 
     @Override
     protected int getContentViewResId() {
@@ -84,8 +80,24 @@ public class MainActivity extends BaseActivity
 
         } else if (id == R.id.nav_share) {
 
-            new Thread(networkTask).start();
+            for (int i = 0; i < 100; i++) {
+                OkHttpUtils.get("https://mail.qq.com/cgi-bin/frame_html?sid=rvcEcojFL5BoZUcQ&r=dd8ea0e41f696f7bacd8b04920630e23")//
+                        .tag(this)//
+                        .execute(new DialogCallback<String>(this, MainActivity.class) {
+                            @Override
+                            public void onSuccess(String serverModel, Call call, Response response) {
+//                            handleResponse(serverModel, call, response);
+                                Log.i("linzehao", serverModel);
+                            }
 
+                            @Override
+                            public void onError(Call call, Response response, Exception e) {
+                                super.onError(call, response, e);
+//                            handleError(call, response);
+                                Log.i("linzehao", "asdfad");
+                            }
+                        });
+            }
         } else if (id == R.id.nav_send) {
 
         }
@@ -109,7 +121,7 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, mToolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -126,6 +138,44 @@ public class MainActivity extends BaseActivity
 
     }
 
+    @Override
+    public int getToolBarResId() {
+        return R.menu.main;
+    }
+
+//    /**
+//     * 网络操作相关的子线程
+//     */
+//    final Runnable networkTask = new Runnable() {
+//
+//        @Override
+//        public void run() {
+//            // TODO
+//            // 在这里进行 http request.网络请求相关操作
+//            Message msg = new Message();
+//            Bundle data = new Bundle();
+//            String result = "result";
+//            try {
+//                result = runNet("https://www.baidu.com/");
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            data.putString("value", result);
+//            msg.setData(data);
+//            handler.sendMessage(msg);
+//        }
+//    };
+
+    @Override
+    public void initToolBar(ToolBarManager navigationBarMgr) {
+
+    }
+
+    @Override
+    public Toolbar setToolBar() {
+        return mToolBar;
+    }
+
     static class MyHandler extends Handler {
 
         @Override
@@ -136,52 +186,5 @@ public class MainActivity extends BaseActivity
             Log.i("linzehao", "请求结果为-->" + val);
 
         }
-    }
-
-    /**
-     * 网络操作相关的子线程
-     */
-    final Runnable networkTask = new Runnable() {
-
-        @Override
-        public void run() {
-            // TODO
-            // 在这里进行 http request.网络请求相关操作
-            Message msg = new Message();
-            Bundle data = new Bundle();
-            String result = "result";
-            try {
-                result = runNet("https://www.baidu.com/");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            data.putString("value", result);
-            msg.setData(data);
-            handler.sendMessage(msg);
-        }
-    };
-
-    String runNet(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        Response response = client.newCall(request).execute();
-        return response.body().string();
-    }
-
-    @Override
-    public int getToolBarResId() {
-        return R.menu.main;
-    }
-
-    @Override
-    public void initToolBar(ToolBarManager navigationBarMgr) {
-
-    }
-
-    @Override
-    public Toolbar setToolBar() {
-        return mToolBar;
     }
 }
