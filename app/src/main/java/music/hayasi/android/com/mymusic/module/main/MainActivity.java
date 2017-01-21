@@ -1,11 +1,10 @@
 package music.hayasi.android.com.mymusic.module.main;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
@@ -24,14 +25,17 @@ import music.hayasi.android.com.mymusic.common.widget.MultiStateView;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity {
+
+    Activity mActivity;
 
     final MyHandler handler = new MyHandler();
     @Bind(R.id.toolbar)
     Toolbar mToolBar;
     @Bind(R.id.common_lv_multi_state_view)
     MultiStateView mMultiStateView;
+    @Bind(R.id.ssss)
+    TextView mTextView;
 
     @Override
     protected int getContentViewResId() {
@@ -64,29 +68,19 @@ public class MainActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-            for (int i = 0; i < 100; i++) {
-                OkHttpUtils.get("https://mail.qq.com/cgi-bin/frame_html?sid=rvcEcojFL5BoZUcQ&r=dd8ea0e41f696f7bacd8b04920630e23")//
+    public void initViews() {
+        mActivity = this;
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OkHttpUtils.get("https://mail.qq.com/cgi-bin/loginpage?s=session_timeout&from=&r=8999d5c5b71fc4a3efa5d6aa7f0a0de5&tiptype=LOGIN_ERR_COOKIE_FORBIDDEN")//
                         .tag(this)//
-                        .execute(new DialogCallback<String>(this, MainActivity.class) {
+                        .execute(new DialogCallback<String>(mActivity, MainActivity.class) {
                             @Override
                             public void onSuccess(String serverModel, Call call, Response response) {
-//                            handleResponse(serverModel, call, response);
+                                mTextView.setText(serverModel);
                                 Log.i("linzehao", serverModel);
                             }
 
@@ -94,27 +88,9 @@ public class MainActivity extends BaseActivity
                             public void onError(Call call, Response response, Exception e) {
                                 super.onError(call, response, e);
 //                            handleError(call, response);
-                                Log.i("linzehao", "asdfad");
+                                Log.i("linzehao", "response "+e.getMessage());
                             }
                         });
-            }
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public void initViews() {
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
 
@@ -124,13 +100,6 @@ public class MainActivity extends BaseActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        showContentView(mMultiStateView);
-        showLoadingView(mMultiStateView);
-        showEmptyView(mMultiStateView);
-        showNetworkErrorView(mMultiStateView);
     }
 
     @Override
@@ -142,29 +111,6 @@ public class MainActivity extends BaseActivity
     public int getToolBarResId() {
         return R.menu.main;
     }
-
-//    /**
-//     * 网络操作相关的子线程
-//     */
-//    final Runnable networkTask = new Runnable() {
-//
-//        @Override
-//        public void run() {
-//            // TODO
-//            // 在这里进行 http request.网络请求相关操作
-//            Message msg = new Message();
-//            Bundle data = new Bundle();
-//            String result = "result";
-//            try {
-//                result = runNet("https://www.baidu.com/");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            data.putString("value", result);
-//            msg.setData(data);
-//            handler.sendMessage(msg);
-//        }
-//    };
 
     @Override
     public void initToolBar(ToolBarManager navigationBarMgr) {
