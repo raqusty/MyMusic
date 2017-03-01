@@ -63,6 +63,12 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
         }
     }
 
+
+    @Override
+    public Toolbar setToolBar() {
+        return null;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

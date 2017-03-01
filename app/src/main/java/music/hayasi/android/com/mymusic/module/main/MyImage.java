@@ -19,12 +19,10 @@ public class MyImage extends BaseActivity {
     @Bind(R.id.image)
     ImageView mImageView;
 
-
     @Override
     protected int getContentViewResId() {
         return R.layout.my_rx_java;
     }
-
 
     @Override
     public void initViews() {

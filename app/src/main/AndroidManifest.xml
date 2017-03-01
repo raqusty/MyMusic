@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".module.main.MyImage"
+            android:name="music.hayasi.android.com.mymusic.module.mvvm.MvvmListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter tools:ignore="GoogleAppIndexingWarning">
