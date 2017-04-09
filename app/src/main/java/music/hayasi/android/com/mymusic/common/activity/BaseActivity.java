@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
+import music.hayasi.android.com.mymusic.MyApplication;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.widget.MultiStateView;
 
@@ -57,7 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
     private void initBar() {
         mToolbar = setToolBar();
         if (mToolbar != null) {
-            initToolBar(new ToolBarManager( mToolbar));
+            initToolBar(new ToolBarManager(mToolbar));
             //在这里初始化toolbar，下面那句一定要在最后
             setSupportActionBar(mToolbar);
         }
@@ -93,6 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
     @Override
     protected void onDestroy() {
         super.onDestroy();
+//        MyApplication.getRefWatcher().watch(this);
     }
 
 
@@ -122,7 +124,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
      * 显示默认的无数据的提示页面
      */
     protected void showEmptyView(MultiStateView multiStateView) {
-        showEmptyView(multiStateView,null, null);
+        showEmptyView(multiStateView, null, null);
     }
 
     /**
@@ -154,7 +156,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
      * 显示网络异常的提示页面
      */
     protected void showNetworkErrorView(MultiStateView multiStateView) {
-        showNetworkErrorView(multiStateView,null);
+        showNetworkErrorView(multiStateView, null);
     }
 
     /**
@@ -162,7 +164,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
      *
      * @param errorTips 异常数据文字提示(可以传null)
      */
-    protected void showNetworkErrorView(MultiStateView multiStateView,String errorTips) {
+    protected void showNetworkErrorView(MultiStateView multiStateView, String errorTips) {
         if (multiStateView == null) {
             return;
         }
