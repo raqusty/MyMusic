@@ -56,8 +56,24 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.AnimationView.AnimationActivity">
+            <intent-filter>
+                <action android:name="AnimationActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".module.CustomView.CustomViewActivity">
+            <intent-filter>
+                <action android:name="CustomViewActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
         <service android:name=".module.Messenger.MessagerService" />
 
+        /* -------------------------------------------------- */
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
             android:enabled="false"

@@ -25,7 +25,7 @@ public class FirstActivity extends BaseActivity {
 
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
-    String[] mNameList = {"MVVMList", "MVVM","MessageActivity","MyImage"};
+    String[] mNameList = {"MVVMList", "MVVM", "MessageActivity", "MyImage", "AnimationActivity", "CustomViewActivity"};
 
     @Override
     protected int getContentViewResId() {
@@ -36,8 +36,8 @@ public class FirstActivity extends BaseActivity {
     private void initData() {
         mDatas = new ArrayList<AppInfo>();
         AppInfo info = null;
-        for(String name :mNameList){
-            info = new AppInfo(name,name);
+        for (String name : mNameList) {
+            info = new AppInfo(name, name);
             mDatas.add(info);
         }
     }
