@@ -4,11 +4,11 @@ import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseActivity;
 import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
 
-public class AnimationActivity extends BaseActivity {
+public class DragMoveActivity extends BaseActivity {
 
     @Override
     protected int getContentViewResId() {
-        return R.layout.animation_activity;
+        return R.layout.drag_move_activity;
     }
 
     @Override

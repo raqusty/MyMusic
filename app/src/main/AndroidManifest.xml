@@ -56,9 +56,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".module.AnimationView.AnimationActivity">
+        <activity android:name=".module.AnimationView.DragMoveActivity">
             <intent-filter>
-                <action android:name="AnimationActivity" />
+                <action android:name="DragMove" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".module.AnimationView.AnimActivity">
+            <intent-filter>
+                <action android:name="Anim" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -69,6 +76,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
 
 
         <service android:name=".module.Messenger.MessagerService" />

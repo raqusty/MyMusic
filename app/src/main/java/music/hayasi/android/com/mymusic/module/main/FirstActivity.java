@@ -25,7 +25,7 @@ public class FirstActivity extends BaseActivity {
 
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
-    String[] mNameList = {"MVVMList", "MVVM", "MessageActivity", "MyImage", "AnimationActivity", "CustomViewActivity"};
+    String[] mNameList = {"MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"};
 
     @Override
     protected int getContentViewResId() {
@@ -55,8 +55,7 @@ public class FirstActivity extends BaseActivity {
                 Toast.makeText(FirstActivity.this, position + " click",
                         Toast.LENGTH_SHORT).show();
                 AppInfo info = mDatas.get(position);
-                Intent intent = new Intent(info.getIntent());
-                startActivity(intent);
+                jumpToActivityFromRight(new Intent(info.getIntent()));
             }
 
             @Override

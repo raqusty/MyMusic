@@ -1,6 +1,7 @@
 package music.hayasi.android.com.mymusic.common.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -183,6 +184,43 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
             }
         });
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(
+                R.anim.activity_fade_in_and_scale_from_little_to_normal,
+                R.anim.activity_pop_out_to_right);
+    }
+
+    /*IStartActivity 的实现，不要随便删改这个方法，内容实现可以修改*/
+    public void jumpToActivityFromRight(Class<?> targetAcvitity) {
+        startActivity(new Intent(this, targetAcvitity));
+        overridePendingTransition(R.anim.activity_push_in_from_right,
+                R.anim.activity_fade_out_and_scale_from_nomal_to_little);
+    }
+
+    /*IStartActivity 的实现，不要随便删改这个方法，内容实现可以修改*/
+    public void jumpToActivityForResultFromRight(Class<?> targetAcvitity, int requestCode) {
+        startActivityForResult(new Intent(this, targetAcvitity), requestCode);
+        overridePendingTransition(R.anim.activity_push_in_from_right,
+                R.anim.activity_fade_out_and_scale_from_nomal_to_little);
+    }
+
+    /*IStartActivity 的实现，不要随便删改这个方法，内容实现可以修改*/
+    public void jumpToActivityFromRight(Intent intent) {
+        startActivity(intent);
+        overridePendingTransition(R.anim.activity_push_in_from_right,
+                R.anim.activity_fade_out_and_scale_from_nomal_to_little);
+    }
+
+    /*IStartActivity 的实现，不要随便删改这个方法，内容实现可以修改*/
+    public void jumpToActivityForResultFromRight(Intent intent, int requestCode) {
+        startActivityForResult(intent, requestCode);
+        overridePendingTransition(R.anim.activity_push_in_from_right,
+                R.anim.activity_fade_out_and_scale_from_nomal_to_little);
+    }
+
 
     /**
      * 显示正常内容的页面
