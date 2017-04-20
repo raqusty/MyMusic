@@ -1,8 +1,11 @@
 package music.hayasi.android.com.mymusic.module.mvvm;
 
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,8 @@ public class MvvmListActivity extends BaseActivity {
 
     private mvvmAdapter mAdapter;
     private ListView mListView;
+    private List<User> mDataList = new ArrayList<User>();
+    private MyLayoutAnimation controller;
 
     @Override
     protected int getContentViewResId() {
@@ -27,20 +32,45 @@ public class MvvmListActivity extends BaseActivity {
     public void initViews() {
         mListView = (ListView) findViewById(R.id.list);
 
-        List<User> mDataList = new ArrayList<User>();
+
+        TextView textView = new TextView(mContext);
+        textView.setText("hahah");
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.animation_2);   //得到一个LayoutAnimationController对象；
+        controller = new MyLayoutAnimation(animation);   //设置控件显示的顺序；
+        controller.setOrder(LayoutAnimationController.ORDER_RANDOM);   //设置控件显示间隔时间；
+        controller.setDelay(0.1f);   //为ListView设置LayoutAnimationController属性；
+        mListView.setLayoutAnimation(controller);
+
+        addData();
+        mAdapter = new mvvmAdapter(mDataList, this);
+        controller.setIndex(mDataList.size() - 1, 0);
+        mListView.setAdapter(mAdapter);
+
+        mListView.startLayoutAnimation();
+        mListView.addHeaderView(textView);
+
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int size = addData();
+                controller.setIndex(mDataList.size() - 1, size - 1);
+                mListView.startLayoutAnimation();
+                mAdapter.notifyDataSetChanged();
+
+            }
+        });
+    }
+
+    private int addData() {
         User user;
-        for (int i = 0; i < 20; i++) {
+        int size = mDataList.size();
+        for (int i = 0; i < 5; i++) {
             user = new User(i + "", i + "");
             mDataList.add(user);
         }
-        mAdapter = new mvvmAdapter(mDataList, this);
-        mListView.setAdapter(mAdapter);
-//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//            }
-//        });
+        return size;
     }
 
 
@@ -58,7 +88,6 @@ public class MvvmListActivity extends BaseActivity {
     public void initToolBar(ToolBarManager navigationBarMgr) {
 
     }
-
 
 
 }

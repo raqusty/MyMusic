@@ -1,11 +1,17 @@
 package music.hayasi.android.com.mymusic.module.main;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +29,23 @@ public class FirstActivity extends BaseActivity {
     @Bind(R.id.id_recyclerview)
     RecyclerView mRecyclerView;
 
+    @Bind(R.id.test_buttom)
+    Button mButton;
+
+    @Bind(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
+
+    @Bind(R.id.fab)
+    FloatingActionButton mFab;
+
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
-    String[] mNameList = {"MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"};
+    String[] mNameList = {"MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
+            , "DesignActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
+            , "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"};
 
     @Override
     protected int getContentViewResId() {
@@ -45,7 +65,7 @@ public class FirstActivity extends BaseActivity {
     @Override
     public void initViews() {
         initData();
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         mRecyclerView.setAdapter(mAdapter = new HomeAdapter());
 
         mAdapter.setOnItemClickLitener(new OnItemClickLitener() {
@@ -66,12 +86,54 @@ public class FirstActivity extends BaseActivity {
             }
         });
 
+        mToolbar.setTitle("MyProject");
 
     }
 
     @Override
     public void setListener() {
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+                    @Override
+                    public void onDrawerSlide(View drawerView, float slideOffset) {
 
+                    }
+
+                    @Override
+                    public void onDrawerOpened(View drawerView) {
+
+                    }
+
+                    @Override
+                    public void onDrawerClosed(View drawerView) {
+                    }
+
+                    @Override
+                    public void onDrawerStateChanged(int newState) {
+
+                    }
+                });
+            }
+        });
+
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                mFab.setRotation(10);
+//                mFab.hide();
+
+                Snackbar.make(v, "Data delete", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Undo", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(FirstActivity.this, "Data reset", Toast.LENGTH_LONG).show();
+                            }
+                        }).show();
+            }
+        });
     }
 
     @Override

@@ -1,5 +1,8 @@
 package music.hayasi.android.com.mymusic.module.AnimationView;
 
+import android.animation.IntEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.databinding.DataBindingUtil;
 import android.view.View;
 import android.view.animation.Animation;
@@ -26,7 +29,9 @@ public class AnimActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.anim_activity);
 
         scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.animation_1);
-
+        binding.button3.setText("ValueAnimator");
+        binding.button1.setText("startAnimation");
+        binding.button2.setText("ObjectAnimator");
     }
 
 
@@ -36,6 +41,23 @@ public class AnimActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 binding.textview1.startAnimation(scaleAnimation);
+
+            }
+        });
+
+        binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.textview1.clearAnimation();
+                ViewWrapper wrapper = new ViewWrapper(binding.textview1);
+                ObjectAnimator.ofInt(wrapper, "width", 500).setDuration(1000).start();
+            }
+        });
+
+        binding.button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            performAnimate(binding.textview1,binding.textview1.getWidth(),300);
             }
         });
     }
@@ -48,5 +70,38 @@ public class AnimActivity extends BaseActivity {
     @Override
     public void initToolBar(ToolBarManager navigationBarMgr) {
 
+    }
+
+    private void performAnimate(final View target,final int start,final int end){
+        final ValueAnimator valueAnimator = ValueAnimator.ofInt(1,100);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            private IntEvaluator mEvaluator = new IntEvaluator();
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int currentValue = (Integer) animation.getAnimatedValue();
+                float fraction = valueAnimator.getAnimatedFraction();
+                target.getLayoutParams().width = mEvaluator.evaluate(fraction,start,end);
+                target.requestLayout();
+            }
+        });
+        valueAnimator.setDuration(1000).start();
+    }
+
+    private class ViewWrapper {
+        private View mTarget;
+
+        public ViewWrapper(View target) {
+            mTarget = target;
+        }
+
+        public int getWidth() {
+            return mTarget.getLayoutParams().width;
+        }
+
+        public void setWidth(int width) {
+            mTarget.getLayoutParams().width = width;
+            mTarget.requestLayout();
+        }
     }
 }

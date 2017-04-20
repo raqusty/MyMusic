@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.databinding.DataBindingUtil;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -41,7 +42,6 @@ public class MessageActivity extends BaseActivity {
 
         Intent intent = new Intent(this, MessagerService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-
 
     }
 
