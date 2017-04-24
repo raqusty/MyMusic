@@ -4,10 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
 import music.hayasi.android.com.mymusic.common.image.ImageUtil;
+import music.hayasi.android.com.mymusic.common.myNet.Impl.OkNetUitls;
 import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
 
 public class MyApplication extends Application {
@@ -29,6 +29,7 @@ public class MyApplication extends Application {
         //用作扩展dex保存的方法数超过65K
         MultiDex.install(this);
         OkHttpUtils.init(this);
+        OkNetUitls.init(this);
 //        mRefWatcher = LeakCanary.install(this);
         instance = this;
     }

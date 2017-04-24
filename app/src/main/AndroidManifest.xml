@@ -84,6 +84,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.NetWork.NetActivity">
+            <intent-filter>
+                <action android:name="NetActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
 
         <service android:name=".module.Messenger.MessagerService" />
 
