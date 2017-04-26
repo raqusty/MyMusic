@@ -91,6 +91,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.Decorator.DecorateActivity">
+            <intent-filter>
+                <action android:name="DecorateActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
 
         <service android:name=".module.Messenger.MessagerService" />

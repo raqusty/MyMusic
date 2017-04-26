@@ -43,7 +43,7 @@ public class FirstActivity extends BaseActivity {
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
     String[] mNameList = {"MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
-            , "DesignActivity", "NetActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
+            , "DesignActivity", "NetActivity", "DecorateActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
             , "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"};
 
     @Override
