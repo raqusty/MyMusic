@@ -91,9 +91,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".module.Decorator.DecorateActivity">
+        <activity android:name=".module.model.ModelActivity">
             <intent-filter>
-                <action android:name="DecorateActivity" />
+                <action android:name="ModelActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

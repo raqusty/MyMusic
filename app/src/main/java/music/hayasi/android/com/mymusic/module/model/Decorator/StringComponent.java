@@ -1,8 +1,8 @@
-package music.hayasi.android.com.mymusic.module.Decorator;
+package music.hayasi.android.com.mymusic.module.model.Decorator;
 
 public class StringComponent implements IStringDeal{
 
-    StringComponent(){
+    public StringComponent(){
 
     }
 
