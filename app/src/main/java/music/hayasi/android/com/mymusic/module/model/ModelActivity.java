@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 
+import java.util.Hashtable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -93,7 +94,8 @@ public class ModelActivity extends BaseActivity {
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-                ;
+
+                Hashtable<Integer,String> s = new Hashtable<Integer, String>();
             }
         });
     }

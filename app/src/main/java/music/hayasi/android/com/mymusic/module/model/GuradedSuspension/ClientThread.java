@@ -1,5 +1,7 @@
 package music.hayasi.android.com.mymusic.module.model.GuradedSuspension;
 
+import music.hayasi.android.com.mymusic.module.model.GuradedSuspension.entity.FutureData;
+
 public class ClientThread extends Thread {
 
     private RequestQueue requestQueue;
@@ -12,6 +14,8 @@ public class ClientThread extends Thread {
     public void run() {
         for (int i = 0; i < 10; i++) {
             Request request = new Request("RequestID:" + i + "Thread_Name:" + Thread.currentThread().getName());
+            FutureData data = new FutureData();
+            request.setData(data);
             requestQueue.addRequest(request);
             try {
                 Thread.sleep(10);

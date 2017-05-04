@@ -35,7 +35,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".module.main.MyImage">
+        <activity
+            android:name=".module.main.MyImage"
+            android:theme="@style/Theme.AppCompat.Dialog">
             <intent-filter>
                 <action android:name="MyImage" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -100,6 +102,12 @@
 
 
         <service android:name=".module.Messenger.MessagerService" />
+        <service android:name=".module.Aidl.MyService">
+            <intent-filter>
+                <action android:name="cc.abto.server" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
 
         /* -------------------------------------------------- */
         <service
