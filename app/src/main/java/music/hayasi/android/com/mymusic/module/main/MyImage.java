@@ -1,8 +1,14 @@
 package music.hayasi.android.com.mymusic.module.main;
 
+import android.os.Handler;
 import android.support.v7.widget.Toolbar;
+import android.util.LruCache;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
@@ -30,6 +36,19 @@ public class MyImage extends BaseActivity {
         String imageUrl = "http://img02.tooopen.com/images/20141231/sy_78327074576.jpg";
 
         ImageUtil.displayImage(0, imageUrl, mImageView);
+
+//        ImageView mImageView = (ImageView) findViewById(R.id.image);
+
+        //显示图片的配置
+//        DisplayImageOptions options = new DisplayImageOptions.Builder()
+//                .showImageOnLoading(R.drawable.ic_stub)
+//                .showImageOnFail(R.drawable.ic_error)
+//                .cacheInMemory(true)
+//                .cacheOnDisk(true)
+//                .bitmapConfig(Bitmap.Config.RGB_565)
+//                .build();
+//
+//        ImageLoader.getInstance().displayImage(imageUrl, mImageView, options);
 
     }
 

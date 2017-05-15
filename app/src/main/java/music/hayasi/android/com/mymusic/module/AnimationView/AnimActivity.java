@@ -1,12 +1,31 @@
 package music.hayasi.android.com.mymusic.module.AnimationView;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.animation.IntEvaluator;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.TimeAnimator;
+import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseActivity;
@@ -32,6 +51,64 @@ public class AnimActivity extends BaseActivity {
         binding.button3.setText("ValueAnimator");
         binding.button1.setText("startAnimation");
         binding.button2.setText("ObjectAnimator");
+
+        ValueAnimator a;
+        ObjectAnimator b;
+        AnimatorSet s;
+        TimeAnimator f;
+
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+
+        //属性动画 资源文件获取方式
+//        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+//                R.animtor.property_animator);
+//        set.setTarget(myObject);
+//        set.start();
+
+//        PropertyValuesHolder a1 ;
+//        View myAnimView =null;
+//        ObjectAnimator mObjectAnimator= ObjectAnimator.ofObject(myAnimView, "color", new TypeEvaluator(){
+//
+//                    @Override
+//                    public Object evaluate(float fraction, Object startValue, Object endValue) {
+//                        return null;
+//                    }
+//                },
+//                "#0000FF", "#FF0000");
+//        mObjectAnimator.setInterpolator();
+//        mObjectAnimator.addListener(new Animator.AnimatorListener() {
+//            @Override
+//            public void onAnimationStart(Animator animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationCancel(Animator animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animator animation) {
+//
+//            }
+//        });
+//        mObjectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+//        {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation)
+//            {
+//                //int value = animation.getAnimatedValue();  可以获取当前属性值
+//                //view.postInvalidate();  可以主动刷新
+//                //view.setXXX(value);
+//                //view.setXXX(value);
+//                //......可以批量修改属性
+//            }
+//        });
     }
 
 
@@ -60,6 +137,7 @@ public class AnimActivity extends BaseActivity {
             performAnimate(binding.textview1,binding.textview1.getWidth(),300);
             }
         });
+
     }
 
     @Override

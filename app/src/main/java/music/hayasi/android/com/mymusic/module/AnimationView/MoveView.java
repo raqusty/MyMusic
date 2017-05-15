@@ -24,6 +24,8 @@ public class MoveView extends View {
 
     public MoveView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        invalidate();
+        postInvalidate();
     }
 
 

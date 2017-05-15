@@ -37,9 +37,13 @@ public class DesignActivity extends BaseActivity {
 
         //初始化各fragment
         hotRecommendFragment = new DesignListFragment();
+        hotRecommendFragment.setNum(11);
         hotCollectionFragment = new DesignFragment();
+        hotCollectionFragment.setNum(22);
         hotMonthFragment = new DesignListFragment();
+        hotMonthFragment.setNum(33);
         hotToday = new DesignFragment();
+        hotToday.setNum(44);
 
         //将fragment装进列表中
         list_fragment = new ArrayList<>();
