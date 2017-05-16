@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.squareup.leakcanary.RefWatcher;
-
 import music.hayasi.android.com.mymusic.common.image.ImageUtil;
 import music.hayasi.android.com.mymusic.common.myNet.Impl.OkNetUitls;
 import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
@@ -13,14 +11,9 @@ import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
 public class MyApplication extends Application {
     private static MyApplication instance;
 
-    private RefWatcher mRefWatcher;
 
     public static MyApplication getInstance() {
         return instance;
-    }
-
-    public static RefWatcher getRefWatcher() {
-        return getInstance().mRefWatcher;
     }
 
     @Override
