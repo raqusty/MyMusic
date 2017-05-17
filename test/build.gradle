@@ -1,16 +1,12 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
-dependencies {
-    compile gradleApi()
-    compile localGroovy()
-}
 
 repositories {
     mavenCentral()
 }
-group='cn.linzehao.gradle.plugin'
-version='1.0.0'
+group = 'cn.linzehao.gradle.plugin'
+version = '1.0.1'
 
 uploadArchives {
     repositories {
@@ -20,3 +16,9 @@ uploadArchives {
     }
 }
 
+dependencies {
+    compile localGroovy()
+    compile gradleApi()
+    compile 'com.android.tools.build:gradle:2.3.0'
+    compile 'org.javassist:javassist:3.18.1-GA'
+}

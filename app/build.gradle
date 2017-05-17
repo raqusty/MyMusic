@@ -33,13 +33,15 @@ buildscript {
         maven {
             url uri('../repo')
         }
+        jcenter()
     }
     dependencies {
-        classpath 'cn.linzehao.gradle.plugin:test:1.0.0'
+        classpath 'cn.linzehao.gradle.plugin:test:1.0.1'
     }
 }
 
 apply plugin: 'plugin.test'
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
