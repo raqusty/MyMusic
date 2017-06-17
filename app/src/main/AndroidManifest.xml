@@ -101,6 +101,15 @@
         </activity>
 
 
+        <activity android:name=".module.MaterialDesign.DesignScrollActivity">
+            <intent-filter>
+                <action android:name="DesignScrollActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
         <service android:name=".module.Messenger.MessagerService" />
         <service android:name=".module.Aidl.MyService">
             <intent-filter>

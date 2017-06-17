@@ -1,16 +1,22 @@
 package music.hayasi.android.com.mymusic.module.MaterialDesign;
 
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseFragment;
 
 public class DesignFragment extends BaseFragment {
     private int num = 0;
+
+     ;
+    @Bind(R.id.nested_scroll_view)
+    NestedScrollView mNestedScrollView;
 
     public void setNum(int n) {
         num = n;
@@ -19,6 +25,7 @@ public class DesignFragment extends BaseFragment {
     @Override
     public void initViews() {
         Log.i("linzehao", "num  " + num);
+        mNestedScrollView.setSmoothScrollingEnabled(true);
     }
 
     @Override
@@ -54,6 +61,6 @@ public class DesignFragment extends BaseFragment {
 
     @Override
     protected int getContentViewResId() {
-        return R.layout.error_view;
+        return R.layout.fragment_scroll_view;
     }
 }

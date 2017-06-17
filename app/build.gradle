@@ -28,19 +28,19 @@ android {
     }
 
 }
-buildscript {
-    repositories {
-        maven {
-            url uri('../repo')
-        }
-        jcenter()
-    }
-    dependencies {
-        classpath 'cn.linzehao.gradle.plugin:test:1.0.1'
-    }
-}
-
-apply plugin: 'plugin.test'
+//buildscript {
+//    repositories {
+//        maven {
+//            url uri('../repo')
+//        }
+//        jcenter()
+//    }
+//    dependencies {
+//        classpath 'cn.linzehao.gradle.plugin:test:1.0.1'
+//    }
+//}
+//
+//apply plugin: 'plugin.test'
 
 
 dependencies {
