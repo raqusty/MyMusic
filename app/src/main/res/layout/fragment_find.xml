@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways">
+            app:layout_scrollFlags="scroll|snap">
 
             <ImageView
                 android:layout_width="match_parent"

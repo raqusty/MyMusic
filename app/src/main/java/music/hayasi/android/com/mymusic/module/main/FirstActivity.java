@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseActivity;
 import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
+import music.hayasi.android.com.mymusic.common.utils.TimeUtils;
 import music.hayasi.android.com.mymusic.module.main.entity.AppInfo;
 
 public class FirstActivity extends BaseActivity {
@@ -43,7 +45,7 @@ public class FirstActivity extends BaseActivity {
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
     String[] mNameList = {"MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
-            , "DesignActivity", "NetActivity", "ModelActivity", "DesignScrollActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
+            , "DesignActivity", "NetActivity", "ModelActivity", "DesignScrollActivity", "PhotoViewActivity", "FooterActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
             , "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"};
 
     @Override
@@ -78,7 +80,7 @@ public class FirstActivity extends BaseActivity {
                 try {
                     jumpToActivityFromRight(new Intent(info.getIntent()));
                 } catch (Exception e) {
-                    Snackbar.make(view,"this activity start error！！",Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(view, "this activity start error！！", Snackbar.LENGTH_SHORT).show();
                 }
 
             }
