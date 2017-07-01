@@ -122,9 +122,14 @@
         </activity>
 
 
-
-
-
+        <activity
+            android:name=".module.Dialog.DialogActivity"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="DialogActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
 
         <service android:name=".module.Messenger.MessagerService" />

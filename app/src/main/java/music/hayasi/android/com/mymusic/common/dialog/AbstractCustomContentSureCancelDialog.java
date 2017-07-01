@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.lysoft.android.lyyd.report.baselibrary.R;
+import music.hayasi.android.com.mymusic.R;
+
 
 public abstract class AbstractCustomContentSureCancelDialog extends
         AbstractBaseDialog implements OnSureOrCancelListener {

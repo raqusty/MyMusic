@@ -17,4 +17,26 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="BaseDialog" parent="@android:style/Theme.Dialog">
+        <!--边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--无标题-->
+        <item name="android:windowNoTitle">true</item>
+        <!--背景透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- Dialog的show和dismiss动画 -->
+    <style name="BaseDialogAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/base_dialog_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/base_dialog_dismiss_anim</item>
+    </style>
+
+
 </resources>
