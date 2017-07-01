@@ -94,6 +94,8 @@ public class DialogActivity extends BaseActivity {
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SureOrCancelWithCustomTipsDialog dialog1 = null;
+                dialog1.show();
                 dialog.show();
             }
         });
