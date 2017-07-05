@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
 
     <application
@@ -151,6 +152,27 @@
         <meta-data
             android:name="BUG_HD_SDK_GENERAL_KEY"
             android:value="298c9acd65e57d28ef96295f819ed0e0" />
+
+
+        /* ---------------bugly----------------------------------- */
+        <!-- 配置APP版本号 -->
+        <meta-data
+            android:name="BUGLY_APP_VERSION"
+            android:value="1.0.6" />
+        <!-- 配置APP渠道号 -->
+        <!-- 配置Bugly调试模式（true或者false）-->
+
+        <meta-data
+            android:name="BUGLY_APPID"
+            android:value="5af2eefcbe" />
+        <!-- 配置APP渠道号 -->
+        <meta-data
+            android:name="BUGLY_APP_CHANNEL"
+            android:value="测试" />
+        <!-- 配置Bugly调试模式（true或者false）-->
+        <meta-data
+            android:name="BUGLY_ENABLE_DEBUG"
+            android:value="true" />
 
     </application>
 

@@ -5,7 +5,9 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -22,6 +24,7 @@ import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
 import music.hayasi.android.com.mymusic.common.dialog.OnSureOrCancelListener;
 import music.hayasi.android.com.mymusic.common.dialog.SureOrCancelWithCustomTipsDialog;
 import music.hayasi.android.com.mymusic.databinding.AnimActivityBinding;
+import music.hayasi.android.com.mymusic.module.MaterialDesign.DesignActivity;
 
 public class DialogActivity extends BaseActivity {
 
@@ -103,7 +106,7 @@ public class DialogActivity extends BaseActivity {
         binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.textview1.requestFocus();
+//                binding.textview1.requestFocus();
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 //                imm.showSoftInput(binding.textview1, 0);

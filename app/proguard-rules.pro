@@ -121,7 +121,7 @@
 -keep class com.tencent.mid.**  { *; }
 
 #混淆BugHD
-#-keep class im.fir.** { *; }
+-keep class im.fir.** { *; }
 
 
 #不混淆http post上传图片的jar包
@@ -149,6 +149,10 @@
 #不混淆Gson 相关
 -keepattributes Signature
 -keep class com.google.gson.stream.** { *; }
+
+#不混淆bugly
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
 
 
 #-----------------------------------自己的类
