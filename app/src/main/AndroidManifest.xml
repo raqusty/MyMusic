@@ -138,6 +138,14 @@
         </activity>
 
 
+        <activity android:name=".module.TextViewActivity.TextViewActivity">
+            <intent-filter>
+                <action android:name="TextViewActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
         <service android:name=".module.Messenger.MessagerService" />
         <service android:name=".module.Aidl.MyService">
             <intent-filter>

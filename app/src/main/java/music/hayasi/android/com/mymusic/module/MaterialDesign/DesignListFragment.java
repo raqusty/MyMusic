@@ -1,12 +1,16 @@
 package music.hayasi.android.com.mymusic.module.MaterialDesign;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -16,6 +20,7 @@ import java.util.List;
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseFragment;
+import music.hayasi.android.com.mymusic.common.widget.CheckOverSizeTextView;
 
 public class DesignListFragment extends BaseFragment {
 
@@ -50,7 +55,12 @@ public class DesignListFragment extends BaseFragment {
 
     private void addData() {
         for (int i = 0; i < 25; i++) {
-            mDataList.add(i + "");
+            if (i % 3 == 0) {
+                mDataList.add(i + "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+            } else {
+                mDataList.add(i + "");
+            }
+
         }
     }
 
@@ -85,12 +95,24 @@ public class DesignListFragment extends BaseFragment {
 
     class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
 
+        private int biaozhi = 0;
 
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
-            holder.tv.setText(mDataList.get(position));
-
             // 如果设置了回调，则设置点击事件
+            holder.tv.setText(mDataList.get(position));
+            biaozhi = position;
+            holder.tv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                @Override
+                public boolean onPreDraw() {
+                    Layout layout = holder.tv.getLayout();
+                    boolean a = layout.getEllipsisCount(3) > 0 ? true : false;
+                    Log.i("linzehao", "isOverSize  " + a);
+                    holder.tv.getViewTreeObserver().removeOnPreDrawListener(this);
+                    return false;
+                }
+            });
         }
 
 

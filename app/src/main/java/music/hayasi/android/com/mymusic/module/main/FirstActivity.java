@@ -3,6 +3,7 @@ package music.hayasi.android.com.mymusic.module.main;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewParentCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,7 +45,7 @@ public class FirstActivity extends BaseActivity {
 
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
-    String[] mNameList = {"MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
+    String[] mNameList = {"TextViewActivity","MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
             , "DesignActivity", "NetActivity", "ModelActivity", "DesignScrollActivity", "PhotoViewActivity", "FooterActivity", "DialogActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
             , "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"};
 

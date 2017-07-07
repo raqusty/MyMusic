@@ -69,7 +69,8 @@ public class DialogActivity extends BaseActivity {
                     //这里执行需要的处理
                     Log.i("linzehao", "show");
                 } else {
-                    Log.i("linzehao", "hide");
+                    binding.editview1.clearFocus();
+                    Log.i("linzehao", "23123");
                 }
             }
         });
@@ -97,8 +98,6 @@ public class DialogActivity extends BaseActivity {
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SureOrCancelWithCustomTipsDialog dialog1 = null;
-                dialog1.show();
                 dialog.show();
             }
         });

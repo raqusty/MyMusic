@@ -5,7 +5,9 @@
     <RelativeLayout
         android:id="@+id/bbb"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
             android:id="@+id/aa"
@@ -66,7 +68,15 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:background="#324423"
+            android:maxLines="4"
             android:text="haha" />
+
+        <EditText
+            android:id="@+id/editview1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone" />
 
 
     </RelativeLayout>

@@ -4,13 +4,13 @@
     android:layout_height="wrap_content"
     android:background="#44ff0000">
 
-    <TextView
+    <music.hayasi.android.com.mymusic.common.widget.CheckOverSizeTextView
         android:id="@+id/id_num"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:ellipsize="end"
-        android:maxLines="4"
         android:padding="20dp"
-        android:text="1" />
+        android:maxLines="4"
+        android:text="1asdfaadfadf1asdfaadfadf1asdfaadfadf1asdfaadfadf1asdfaadfadf" />
 </FrameLayout>
