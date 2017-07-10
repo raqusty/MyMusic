@@ -20,7 +20,6 @@ import java.util.List;
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseFragment;
-import music.hayasi.android.com.mymusic.common.widget.CheckOverSizeTextView;
 
 public class DesignListFragment extends BaseFragment {
 
