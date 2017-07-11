@@ -1,32 +1,29 @@
-package music.hayasi.android.com.mymusic.module.Footer;
+package music.hayasi.android.com.mymusic.module.Footer.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import music.hayasi.android.com.mymusic.R;
 
-public class FooterAdapter extends RecyclerView.Adapter<FooterAdapter.RylViewHolder> {
+public abstract class AbstractFooterAdapter<T> extends RecyclerView.Adapter<AbstractFooterAdapter.RylViewHolder> {
 
     public static final int TYPE_TIP_EMPTY_FOOTER = 0;
     public static final int TYPE_CARD = 1;
 
-    List<String> mDataList = new ArrayList<String>();
+    List<T> mDataList = new ArrayList<T>();
 
-    Context mContext;
-
+    protected Context mContext;
 
     private View mFooterView;
-    private boolean mIsShow = false;
+    protected boolean mIsShow = false;
 
-    public FooterAdapter(Context context, List<String> list) {
+    public AbstractFooterAdapter(Context context, List<T> list) {
         mContext = context;
         mDataList = list;
         mFooterView = LayoutInflater.from(mContext).inflate(R.layout.footer_item, null);
@@ -42,22 +39,6 @@ public class FooterAdapter extends RecyclerView.Adapter<FooterAdapter.RylViewHol
         notifyDataSetChanged();
     }
 
-    @Override
-    public void onBindViewHolder(final RylViewHolder holder, final int position) {
-        if (getItemViewType(position) == TYPE_CARD) {
-            //处理自己的业务
-            ((MyViewHolder) holder).tv.setText(mDataList.get(position));
-            ((MyViewHolder) holder).tv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ShowFooterView(!mIsShow);
-                }
-            });
-
-        } else if (getItemViewType(position) == TYPE_TIP_EMPTY_FOOTER) {
-            Log.i("linzehao", "111");
-        }
-    }
 
     @Override
     public int getItemCount() {
@@ -74,6 +55,11 @@ public class FooterAdapter extends RecyclerView.Adapter<FooterAdapter.RylViewHol
         }
     }
 
+
+    public void onBindViewHolder(RylViewHolder holder, int position) {
+
+    }
+
     @Override
     public RylViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_TIP_EMPTY_FOOTER) {
@@ -81,20 +67,20 @@ public class FooterAdapter extends RecyclerView.Adapter<FooterAdapter.RylViewHol
             parent.addView(mFooterView, layoutParams);
             return new FooterHolder(mFooterView, viewType);
         } else {
-            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(mContext).inflate(R.layout.first_activity_item, parent,
-                    false), viewType);
-            return holder;
+            return onCreateValidViewHolder(parent, viewType);
         }
-
     }
 
-    class MyViewHolder extends RylViewHolder {
 
-        TextView tv;
+    /**
+     * 卡片创建
+     */
+    public abstract RylViewHolder onCreateValidViewHolder(ViewGroup parent, int viewType);
 
-        public MyViewHolder(View view, int type) {
-            super(view, type);
-            tv = (TextView) view.findViewById(R.id.id_num);
+    class RylViewHolder extends RecyclerView.ViewHolder {
+
+        public RylViewHolder(View itemView, int type) {
+            super(itemView);
         }
     }
 
@@ -102,13 +88,6 @@ public class FooterAdapter extends RecyclerView.Adapter<FooterAdapter.RylViewHol
 
         public FooterHolder(View view, int type) {
             super(view, type);
-        }
-    }
-
-    class RylViewHolder extends RecyclerView.ViewHolder {
-
-        public RylViewHolder(View itemView, int type) {
-            super(itemView);
         }
     }
 

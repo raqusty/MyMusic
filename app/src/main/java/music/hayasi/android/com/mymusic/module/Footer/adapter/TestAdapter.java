@@ -1,4 +1,4 @@
-package music.hayasi.android.com.mymusic.module.Footer;
+package music.hayasi.android.com.mymusic.module.Footer.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import music.hayasi.android.com.mymusic.R;
+import music.hayasi.android.com.mymusic.module.Footer.testEntity;
 
 public class TestAdapter extends AbstractFooterAdapter<testEntity> {
 

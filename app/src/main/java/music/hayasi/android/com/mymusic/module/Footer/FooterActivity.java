@@ -1,7 +1,6 @@
 package music.hayasi.android.com.mymusic.module.Footer;
 
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -11,6 +10,10 @@ import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseActivity;
 import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
+import music.hayasi.android.com.mymusic.common.widget.CustomRecyclerView;
+import music.hayasi.android.com.mymusic.module.Footer.adapter.IntAdapter;
+import music.hayasi.android.com.mymusic.module.Footer.adapter.StringAdapter;
+import music.hayasi.android.com.mymusic.module.Footer.adapter.TestAdapter;
 
 public class FooterActivity extends BaseActivity {
 
@@ -21,7 +24,7 @@ public class FooterActivity extends BaseActivity {
     }
 
     @Bind(R.id.id_recyclerview)
-    RecyclerView mRecyclerView;
+    CustomRecyclerView mRecyclerView;
 
     List<String> mDataList = new ArrayList<String>();
     List<Integer> mDataList1 = new ArrayList<Integer>();
@@ -41,7 +44,15 @@ public class FooterActivity extends BaseActivity {
         mAdatper2 = new TestAdapter(mContext, mDataList2);
 
         mRecyclerView.setAdapter(mAdatper2);
-        mAdatper.ShowFooterView(true);
+        mRecyclerView.setScrollListten(new CustomRecyclerView.ScrollListten() {
+            @Override
+            public void onScrolledToBottom() {
+                mAdatper2.ShowFooterView(true);
+            }
+
+        });
+
+
     }
 
     private void addData() {
@@ -51,7 +62,7 @@ public class FooterActivity extends BaseActivity {
         for (int i = 0; i < 7; i++) {
             mDataList1.add(i);
         }
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 17; i++) {
             testEntity entity = new testEntity();
             entity.setA(i + "" + i);
             mDataList2.add(entity);
@@ -72,7 +83,7 @@ public class FooterActivity extends BaseActivity {
 
     @Override
     protected int getContentViewResId() {
-        return R.layout.custom_recyclerview_layout;
+        return R.layout.custom_c_recyclerview_layout;
     }
 
     @Override

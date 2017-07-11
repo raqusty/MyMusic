@@ -1,22 +1,20 @@
-package music.hayasi.android.com.mymusic.module.Footer;
+package music.hayasi.android.com.mymusic.module.Footer.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import music.hayasi.android.com.mymusic.R;
 
-public class StringAdapter extends AbstractFooterAdapter<String> {
+public class IntAdapter extends AbstractFooterAdapter<Integer> {
 
 
-    public StringAdapter(Context context, List<String> list) {
+    public IntAdapter(Context context, List<Integer> list) {
         super(context, list);
     }
 
@@ -27,11 +25,10 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
         return holder;
     }
 
-    @Override
     public void onBindViewHolder(AbstractFooterAdapter.RylViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_CARD) {
             //处理自己的业务
-            ((MyViewHolder) holder).tv.setText(mDataList.get(position));
+            ((MyViewHolder) holder).tv.setText(mDataList.get(position)+"");
             ((MyViewHolder) holder).tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -43,7 +40,6 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
             Log.i("linzehao", "111");
         }
     }
-
 
     class MyViewHolder extends RylViewHolder {
 
