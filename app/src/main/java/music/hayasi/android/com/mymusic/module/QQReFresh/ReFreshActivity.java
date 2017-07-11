@@ -2,7 +2,6 @@ package music.hayasi.android.com.mymusic.module.QQReFresh;
 
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

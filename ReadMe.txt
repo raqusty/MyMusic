@@ -14,7 +14,11 @@
             (有两个地方存在内存泄漏，但不知道怎么改好。)
 
     2: module
-
+        1.通用的Dialog             music.hayasi.android.com.mymusic.module.Dialog
+        2.MaterialDesign相关界面   music.hayasi.android.com.mymusic.module.MaterialDesign
+        3.仿iphone下拉控件         music.hayasi.android.com.mymusic.module.QQReFresh
+        4.TextView相关             music.hayasi.android.com.mymusic.module.TextViewActivity
+        5.footerAdapter           music.hayasi.android.com.mymusic.module.Footer
 
 
 
