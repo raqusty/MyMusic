@@ -1,16 +1,13 @@
-package music.hayasi.android.com.mymusic.module.MaterialDesign;
+package music.hayasi.android.com.mymusic.module.QQReFresh;
 
-import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.RequiresApi;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -19,43 +16,56 @@ import java.util.List;
 
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
-import music.hayasi.android.com.mymusic.common.activity.BaseFragment;
+import music.hayasi.android.com.mymusic.common.activity.BaseActivity;
+import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
+import music.hayasi.android.com.mymusic.module.QQReFresh.widget.QQReFreshLayout;
 
-public class DesignListFragment extends BaseFragment {
+public class ReFreshActivity extends BaseActivity {
 
-    private int num = 0;
-
-    public void setNum(int n) {
-        num = n;
+    @Override
+    protected int getContentViewResId() {
+        return R.layout.qq_refresh_layout_activity;
     }
 
     @Bind(R.id.id_recyclerview)
     RecyclerView mRecyclerView;
 
+    @Bind(R.id.qq_refresh_layout)
+    QQReFreshLayout mRefreshLayout;
+
     List<String> mDataList = new ArrayList<String>();
+
+    Thread runnable;
 
     @Override
     public void initViews() {
-        Log.i("linzehao", "num  " + num);
         addData();
         String[] toBeStored = mDataList.toArray(new String[mDataList.size()]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_expandable_list_item_1, toBeStored);
 //        mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setAdapter(new ItemAdapter());
+        mRefreshLayout.setRefreashListten(new QQReFreshLayout.RefreashListten() {
+            @Override
+            public void refreash() {
+                //网络请求
+                handler.postDelayed(runnable, 1000);
+            }
+        });
 
+
+        runnable = new Thread(new Runnable() {
+            public void run() {
+                handler.sendEmptyMessage(1);
+            }
+        });
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        Log.i("linzehao", "num  " + num + isVisibleToUser);
-        super.setUserVisibleHint(isVisibleToUser);
-    }
 
     private void addData() {
         for (int i = 0; i < 25; i++) {
             if (i % 3 == 0) {
-                mDataList.add(i + "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+                mDataList.add(i + "");
             } else {
                 mDataList.add(i + "");
             }
@@ -63,56 +73,43 @@ public class DesignListFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public void onPause() {
-        Log.i("linzehao", "num  onPause " + num);
-        super.onPause();
-    }
-
-    @Override
-    public void onDestroyView() {
-        Log.i("linzehao", "num  onDestroyView " + num);
-        super.onDestroyView();
-    }
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (mRootView != null) {
-            Log.i("linzehao", "onCreateView " + num);
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    mRefreshLayout.refreshSuccess();
+                    break;
+            }
         }
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
+    };
 
     @Override
     public void setListener() {
 
     }
 
+
     @Override
-    protected int getContentViewResId() {
-        return R.layout.custom_recyclerview_layout;
+    public int getToolBarResId() {
+        return 0;
     }
+
+    @Override
+    public void initToolBar(ToolBarManager navigationBarMgr) {
+
+    }
+
 
     class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
 
         private int biaozhi = 0;
 
-        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
             // 如果设置了回调，则设置点击事件
             holder.tv.setText(mDataList.get(position));
-            biaozhi = position;
-            holder.tv.setMaxLines(4);
-            holder.tv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-                @Override
-                public boolean onPreDraw() {
-                    Layout layout = holder.tv.getLayout();
-                    int  a = layout.getEllipsisCount(3) ;
-                    Log.i("linzehao", "isOverSize  " + a);
-                    holder.tv.getViewTreeObserver().removeOnPreDrawListener(this);
-                    return false;
-                }
-            });
         }
 
 
@@ -144,5 +141,4 @@ public class DesignListFragment extends BaseFragment {
             }
         }
     }
-
 }
