@@ -152,6 +152,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.Guide.GuideActivity">
+            <intent-filter>
+                <action android:name="GuideActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <service android:name=".module.Messenger.MessagerService" />
         <service android:name=".module.Aidl.MyService">
             <intent-filter>

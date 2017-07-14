@@ -5,9 +5,7 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -24,7 +22,6 @@ import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
 import music.hayasi.android.com.mymusic.common.dialog.OnSureOrCancelListener;
 import music.hayasi.android.com.mymusic.common.dialog.SureOrCancelWithCustomTipsDialog;
 import music.hayasi.android.com.mymusic.databinding.AnimActivityBinding;
-import music.hayasi.android.com.mymusic.module.MaterialDesign.DesignActivity;
 
 public class DialogActivity extends BaseActivity {
 
