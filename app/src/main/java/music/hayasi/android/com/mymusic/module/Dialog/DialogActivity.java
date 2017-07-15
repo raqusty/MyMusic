@@ -10,6 +10,7 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -23,7 +24,7 @@ import music.hayasi.android.com.mymusic.common.dialog.OnSureOrCancelListener;
 import music.hayasi.android.com.mymusic.common.dialog.SureOrCancelWithCustomTipsDialog;
 import music.hayasi.android.com.mymusic.databinding.AnimActivityBinding;
 
-public class DialogActivity extends BaseActivity {
+public class DialogActivity extends BaseActivity implements View.OnKeyListener {
 
     private AnimActivityBinding binding;
 
@@ -47,6 +48,8 @@ public class DialogActivity extends BaseActivity {
         ObjectAnimator b;
         AnimatorSet s;
         TimeAnimator f;
+
+//        binding.button1.setKeyListener();
 
         binding.button3.setText(Html.fromHtml(
                 "<b>text3:</b>  Text with a " +
@@ -128,4 +131,8 @@ public class DialogActivity extends BaseActivity {
 
     }
 
+    @Override
+    public boolean onKey(View view, int i, KeyEvent keyEvent) {
+        return false;
+    }
 }

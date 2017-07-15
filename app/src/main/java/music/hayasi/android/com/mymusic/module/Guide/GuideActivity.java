@@ -1,33 +1,26 @@
 package music.hayasi.android.com.mymusic.module.Guide;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.TimeAnimator;
-import android.animation.ValueAnimator;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseActivity;
 import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
-import music.hayasi.android.com.mymusic.common.dialog.OnSureOrCancelListener;
-import music.hayasi.android.com.mymusic.common.dialog.SureOrCancelWithCustomTipsDialog;
 import music.hayasi.android.com.mymusic.databinding.AnimActivityBinding;
+import music.hayasi.android.com.mymusic.module.Guide.Guide.Component;
+import music.hayasi.android.com.mymusic.module.Guide.Guide.Guide;
+import music.hayasi.android.com.mymusic.module.Guide.Guide.GuideBuilder;
 
 public class GuideActivity extends BaseActivity {
 
     private AnimActivityBinding binding;
+    GuideBuilder Builder1;
+    GuideBuilder Builder2;
+    GuideBuilder Builder3;
+    GuideBuilder Builder4;
+    GuideBuilder Builder5;
+    GuideBuilder Builder6;
 
-    Animation scaleAnimation;
 
     @Override
     protected int getContentViewResId() {
@@ -37,12 +30,122 @@ public class GuideActivity extends BaseActivity {
     @Override
     public void initViews() {
         binding = DataBindingUtil.setContentView(this, R.layout.anim_activity);
+        binding.button1.setText("新手引导1");
+        binding.button2.setText("新手引导2");
+        binding.button3.setText("新手引导3");
+        binding.button4.setText("新手引导4");
+        binding.button5.setText("新手引导5");
+        binding.button6.setText("新手引导6");
+        binding.button6.post(new Runnable() {
+            @Override
+            public void run() {
 
-        scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.animation_1);
-        binding.button3.setText("");
-        binding.button1.setText("");
-        binding.button2.setText("");
+            }
+        });
 
+
+    }
+
+    private void showGuideView1() {
+        new GuideBuilder.Builder(mContext, binding.button1)
+                .addComponent(new Simple1Component())
+                .GuideListten(new Guide.GuideListten() {
+                    @Override
+                    public void showGuide() {
+
+                    }
+
+                    @Override
+                    public void dissGuide() {
+                        showGuideView2();
+                    }
+                })
+                .Style(Component.CIRCLE)
+                .Corner(20)
+                .build();
+    }
+
+    private void showGuideView2() {
+        new GuideBuilder.Builder(mContext, binding.button2)
+                .addComponent(new Simple2Component())
+                .GuideListten(new Guide.GuideListten() {
+                    @Override
+                    public void showGuide() {
+
+                    }
+
+                    @Override
+                    public void dissGuide() {
+                        showGuideView3();
+                    }
+                })
+                .Corner(20)
+                .build();
+    }
+
+    private void showGuideView3() {
+        new GuideBuilder.Builder(mContext, binding.button3)
+                .addComponent(new Simple3Component())
+                .GuideListten(new Guide.GuideListten() {
+                    @Override
+                    public void showGuide() {
+
+                    }
+
+                    @Override
+                    public void dissGuide() {
+                        showGuideView4();
+                    }
+                })
+                .Corner(20)
+                .build();
+    }
+
+    private void showGuideView4() {
+
+        new GuideBuilder.Builder(mContext, binding.button4)
+                .addComponent(new Simple4Component())
+                .GuideListten(new Guide.GuideListten() {
+                    @Override
+                    public void showGuide() {
+
+                    }
+
+                    @Override
+                    public void dissGuide() {
+                        showGuideView5();
+                    }
+                })
+                .Corner(20)
+                .build();
+    }
+
+    private void showGuideView5() {
+        new GuideBuilder.Builder(mContext, binding.button5)
+                .addComponent(new Simple5Component())
+                .addComponent(new Simple1Component())
+                .GuideListten(new Guide.GuideListten() {
+                    @Override
+                    public void showGuide() {
+
+                    }
+
+                    @Override
+                    public void dissGuide() {
+                        showGuideView6();
+                    }
+                })
+                .Corner(20)
+                .build();
+
+    }
+
+    private void showGuideView6() {
+        new GuideBuilder.Builder(mContext, binding.button6)
+                .addComponent(new Simple6Component())
+                .ExitAnimId(android.R.anim.fade_out)
+                .Corner(20)
+                .build();
     }
 
 
@@ -52,7 +155,7 @@ public class GuideActivity extends BaseActivity {
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showGuideView1();
             }
         });
 
@@ -62,9 +165,10 @@ public class GuideActivity extends BaseActivity {
             }
         });
 
-        binding.button3.setOnClickListener(new View.OnClickListener() {
+        binding.button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
             }
         });
 
