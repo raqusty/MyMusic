@@ -19,6 +19,7 @@
         3.仿iphone下拉控件         music.hayasi.android.com.mymusic.module.QQReFresh
         4.TextView相关             music.hayasi.android.com.mymusic.module.TextViewActivity
         5.footerAdapter           music.hayasi.android.com.mymusic.module.Footer
+        6.新手指引模块             music.hayasi.android.com.mymusic.module.Guide
 
 
 
