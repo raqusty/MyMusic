@@ -159,6 +159,25 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.Path.PathActivity">
+            <intent-filter>
+                <action android:name="PathActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".module.Path.Path2Activity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <intent-filter>
+                <action android:name="Path2Activity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        /////////////////////////////////////////////////////////////////////
+
         <service android:name=".module.Messenger.MessagerService" />
         <service android:name=".module.Aidl.MyService">
             <intent-filter>
