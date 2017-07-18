@@ -16,7 +16,7 @@ public class PathActivity extends BaseActivity {
 
     @Override
     protected int getContentViewResId() {
-        return R.layout.path_activity;
+        return R.layout.path_1_activity;
     }
 
     @Override

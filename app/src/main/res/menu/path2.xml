@@ -3,7 +3,6 @@
     <group>
         <item
             android:id="@+id/add_group"
-            android:actionLayout="@layout/path_seekbar"
             android:title="add group" />
     </group>
 
