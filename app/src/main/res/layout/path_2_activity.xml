@@ -66,7 +66,8 @@
         android:max="100"
         android:progress="0"
         android:progressDrawable="@drawable/bg_bar"
-        android:thumb="@drawable/thumb_bar" />
+        android:thumb="@drawable/thumb_bar"
+        android:visibility="gone" />
 
     <music.hayasi.android.com.mymusic.module.Path.widget.Bezier2
         android:id="@+id/my_bezier"

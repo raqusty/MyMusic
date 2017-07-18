@@ -10,6 +10,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import music.hayasi.android.com.mymusic.module.Path.entity.PathEntity;
+
 /**
  * Created by Administrator on 2017/7/17.
  */
@@ -20,9 +25,12 @@ public class Bezier2 extends View {
 
     private PointF start, end, control1, control2;
 
-    private boolean isDo = false;
+    private int isDo = -1;
     private int mType = -1;
     private PointListten mPointListten;
+
+    private List<List<PointF>> mList;
+    private List<PointF> mDrawList = new ArrayList<PointF>();
 
     public Bezier2(Context context) {
         this(context, null);
@@ -44,7 +52,7 @@ public class Bezier2 extends View {
         control2 = new PointF(0, 0);
     }
 
-    public void setDo(boolean d) {
+    public void setDo(int d) {
         this.isDo = d;
     }
 
@@ -76,25 +84,25 @@ public class Bezier2 extends View {
                 start.x = event.getX();
                 start.y = event.getY();
                 if (mPointListten != null)
-                    mPointListten.pointChange(start.x, start.y,mType);
+                    mPointListten.pointChange(start.x, start.y, mType);
                 break;
             case 2:
                 end.x = event.getX();
                 end.y = event.getY();
                 if (mPointListten != null)
-                    mPointListten.pointChange(end.x, end.y,mType);
+                    mPointListten.pointChange(end.x, end.y, mType);
                 break;
             case 3:
                 control1.x = event.getX();
                 control1.y = event.getY();
                 if (mPointListten != null)
-                    mPointListten.pointChange(control1.x, control1.y,mType);
+                    mPointListten.pointChange(control1.x, control1.y, mType);
                 break;
             case 4:
                 control2.x = event.getX();
                 control2.y = event.getY();
                 if (mPointListten != null)
-                    mPointListten.pointChange(control2.x, control2.y,mType);
+                    mPointListten.pointChange(control2.x, control2.y, mType);
                 break;
         }
         invalidate();
@@ -124,7 +132,7 @@ public class Bezier2 extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //drawCoordinateSystem(canvas);
-        if (isDo) {
+        if (isDo == 1) {
             // 绘制数据点和控制点
             mPaint.setColor(Color.GRAY);
             mPaint.setStrokeWidth(20);
@@ -149,11 +157,105 @@ public class Bezier2 extends View {
             path.cubicTo(control1.x, control1.y, control2.x, control2.y, end.x, end.y);
 
             canvas.drawPath(path, mPaint);
+        } else if (isDo == 2) {
+            for (int i = 0; i < mDrawList.size(); i += 4) {
+                PointF pointStart = mDrawList.get(i);
+                PointF pointEnd = mDrawList.get(i + 1);
+                PointF point1 = mDrawList.get(i + 2);
+                PointF point2 = mDrawList.get(i + 3);
+
+                // 绘制贝塞尔曲线
+                mPaint.setColor(Color.RED);
+                mPaint.setStrokeWidth(8);
+
+                Path path = new Path();
+
+                path.moveTo(pointStart.x, pointStart.y);
+                path.cubicTo(point1.x, point1.y, point2.x, point2.y, pointEnd.x, pointEnd.y);
+
+                canvas.drawPath(path, mPaint);
+            }
+
         }
 
     }
 
+    public void setDataList(List<PathEntity> dataList, int minCount) {
+        mList = new ArrayList<List<PointF>>();
+        List<PointF> list = null;
+        for (int i = 0; i < minCount; i++) {
+            PointF pointstart = new PointF(0, 0);
+            PointF pointend = new PointF(0, 0);
+            PointF point1 = new PointF(0, 0);
+            PointF point2 = new PointF(0, 0);
+            mDrawList.add(pointstart);
+            mDrawList.add(pointend);
+            mDrawList.add(point1);
+            mDrawList.add(point2);
+        }
+
+        for (int i = 0; i < dataList.size(); i++) {
+            list = new ArrayList<PointF>();
+            if (i > minCount)
+                break;
+            PathEntity entity = dataList.get(i);
+            List<PathEntity> pointList = entity.getmList();
+            for (PathEntity point : pointList) {
+                PointF pointstart = new PointF(point.getPoint1_x(), point.getPoint1_y());
+                PointF pointend = new PointF(point.getPoint2_x(), point.getPoint2_y());
+                PointF point1 = new PointF(point.getPoint3_x(), point.getPoint3_y());
+                PointF point2 = new PointF(point.getPoint4_x(), point.getPoint4_y());
+                list.add(pointstart);
+                list.add(pointend);
+                list.add(point1);
+                list.add(point2);
+            }
+            mList.add(list);
+        }
+    }
+
+
+    public void setControl(int per) {
+        for (int i = 0; i < mList.size(); i++) {
+            List<PointF> list = mList.get(i);
+            //获取列表的数目，如果小于两个，不成一条线，不处理
+            int count = list.size();
+            if (count < 2)
+                return;
+            //划分等长区间，区间数  100除以数组长度 -1  如：100 / (list。size - 1) = 100 /(3-1) = 50
+            float partCount = 100 / (count - 1);
+            //区间从零开始
+            int partNum = 0;//从零开始
+            //用下面的方法快速定位在哪个区间100 做特殊处理
+            if (per == 100) {
+                partNum = count - 2;
+            } else {
+                partNum = per / (int) partCount;
+            }
+
+//        Log.i("linzehao", "count  " + count + "   partCount  " + partCount + "   per  " + per + "   partNum  " + partNum + "   startPoint  " + startPoint);
+            //获取开始点跟结束点
+            PointF tempStart = list.get(partNum);
+            PointF tempEnd = list.get(partNum + 1);
+            //算出开始点跟结束点的距离
+            float disx = tempEnd.x - tempStart.x;
+            float disy = tempEnd.y - tempStart.y;
+
+            //算出距离跟百分比算出要走的距离  如：per_s = 60 -1* 50 = 10  ;s = per_s / partCount = 10 / 50
+            int per_s = per - partNum * (int) partCount;
+            float s = per_s / partCount;
+
+            //算出当前位置
+            float x = disx * s;
+            float y = disy * s;
+//            mControlList.get(i).x = tempStart.x + x;
+//            mControlList.get(i).y = tempStart.y + y;
+        }
+        invalidate();
+    }
+
+
     public interface PointListten {
-        public void pointChange(float x, float y,int type);
+        public void pointChange(float x, float y, int type);
     }
 }

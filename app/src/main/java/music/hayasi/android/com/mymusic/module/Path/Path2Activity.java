@@ -75,6 +75,9 @@ public class Path2Activity extends BaseActivity {
     private List<PathEntity> layoutList;
     private SpinnerAdapter layoutAdapter;
 
+    private List<PathEntity> drawDatas;
+    private int minCount = 100000;
+
     @Override
     protected int getContentViewResId() {
         return R.layout.path_2_activity;
@@ -199,6 +202,7 @@ public class Path2Activity extends BaseActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
             Log.i("linzehao", i + "");
+            mBezier.setControl(i);
         }
 
         @Override
@@ -216,7 +220,7 @@ public class Path2Activity extends BaseActivity {
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.huizhi:
-                mBezier.setDo(true);
+                mBezier.setDo(1);
                 setPoint();
                 PointF point1 = new PointF(curPoint.getPoint1_x(), curPoint.getPoint1_y());
                 PointF point2 = new PointF(curPoint.getPoint2_x(), curPoint.getPoint2_y());
@@ -244,7 +248,9 @@ public class Path2Activity extends BaseActivity {
 //                inflater2.inflate(R.menu.path2, popup2.getMenu());
 //                popup2.setOnMenuItemClickListener(new MenuItemClickListene());
 //                popup2.show();
-                refreshPoint();
+//                refreshPoint();
+                getDrawData(curGroup.getId());
+
                 break;
         }
 
@@ -264,7 +270,7 @@ public class Path2Activity extends BaseActivity {
     }
 
     private void refreshPoint() {
-        mBezier.setDo(true);
+        mBezier.setDo(1);
         mX1.setText(curPoint.getPoint1_x() + "");
         mY1.setText(curPoint.getPoint1_y() + "");
         mX2.setText(curPoint.getPoint2_x() + "");
@@ -392,4 +398,26 @@ public class Path2Activity extends BaseActivity {
 
     }
 
+    //获取一个layout的所有点 ，传layout的parentId
+    public void getDrawData(int parentId) {
+        minCount = 100000;
+        drawDatas = dataBase.getData(parentId);
+        if (drawDatas != null) {
+            for (PathEntity entity : drawDatas) {
+                List<PathEntity> childDatas = dataBase.getData(entity.getId());
+                if (childDatas == null || childDatas.size() == 0)
+                    continue;
+                minCount = minCount > childDatas.size() ? childDatas.size() : minCount;
+                entity.setmList(childDatas);
+            }
+        }
+        if (drawDatas != null && drawDatas.size() != 0 && drawDatas.size() >= 2 && minCount != 100000) {
+            mSeekBar.setVisibility(View.VISIBLE);
+            mBezier.setDataList(drawDatas,minCount);
+            mBezier.setDo(2);
+        } else {
+            mSeekBar.setVisibility(View.GONE);
+        }
+
+    }
 }
