@@ -196,11 +196,13 @@ public class Bezier2 extends View {
 
         for (int i = 0; i < dataList.size(); i++) {
             list = new ArrayList<PointF>();
-            if (i > minCount)
-                break;
+
             PathEntity entity = dataList.get(i);
             List<PathEntity> pointList = entity.getmList();
-            for (PathEntity point : pointList) {
+            for (int j = 0; j < pointList.size(); j++) {
+                if (j >= minCount)
+                    break;
+                PathEntity point = pointList.get(j);
                 PointF pointstart = new PointF(point.getPoint1_x(), point.getPoint1_y());
                 PointF pointend = new PointF(point.getPoint2_x(), point.getPoint2_y());
                 PointF point1 = new PointF(point.getPoint3_x(), point.getPoint3_y());
@@ -216,30 +218,32 @@ public class Bezier2 extends View {
 
 
     public void setControl(int per) {
-        for (int i = 0; i < mList.size(); i++) {
-            List<PointF> list = mList.get(i);
-            //获取列表的数目，如果小于两个，不成一条线，不处理
-            int count = list.size();
-            if (count < 2)
-                return;
-            //划分等长区间，区间数  100除以数组长度 -1  如：100 / (list。size - 1) = 100 /(3-1) = 50
-            float partCount = 100 / (count - 1);
-            //区间从零开始
-            int partNum = 0;//从零开始
-            //用下面的方法快速定位在哪个区间100 做特殊处理
-            if (per == 100) {
-                partNum = count - 2;
-            } else {
-                partNum = per / (int) partCount;
-            }
+        //获取列表的数目，如果小于两个，不成一条线，不处理
+        int count = mList.size();
+        if (count < 2)
+            return;
+        //划分等长区间，区间数  100除以数组长度 -1  如：100 / (list。size - 1) = 100 /(3-1) = 50
+        float partCount = 100 / (count - 1);
+        //区间从零开始
+        int partNum = 0;//从零开始
+        //用下面的方法快速定位在哪个区间100 做特殊处理
+        if (per == 100) {
+            partNum = count - 2;
+        } else {
+            partNum = per / (int) partCount;
+        }
 
-//        Log.i("linzehao", "count  " + count + "   partCount  " + partCount + "   per  " + per + "   partNum  " + partNum + "   startPoint  " + startPoint);
+        List<PointF> firstLayout = mList.get(partNum);
+        List<PointF> secondLayout = mList.get(partNum + 1);
+        for (int i = 0; i < firstLayout.size(); i++) {
             //获取开始点跟结束点
-            PointF tempStart = list.get(partNum);
-            PointF tempEnd = list.get(partNum + 1);
+            PointF firstPoint = firstLayout.get(i);
+            PointF secondePoint = secondLayout.get(i);
+            PointF controlPoint = mDrawList.get(i);
+
             //算出开始点跟结束点的距离
-            float disx = tempEnd.x - tempStart.x;
-            float disy = tempEnd.y - tempStart.y;
+            float disx = secondePoint.x - firstPoint.x;
+            float disy = secondePoint.y - firstPoint.y;
 
             //算出距离跟百分比算出要走的距离  如：per_s = 60 -1* 50 = 10  ;s = per_s / partCount = 10 / 50
             int per_s = per - partNum * (int) partCount;
@@ -248,9 +252,10 @@ public class Bezier2 extends View {
             //算出当前位置
             float x = disx * s;
             float y = disy * s;
-//            mControlList.get(i).x = tempStart.x + x;
-//            mControlList.get(i).y = tempStart.y + y;
+            controlPoint.x = firstPoint.x + x;
+            controlPoint.y = firstPoint.y + y;
         }
+
         invalidate();
     }
 
