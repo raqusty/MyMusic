@@ -2,12 +2,14 @@ package music.hayasi.android.com.mymusic.module.Path;
 
 import android.graphics.PointF;
 import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -47,6 +49,9 @@ public class Path2Activity extends BaseActivity {
     @Bind(R.id.id_y_4)
     EditText mY4;
 
+    @Bind(R.id.seekbar)
+    SeekBar mSeekBar;
+
     @Bind(R.id.group_spinner)
     Spinner group_spinner;
     @Bind(R.id.point_spinner)
@@ -84,7 +89,10 @@ public class Path2Activity extends BaseActivity {
         layoutList = new ArrayList<PathEntity>();
         setAdapterData(1);
 
+        mBezier.setListten(new listen());
         mRadioGroup.setOnCheckedChangeListener(new RadioGroupListener());
+
+        mSeekBar.setOnSeekBarChangeListener(new SeekListten());
     }
 
     @Override
@@ -139,15 +147,19 @@ public class Path2Activity extends BaseActivity {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             switch (checkedId) {
                 case R.id.radio_point1:
+                    mBezier.setType(1);
                     Toast.makeText(mContext, "radio_point1", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.radio_point2:
+                    mBezier.setType(2);
                     Toast.makeText(mContext, "radio_point2", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.radio_point3:
                     Toast.makeText(mContext, "radio_point3", Toast.LENGTH_SHORT).show();
+                    mBezier.setType(3);
                     break;
                 case R.id.radio_point4:
+                    mBezier.setType(4);
                     Toast.makeText(mContext, "radio_point4", Toast.LENGTH_SHORT).show();
                     break;
             }
@@ -182,6 +194,24 @@ public class Path2Activity extends BaseActivity {
         }
     }
 
+    class SeekListten implements SeekBar.OnSeekBarChangeListener {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            Log.i("linzehao", i + "");
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    }
+
     @OnClick({R.id.huizhi, R.id.add, R.id.sava, R.id.run})
     void onClick(View v) {
         switch (v.getId()) {
@@ -197,13 +227,9 @@ public class Path2Activity extends BaseActivity {
 
             case R.id.add:
                 PopupMenu popup = new PopupMenu(this, v);//第二个参数是绑定的那个view
-                //获取菜单填充器
                 MenuInflater inflater = popup.getMenuInflater();
-                //填充菜单
                 inflater.inflate(R.menu.path, popup.getMenu());
-                //绑定菜单项的点击事件
                 popup.setOnMenuItemClickListener(new MenuItemClickListene());
-                //显示(这一行代码不要忘记了)
                 popup.show();
                 break;
 
@@ -213,6 +239,11 @@ public class Path2Activity extends BaseActivity {
                 break;
 
             case R.id.run:
+//                PopupMenu popup2 = new PopupMenu(this, v);//第二个参数是绑定的那个view
+//                MenuInflater inflater2 = popup2.getMenuInflater();
+//                inflater2.inflate(R.menu.path2, popup2.getMenu());
+//                popup2.setOnMenuItemClickListener(new MenuItemClickListene());
+//                popup2.show();
                 refreshPoint();
                 break;
         }
@@ -266,7 +297,7 @@ public class Path2Activity extends BaseActivity {
     private void setAdapterData(int type) {
         if (type == 1) {
             groupList.clear();
-            groupList.addAll(dataBase.getData(0))  ;
+            groupList.addAll(dataBase.getData(0));
             if (groupAdapter == null) {
                 groupAdapter = new SpinnerAdapter(mContext, groupList);
                 group_spinner.setAdapter(groupAdapter);
@@ -283,7 +314,7 @@ public class Path2Activity extends BaseActivity {
 
         } else if (type == 2) {
             layoutList.clear();
-            layoutList.addAll(dataBase.getData(curGroup.getId()))  ;
+            layoutList.addAll(dataBase.getData(curGroup.getId()));
             if (layoutAdapter == null) {
                 layoutAdapter = new SpinnerAdapter(mContext, layoutList);
                 layout_spinner.setAdapter(layoutAdapter);
@@ -300,7 +331,7 @@ public class Path2Activity extends BaseActivity {
 
         } else if (type == 3) {
             pointList.clear();
-            pointList.addAll(dataBase.getData(curLayout.getId()))  ;
+            pointList.addAll(dataBase.getData(curLayout.getId()));
             if (pointAdapter == null) {
                 pointAdapter = new SpinnerAdapter(mContext, pointList);
                 point_spinner.setAdapter(pointAdapter);
@@ -315,6 +346,41 @@ public class Path2Activity extends BaseActivity {
             }
         }
     }
+
+    class listen implements Bezier2.PointListten {
+
+        @Override
+        public void pointChange(float x, float y, int type) {
+            switch (type) {
+                case 1:
+                    curPoint.setPoint1_x(x);
+                    curPoint.setPoint1_y(y);
+                    mX1.setText(curPoint.getPoint1_x() + "");
+                    mY1.setText(curPoint.getPoint1_y() + "");
+                    break;
+                case 2:
+                    curPoint.setPoint2_x(x);
+                    curPoint.setPoint2_y(y);
+                    mX2.setText(curPoint.getPoint2_x() + "");
+                    mY2.setText(curPoint.getPoint2_y() + "");
+
+                    break;
+                case 3:
+                    curPoint.setPoint3_x(x);
+                    curPoint.setPoint3_y(y);
+                    mX3.setText(curPoint.getPoint3_x() + "");
+                    mY3.setText(curPoint.getPoint3_y() + "");
+                    break;
+                case 4:
+                    curPoint.setPoint4_x(x);
+                    curPoint.setPoint4_y(y);
+                    mX4.setText(curPoint.getPoint4_x() + "");
+                    mY4.setText(curPoint.getPoint4_y() + "");
+                    break;
+            }
+        }
+    }
+
 
     @Override
     public int getToolBarResId() {

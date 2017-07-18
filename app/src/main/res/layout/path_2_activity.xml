@@ -59,6 +59,15 @@
             android:gravity="center" />
     </LinearLayout>
 
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/bg_bar"
+        android:thumb="@drawable/thumb_bar" />
+
     <music.hayasi.android.com.mymusic.module.Path.widget.Bezier2
         android:id="@+id/my_bezier"
         android:layout_width="match_parent"

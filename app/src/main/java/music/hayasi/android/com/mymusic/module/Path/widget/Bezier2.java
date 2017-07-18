@@ -21,6 +21,8 @@ public class Bezier2 extends View {
     private PointF start, end, control1, control2;
 
     private boolean isDo = false;
+    private int mType = -1;
+    private PointListten mPointListten;
 
     public Bezier2(Context context) {
         this(context, null);
@@ -46,12 +48,57 @@ public class Bezier2 extends View {
         this.isDo = d;
     }
 
-    public void setPoint(PointF start,PointF end,PointF control1 ,PointF control2){
+    public void setType(int type) {
+        this.mType = type;
+    }
+
+    public int getType() {
+        return mType;
+    }
+
+    public void setListten(PointListten l) {
+        mPointListten = l;
+    }
+
+    public void setPoint(PointF start, PointF end, PointF control1, PointF control2) {
         this.start = start;
         this.end = end;
         this.control1 = control1;
         this.control2 = control2;
         invalidate();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // 根据触摸位置更新控制点，并提示重绘
+        switch (mType) {
+            case 1:
+                start.x = event.getX();
+                start.y = event.getY();
+                if (mPointListten != null)
+                    mPointListten.pointChange(start.x, start.y,mType);
+                break;
+            case 2:
+                end.x = event.getX();
+                end.y = event.getY();
+                if (mPointListten != null)
+                    mPointListten.pointChange(end.x, end.y,mType);
+                break;
+            case 3:
+                control1.x = event.getX();
+                control1.y = event.getY();
+                if (mPointListten != null)
+                    mPointListten.pointChange(control1.x, control1.y,mType);
+                break;
+            case 4:
+                control2.x = event.getX();
+                control2.y = event.getY();
+                if (mPointListten != null)
+                    mPointListten.pointChange(control2.x, control2.y,mType);
+                break;
+        }
+        invalidate();
+        return true;
     }
 
     @Override
@@ -77,7 +124,7 @@ public class Bezier2 extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //drawCoordinateSystem(canvas);
-        if(isDo){
+        if (isDo) {
             // 绘制数据点和控制点
             mPaint.setColor(Color.GRAY);
             mPaint.setStrokeWidth(20);
@@ -89,7 +136,7 @@ public class Bezier2 extends View {
             // 绘制辅助线
             mPaint.setStrokeWidth(4);
             canvas.drawLine(start.x, start.y, control1.x, control1.y, mPaint);
-            canvas.drawLine(control1.x, control1.y, control2.x, control2.y, mPaint);
+//            canvas.drawLine(control1.x, control1.y, control2.x, control2.y, mPaint);
             canvas.drawLine(control2.x, control2.y, end.x, end.y, mPaint);
 
             // 绘制贝塞尔曲线
@@ -104,5 +151,9 @@ public class Bezier2 extends View {
             canvas.drawPath(path, mPaint);
         }
 
+    }
+
+    public interface PointListten {
+        public void pointChange(float x, float y,int type);
     }
 }
