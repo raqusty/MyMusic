@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -196,7 +197,6 @@ public class Bezier2 extends View {
 
         for (int i = 0; i < dataList.size(); i++) {
             list = new ArrayList<PointF>();
-
             PathEntity entity = dataList.get(i);
             List<PathEntity> pointList = entity.getmList();
             for (int j = 0; j < pointList.size(); j++) {
@@ -207,6 +207,8 @@ public class Bezier2 extends View {
                 PointF pointend = new PointF(point.getPoint2_x(), point.getPoint2_y());
                 PointF point1 = new PointF(point.getPoint3_x(), point.getPoint3_y());
                 PointF point2 = new PointF(point.getPoint4_x(), point.getPoint4_y());
+                Log.i("Bezier2", "layout" + i + "  ps x:" + (int) pointstart.x + ", y:" + (int) pointstart.y + "  pe x:" + (int) pointend.x + ", y:" + (int) pointend.y +
+                        "  pc1 x:" + (int) point1.x + ", y:" + (int) point1.y + "  pc2 x:" + (int) point2.x + ", y:" + (int) point2.y);
                 list.add(pointstart);
                 list.add(pointend);
                 list.add(point1);
