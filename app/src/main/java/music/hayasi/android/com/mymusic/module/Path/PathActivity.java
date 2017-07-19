@@ -30,10 +30,10 @@ public class PathActivity extends BaseActivity {
     }
 
     @OnClick({R.id.id_num1, R.id.id_num2})
-     void onClick(View v) {
-        if(v.getId() == R.id.id_num1){
+    void onClick(View v) {
+        if (v.getId() == R.id.id_num1) {
             mBezier.setMode(true);
-        }else {
+        } else {
             mBezier.setMode(false);
         }
     }
