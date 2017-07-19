@@ -422,6 +422,7 @@ public class Path2Activity extends BaseActivity {
             mBezier.setDataList(drawDatas, minCount);
             mBezier.setDo(2);
         } else {
+            isShowRun = false;
             mSeekBar.setVisibility(View.GONE);
             mLinearLayout.setVisibility(View.VISIBLE);
         }
