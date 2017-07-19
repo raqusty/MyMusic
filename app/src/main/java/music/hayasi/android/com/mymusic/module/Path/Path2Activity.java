@@ -2,12 +2,12 @@ package music.hayasi.android.com.mymusic.module.Path;
 
 import android.graphics.PointF;
 import android.support.v7.widget.PopupMenu;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -62,6 +62,9 @@ public class Path2Activity extends BaseActivity {
     @Bind(R.id.radio_group)
     RadioGroup mRadioGroup;
 
+    @Bind(R.id.edit_layout)
+    LinearLayout mLinearLayout;
+
     DatabaseUtils dataBase;
 
     private PathEntity curGroup = new PathEntity();
@@ -77,6 +80,8 @@ public class Path2Activity extends BaseActivity {
 
     private List<PathEntity> drawDatas;
     private int minCount = 100000;
+
+    private boolean isShowRun = false;
 
     @Override
     protected int getContentViewResId() {
@@ -94,6 +99,13 @@ public class Path2Activity extends BaseActivity {
 
         mBezier.setListten(new listen());
         mRadioGroup.setOnCheckedChangeListener(new RadioGroupListener());
+        if (isShowRun) {
+            mSeekBar.setVisibility(View.VISIBLE);
+            mLinearLayout.setVisibility(View.GONE);
+        } else {
+            mLinearLayout.setVisibility(View.VISIBLE);
+            mSeekBar.setVisibility(View.GONE);
+        }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekListten());
     }
@@ -201,7 +213,6 @@ public class Path2Activity extends BaseActivity {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-            Log.i("linzehao", i + "");
             mBezier.setControl(i);
         }
 
@@ -243,14 +254,7 @@ public class Path2Activity extends BaseActivity {
                 break;
 
             case R.id.run:
-//                PopupMenu popup2 = new PopupMenu(this, v);//第二个参数是绑定的那个view
-//                MenuInflater inflater2 = popup2.getMenuInflater();
-//                inflater2.inflate(R.menu.path2, popup2.getMenu());
-//                popup2.setOnMenuItemClickListener(new MenuItemClickListene());
-//                popup2.show();
-//                refreshPoint();
                 getDrawData(curGroup.getId());
-
                 break;
         }
 
@@ -411,12 +415,15 @@ public class Path2Activity extends BaseActivity {
                 entity.setmList(childDatas);
             }
         }
-        if (drawDatas != null && drawDatas.size() != 0 && drawDatas.size() >= 2 && minCount != 100000) {
+        if (isShowRun == false && drawDatas != null && drawDatas.size() != 0 && drawDatas.size() >= 2 && minCount != 100000) {
+            isShowRun = true;
             mSeekBar.setVisibility(View.VISIBLE);
-            mBezier.setDataList(drawDatas,minCount);
+            mLinearLayout.setVisibility(View.GONE);
+            mBezier.setDataList(drawDatas, minCount);
             mBezier.setDo(2);
         } else {
             mSeekBar.setVisibility(View.GONE);
+            mLinearLayout.setVisibility(View.VISIBLE);
         }
 
     }
