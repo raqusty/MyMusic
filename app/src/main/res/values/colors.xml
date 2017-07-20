@@ -15,4 +15,5 @@
     <color name="yellow_lm">#ffdd3d</color>
     <color name="black">#000000</color>
     <color name="red_light">#ea351a</color>
+    <color name="text_gray_666666">#666666</color>
 </resources>

@@ -159,11 +159,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".module.Path.PathActivity">
+        <activity
+            android:name=".module.Path.PathActivity"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true">
             <intent-filter>
                 <action android:name="PathActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <layout
+                android:defaultHeight="500dp"
+                android:defaultWidth="600dp"
+                android:gravity="top|end"
+                android:minHeight="450dp"
+                android:minWidth="300dp" />
         </activity>
 
         <activity
@@ -180,6 +189,13 @@
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="Path3Activity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".module.Panel.PanelActivity">
+            <intent-filter>
+                <action android:name="PanelActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
