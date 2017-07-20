@@ -14,12 +14,6 @@ import music.hayasi.android.com.mymusic.module.Guide.Guide.GuideBuilder;
 public class GuideActivity extends BaseActivity {
 
     private AnimActivityBinding binding;
-    GuideBuilder Builder1;
-    GuideBuilder Builder2;
-    GuideBuilder Builder3;
-    GuideBuilder Builder4;
-    GuideBuilder Builder5;
-    GuideBuilder Builder6;
 
 
     @Override
@@ -36,13 +30,6 @@ public class GuideActivity extends BaseActivity {
         binding.button4.setText("新手引导4");
         binding.button5.setText("新手引导5");
         binding.button6.setText("新手引导6");
-        binding.button6.post(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
-
 
     }
 

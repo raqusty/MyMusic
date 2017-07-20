@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
 
     <application
@@ -200,7 +201,17 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.TopWindow.TopWindowActivity">
+            <intent-filter>
+                <action android:name="TopWindowActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
         /////////////////////////////////////////////////////////////////////
+
+        <service android:name=".module.TopWindow.TopWindowService" />
 
         <service android:name=".module.Messenger.MessagerService" />
         <service android:name=".module.Aidl.MyService">

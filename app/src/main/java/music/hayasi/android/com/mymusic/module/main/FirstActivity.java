@@ -42,7 +42,7 @@ public class FirstActivity extends BaseActivity {
 
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
-    String[] mNameList = {"PanelActivity","Path3Activity","Path2Activity","PathActivity", "GuideActivity", "ReFreshActivity", "FooterActivity", "TextViewActivity", "MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
+    String[] mNameList = {"TopWindowActivity","PanelActivity","Path3Activity","Path2Activity","PathActivity", "GuideActivity", "ReFreshActivity", "FooterActivity", "TextViewActivity", "MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
             , "DesignActivity", "NetActivity", "ModelActivity", "DesignScrollActivity", "PhotoViewActivity", "DialogActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
             , "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1", "MVVM1"};
 
