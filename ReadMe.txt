@@ -20,6 +20,8 @@
         4.TextView相关             music.hayasi.android.com.mymusic.module.TextViewActivity
         5.footerAdapter           music.hayasi.android.com.mymusic.module.Footer
         6.新手指引模块             music.hayasi.android.com.mymusic.module.Guide
+        7.贝塞尔曲线工具           music.hayasi.android.com.mymusic.module.Path
+        8.Scrollable panel        music.hayasi.android.com.mymusic.module.Panel
 
 
 
