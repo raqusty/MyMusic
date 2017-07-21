@@ -28,15 +28,26 @@ public class SwipeView extends LinearLayout {
             @Override
             public int clampViewPositionHorizontal(View child, int left, int dx) {
 
-                Log.i("linzehao", "left " + left + "  dx  " + dx);
+//                Log.i("linzehao", "left " + left + "  dx  " + dx);
                 return left;
             }
 
-            @Override
-            public int clampViewPositionVertical(View child, int top, int dy) {
-//                Log.i("linzehao", "left " + top + "  dx  " + dy);
-                return 0;
+            //当边缘被触摸的时候调用
+            public void onEdgeTouched(int edgeFlags, int pointerId) {
+//                Log.i("linzehao", "onEdgeTouched");
             }
+
+//            //关键方法：设置水平拖动的距离
+//            public int getViewHorizontalDragRange(View child) {
+//                return 20;
+//            }
+
+            //边缘设置不可用，
+            public boolean onEdgeLock(int edgeFlags) {
+//                Log.i("linzehao", "onEdgeLock");
+                return false;
+            }
+
         });
     }
 
@@ -47,7 +58,8 @@ public class SwipeView extends LinearLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        return mDragger.shouldInterceptTouchEvent(event);
+        boolean s = mDragger.shouldInterceptTouchEvent(event);
+        return s;
     }
 
     @Override

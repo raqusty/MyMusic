@@ -1,7 +1,6 @@
 package music.hayasi.android.com.mymusic.module.Footer;
 
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +81,7 @@ public class FooterActivity extends BaseActivity {
 
     @Override
     protected int getContentViewResId() {
-        return R.layout.custom_c_recyclerview_layout;
+        return R.layout.custom_recyclerview_foot_layout;
     }
 
     @Override

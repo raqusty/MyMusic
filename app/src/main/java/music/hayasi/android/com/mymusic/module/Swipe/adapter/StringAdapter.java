@@ -24,7 +24,7 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
     public RylViewHolder onCreateValidViewHolder(ViewGroup parent, int viewType) {
         View contain = LayoutInflater.from(mContext).inflate(R.layout.swipe_activity, parent, false);
         LinearLayout layout = (LinearLayout) contain.findViewById(R.id.swipe_layout);
-        View context = LayoutInflater.from(mContext).inflate(R.layout.first_activity_item, parent, false);
+        View context = LayoutInflater.from(mContext).inflate(R.layout.swipe_item, parent, false);
         layout.addView(context, 0);
         MyViewHolder holder = new MyViewHolder(contain, viewType);
         return holder;
