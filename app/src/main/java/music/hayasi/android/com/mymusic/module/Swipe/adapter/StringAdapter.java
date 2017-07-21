@@ -22,10 +22,13 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
 
     @Override
     public RylViewHolder onCreateValidViewHolder(ViewGroup parent, int viewType) {
-        View contain = LayoutInflater.from(mContext).inflate(R.layout.swipe_activity, parent, false);
+        ViewGroup contain = (ViewGroup) LayoutInflater.from(mContext).inflate(R.layout.swipe_activity, parent, false);
         LinearLayout layout = (LinearLayout) contain.findViewById(R.id.swipe_layout);
+
         View context = LayoutInflater.from(mContext).inflate(R.layout.swipe_item, parent, false);
-        layout.addView(context, 0);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layout.addView(context, 0, layoutParams);
+
         MyViewHolder holder = new MyViewHolder(contain, viewType);
         return holder;
     }
@@ -35,12 +38,12 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
         if (getItemViewType(position) == TYPE_CARD) {
             //处理自己的业务
             ((MyViewHolder) holder).tv.setText(mDataList.get(position));
-            ((MyViewHolder) holder).tv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ShowFooterView(!mIsShow);
-                }
-            });
+//            ((MyViewHolder) holder).tv.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    ShowFooterView(!mIsShow);
+//                }
+//            });
 
         } else if (getItemViewType(position) == TYPE_TIP_EMPTY_FOOTER) {
             Log.i("linzehao", "111");

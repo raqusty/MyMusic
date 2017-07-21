@@ -31,7 +31,7 @@ public class SwipeActivity extends BaseActivity {
     public void initViews() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             mDataList.add(i + "");
         }
 

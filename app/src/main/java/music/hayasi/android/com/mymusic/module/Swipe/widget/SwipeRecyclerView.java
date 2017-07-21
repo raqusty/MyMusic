@@ -72,11 +72,4 @@ public class SwipeRecyclerView extends RecyclerView {
             return super.onInterceptTouchEvent(ev);
         }
     }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Log.i("linzehao", "SwipeRecyclerView11111");
-        return super.onTouchEvent(event);
-    }
-
 }
