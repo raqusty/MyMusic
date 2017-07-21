@@ -215,7 +215,12 @@
             </intent-filter>
         </activity>
 
-
+        <activity android:name=".module.Swipe.SwipeActivity">
+            <intent-filter>
+                <action android:name="SwipeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         /////////////////////////////////////////////////////////////////////
 

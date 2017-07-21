@@ -31,7 +31,6 @@ public class TestBuilder {
         }
 
         public TestBuilder.Builder print() {
-            Log.i("linzehao", "all " + this.text1 + this.text2 + this.text3);
             return this;
         }
     }

@@ -55,7 +55,6 @@ public class DatabaseUtils {
     public void updataData(PathEntity entity) {
         if (databaseHelper == null)
             return;
-        Log.i("linzehao", "Id " + entity.getId() + " x3  " + entity.getPoint3_x());
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("ParentId", entity.getParentId());

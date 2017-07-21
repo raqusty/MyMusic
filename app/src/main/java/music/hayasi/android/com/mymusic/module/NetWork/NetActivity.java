@@ -75,7 +75,6 @@ public class NetActivity extends BaseActivity {
                         Response response = null;
                         try {
                             response = client.newCall(request).execute();
-                            Log.i("linzehao", response.body().string());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

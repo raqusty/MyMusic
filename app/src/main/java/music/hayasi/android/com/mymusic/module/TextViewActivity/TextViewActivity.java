@@ -38,7 +38,6 @@ public class TextViewActivity extends BaseActivity {
         binding.textview1.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             public boolean onPreDraw() {
                 Layout layout = binding.textview1.getLayout();
-                Log.i("linzehao","  "+layout.getEllipsisCount(3));
                 binding.textview1.getViewTreeObserver().removeOnPreDrawListener(this);
                 return false;
             }

@@ -30,7 +30,6 @@ public class MyLayoutAnimation extends LayoutAnimationController {
 
     @Override
     protected int getTransformedIndex(AnimationParameters params) {
-        Log.i("linzehao", "count  " + params.count + "   index  " + params.index);
 //        return super.getTransformedIndex(params);
         return 3;
     }

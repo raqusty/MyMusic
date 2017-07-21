@@ -63,14 +63,10 @@ public class DialogActivity extends BaseActivity implements View.OnKeyListener {
             @Override
             public void onGlobalLayout() {
                 int heightDiff = binding.bbb.getRootView().getHeight() - binding.bbb.getHeight();
-                Log.i("linzehao", "root  " + binding.bbb.getRootView().getHeight());
-                Log.i("linzehao", "my " + binding.bbb.getHeight());
                 if (heightDiff > 200) { //高度变小200像素则认为键盘弹出
                     //这里执行需要的处理
-                    Log.i("linzehao", "show");
                 } else {
                     binding.editview1.clearFocus();
-                    Log.i("linzehao", "23123");
                 }
             }
         });
@@ -83,12 +79,10 @@ public class DialogActivity extends BaseActivity implements View.OnKeyListener {
         final SureOrCancelWithCustomTipsDialog dialog = new SureOrCancelWithCustomTipsDialog(mContext, "测试", new OnSureOrCancelListener() {
             @Override
             public void onCancel() {
-                Log.i("linzehao", "取消");
             }
 
             @Override
             public void onSure() {
-                Log.i("linzehao", "确定");
             }
         });
 

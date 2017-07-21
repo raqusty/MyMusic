@@ -38,7 +38,6 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
             });
 
         } else if (getItemViewType(position) == TYPE_TIP_EMPTY_FOOTER) {
-            Log.i("linzehao", "111");
         }
     }
 

@@ -81,7 +81,6 @@ public class MainActivity extends BaseActivity {
                             @Override
                             public void onSuccess(String serverModel, Call call, Response response) {
                                 mTextView.setText(serverModel);
-                                Log.i("linzehao", serverModel);
                             }
 
                             @Override

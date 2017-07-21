@@ -29,7 +29,6 @@ public class Path3Activity extends BaseActivity {
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                Log.i("linzehao", "" + i);
                 mBezier.setControl1(i);
             }
 

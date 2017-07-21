@@ -55,7 +55,6 @@ public class FooterAdapter extends RecyclerView.Adapter<FooterAdapter.RylViewHol
             });
 
         } else if (getItemViewType(position) == TYPE_TIP_EMPTY_FOOTER) {
-            Log.i("linzehao", "111");
         }
     }
 

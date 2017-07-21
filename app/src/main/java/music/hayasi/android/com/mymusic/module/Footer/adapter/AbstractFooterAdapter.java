@@ -16,7 +16,7 @@ public abstract class AbstractFooterAdapter<T> extends RecyclerView.Adapter<Abst
     public static final int TYPE_TIP_EMPTY_FOOTER = 0;
     public static final int TYPE_CARD = 1;
 
-    List<T> mDataList = new ArrayList<T>();
+    protected List<T> mDataList = new ArrayList<T>();
 
     protected Context mContext;
 
@@ -77,14 +77,14 @@ public abstract class AbstractFooterAdapter<T> extends RecyclerView.Adapter<Abst
      */
     public abstract RylViewHolder onCreateValidViewHolder(ViewGroup parent, int viewType);
 
-    class RylViewHolder extends RecyclerView.ViewHolder {
+    protected class RylViewHolder extends RecyclerView.ViewHolder {
 
         public RylViewHolder(View itemView, int type) {
             super(itemView);
         }
     }
 
-    class FooterHolder extends RylViewHolder {
+    protected class FooterHolder extends RylViewHolder {
 
         public FooterHolder(View view, int type) {
             super(view, type);

@@ -71,7 +71,6 @@ public class FooterActivity extends BaseActivity {
 
     @Override
     public void onPause() {
-        Log.i("linzehao", "num  onPause " + num);
         super.onPause();
     }
 

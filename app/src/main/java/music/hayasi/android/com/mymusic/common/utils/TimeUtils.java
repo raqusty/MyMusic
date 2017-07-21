@@ -29,13 +29,10 @@ public class TimeUtils {
         Date date = new Date();
         date.setTime(lt);
         res = simpleDateFormat.format(date);
-        Log.i("linzehao",res + "  1");
 
         Date date1 = new Date();
 
 
-        Log.i("linzehao","2   "+date1.getTime());
-        Log.i("linzehao","3   "+ simpleDateFormat.format(date1));
 
         return res;
     }

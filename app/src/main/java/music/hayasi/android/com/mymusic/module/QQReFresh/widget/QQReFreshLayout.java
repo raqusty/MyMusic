@@ -255,11 +255,9 @@ public class QQReFreshLayout extends LinearLayout {
                 //下拉碰底的回调
                 //如果高度没有碰底 且 没有设置回调函数，就直接滚回去
                 if (mIsButtom && mRefreashListten != null && mRefreshState == REFRESHING_IDLE) {
-                    Log.i("linzehao", " 22222");
                     refreshing();
                     mRefreashListten.refreash();
                 } else {
-                    Log.i("linzehao", " 44444");
                     fling();
                 }
                 break;
@@ -283,7 +281,6 @@ public class QQReFreshLayout extends LinearLayout {
             mIsButtom = false;
             mRefreshHeadView.setLayoutParams(lp);
         } else {//下拉完成
-            Log.i("linzehao", "111111 ");
             lp.topMargin = 0;
             mRefreshHeadView.setLayoutParams(lp);
             mIsButtom = true;
@@ -351,7 +348,6 @@ public class QQReFreshLayout extends LinearLayout {
                 mLoadImage.setVisibility(View.VISIBLE);
                 mRefreshText.setVisibility(View.GONE);
                 mProgress.start();
-                Log.i("linzehao", " 3333");
                 break;
             case REFRESHING_SUCCESS:
                 mRefreshText.setVisibility(View.VISIBLE);

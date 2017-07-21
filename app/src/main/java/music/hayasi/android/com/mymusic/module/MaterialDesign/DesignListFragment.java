@@ -36,7 +36,6 @@ public class DesignListFragment extends BaseFragment {
 
     @Override
     public void initViews() {
-        Log.i("linzehao", "num  " + num);
         addData();
         String[] toBeStored = mDataList.toArray(new String[mDataList.size()]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_expandable_list_item_1, toBeStored);
@@ -48,7 +47,6 @@ public class DesignListFragment extends BaseFragment {
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        Log.i("linzehao", "num  " + num + isVisibleToUser);
         super.setUserVisibleHint(isVisibleToUser);
     }
 
@@ -65,19 +63,16 @@ public class DesignListFragment extends BaseFragment {
 
     @Override
     public void onPause() {
-        Log.i("linzehao", "num  onPause " + num);
         super.onPause();
     }
 
     @Override
     public void onDestroyView() {
-        Log.i("linzehao", "num  onDestroyView " + num);
         super.onDestroyView();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mRootView != null) {
-            Log.i("linzehao", "onCreateView " + num);
         }
         return super.onCreateView(inflater, container, savedInstanceState);
     }
@@ -108,7 +103,6 @@ public class DesignListFragment extends BaseFragment {
                 public boolean onPreDraw() {
                     Layout layout = holder.tv.getLayout();
                     int  a = layout.getEllipsisCount(3) ;
-                    Log.i("linzehao", "isOverSize  " + a);
                     holder.tv.getViewTreeObserver().removeOnPreDrawListener(this);
                     return false;
                 }
