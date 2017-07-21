@@ -229,14 +229,6 @@
             </intent-filter>
         </service>
 
-        /* -------------------------------------------------- */
-
-        <!--  bug Hd   -->
-        <meta-data
-            android:name="BUG_HD_SDK_GENERAL_KEY"
-            android:value="298c9acd65e57d28ef96295f819ed0e0" />
-
-
         /* ---------------bugly----------------------------------- */
         <!-- 配置APP版本号 -->
         <meta-data

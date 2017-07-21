@@ -6,7 +6,6 @@ import android.support.multidex.MultiDex;
 
 import com.tencent.bugly.crashreport.CrashReport;
 
-import im.fir.sdk.FIR;
 import music.hayasi.android.com.mymusic.common.image.ImageUtil;
 import music.hayasi.android.com.mymusic.common.myNet.Impl.OkNetUitls;
 import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
@@ -35,7 +34,6 @@ public class MyApplication extends Application {
         super.onCreate();
 
         ImageUtil.initImageLoader(this);
-//        FIR.init(this);
         CrashReport.initCrashReport(this);
     }
 

@@ -21,10 +21,6 @@ allprojects {
 
         jcenter()
         maven {
-            url "http://maven.bughd.com/public"
-
-        }
-        maven {
             url 'https://jitpack.io'
 
         }
