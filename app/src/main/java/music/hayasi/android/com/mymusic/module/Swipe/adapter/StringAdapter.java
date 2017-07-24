@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -23,12 +22,8 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
     @Override
     public RylViewHolder onCreateValidViewHolder(ViewGroup parent, int viewType) {
         ViewGroup contain = (ViewGroup) LayoutInflater.from(mContext).inflate(R.layout.swipe_activity, parent, false);
-        LinearLayout layout = (LinearLayout) contain.findViewById(R.id.swipe_layout);
-
         View context = LayoutInflater.from(mContext).inflate(R.layout.swipe_item, parent, false);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layout.addView(context, 0, layoutParams);
-
+        contain.addView(context, 0);
         MyViewHolder holder = new MyViewHolder(contain, viewType);
         return holder;
     }
@@ -37,7 +32,7 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
     public void onBindViewHolder(AbstractFooterAdapter.RylViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_CARD) {
             //处理自己的业务
-            ((MyViewHolder) holder).tv.setText(mDataList.get(position));
+//            ((MyViewHolder) holder).tv.setText(mDataList.get(position));
 //            ((MyViewHolder) holder).tv.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
@@ -57,7 +52,7 @@ public class StringAdapter extends AbstractFooterAdapter<String> {
 
         public MyViewHolder(View view, int type) {
             super(view, type);
-            tv = (TextView) view.findViewById(R.id.id_num);
+//            tv = (TextView) view.findViewById(R.id.id_num);
         }
     }
 }

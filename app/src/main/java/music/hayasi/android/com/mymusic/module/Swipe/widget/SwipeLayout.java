@@ -35,13 +35,19 @@ public class SwipeLayout extends LinearLayout {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         mVelocityTracker.addMovement(event);
         int x = (int) event.getX();
         int y = (int) event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                return  true;
+                return true;
 
             case MotionEvent.ACTION_MOVE:
                 int dx = mLastX - x;
@@ -58,8 +64,6 @@ public class SwipeLayout extends LinearLayout {
                         return true;
                     }
                     this.scrollBy(dx, 0);//item跟随手指滑动
-                    Log.i("linzehao","invalidate2");
-                    invalidate();
                 }
                 break;
             case MotionEvent.ACTION_UP:
@@ -96,7 +100,6 @@ public class SwipeLayout extends LinearLayout {
                 //item自动滑动到指定位置
                 mScroller.startScroll(upScrollX, 0, deltaX, 0, 200);
 //                isStartScroll = true;
-                Log.i("linzehao","invalidate");
                 invalidate();
 
                 mVelocityTracker.clear();

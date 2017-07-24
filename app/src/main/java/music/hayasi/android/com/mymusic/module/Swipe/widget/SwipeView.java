@@ -9,6 +9,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
+/*
+* 本来打算用ViewDragHelper 来做的，但发现任意方向滑动还好，如果是单纯水平移动，就不行了
+* 不知道为什么，只要稍微向下移动一下，就会触发垂直的移动，水平的移动就结束了
+* */
 public class SwipeView extends LinearLayout {
 
     ViewDragHelper mDragger;
