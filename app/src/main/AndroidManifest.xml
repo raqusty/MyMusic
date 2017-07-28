@@ -236,6 +236,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.ViewPager.ViewpagerActivity">
+            <intent-filter>
+                <action android:name="ViewpagerActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
 
 
