@@ -142,7 +142,9 @@ public class GuideActivity extends BaseActivity {
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showGuideView1();
+                setResult(11);
+                finish();
+//                showGuideView1();
             }
         });
 

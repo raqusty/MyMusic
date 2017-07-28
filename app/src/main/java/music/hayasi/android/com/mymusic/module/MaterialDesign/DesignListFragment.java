@@ -1,5 +1,6 @@
 package music.hayasi.android.com.mymusic.module.MaterialDesign;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -20,6 +21,7 @@ import java.util.List;
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseFragment;
+import music.hayasi.android.com.mymusic.module.Guide.GuideActivity;
 
 public class DesignListFragment extends BaseFragment {
 
@@ -43,6 +45,14 @@ public class DesignListFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setAdapter(new ItemAdapter());
 
+        Intent intent = new Intent(mContext, GuideActivity.class);
+        startActivityForResult(intent, 222);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("linzehao", "fasdfadf ");
     }
 
     @Override
@@ -102,7 +112,7 @@ public class DesignListFragment extends BaseFragment {
                 @Override
                 public boolean onPreDraw() {
                     Layout layout = holder.tv.getLayout();
-                    int  a = layout.getEllipsisCount(3) ;
+                    int a = layout.getEllipsisCount(3);
                     holder.tv.getViewTreeObserver().removeOnPreDrawListener(this);
                     return false;
                 }

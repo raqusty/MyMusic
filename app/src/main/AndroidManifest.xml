@@ -222,6 +222,23 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.CardView.CardViewActivity">
+            <intent-filter>
+                <action android:name="CardViewActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".module.RadioButton.RadioActivity">
+            <intent-filter>
+                <action android:name="RadioActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
+
         /////////////////////////////////////////////////////////////////////
 
         <service android:name=".module.TopWindow.TopWindowService" />

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_select"
+        app:cardPreventCornerOverlap="true"
+        app:cardElevation="12dp"
+        app:cardCornerRadius="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="@mipmap/dog"
+
+            android:layout_height="200dp"/>
+
+        <TextView
+            android:id="@+id/ssss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Hello World!" />
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
