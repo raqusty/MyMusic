@@ -1,28 +1,14 @@
 package music.hayasi.android.com.mymusic.module.AnimationView;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.IntEvaluator;
 import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.animation.TimeAnimator;
-import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
-import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -34,9 +20,8 @@ import music.hayasi.android.com.mymusic.databinding.AnimActivityBinding;
 
 public class AnimActivity extends BaseActivity {
 
-    private AnimActivityBinding binding;
-
     Animation scaleAnimation;
+    private AnimActivityBinding binding;
 
     @Override
     protected int getContentViewResId() {
@@ -134,7 +119,7 @@ public class AnimActivity extends BaseActivity {
         binding.button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            performAnimate(binding.textview1,binding.textview1.getWidth(),300);
+                performAnimate(binding.textview1, binding.textview1.getWidth(), 300);
             }
         });
 
@@ -150,8 +135,8 @@ public class AnimActivity extends BaseActivity {
 
     }
 
-    private void performAnimate(final View target,final int start,final int end){
-        final ValueAnimator valueAnimator = ValueAnimator.ofInt(1,100);
+    private void performAnimate(final View target, final int start, final int end) {
+        final ValueAnimator valueAnimator = ValueAnimator.ofInt(1, 100);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             private IntEvaluator mEvaluator = new IntEvaluator();
 
@@ -159,7 +144,7 @@ public class AnimActivity extends BaseActivity {
             public void onAnimationUpdate(ValueAnimator animation) {
                 int currentValue = (Integer) animation.getAnimatedValue();
                 float fraction = valueAnimator.getAnimatedFraction();
-                target.getLayoutParams().width = mEvaluator.evaluate(fraction,start,end);
+                target.getLayoutParams().width = mEvaluator.evaluate(fraction, start, end);
                 target.requestLayout();
             }
         });

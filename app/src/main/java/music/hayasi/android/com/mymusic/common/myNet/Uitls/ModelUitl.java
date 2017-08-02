@@ -2,7 +2,6 @@ package music.hayasi.android.com.mymusic.common.myNet.Uitls;
 
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import music.hayasi.android.com.mymusic.common.myNet.Impl.OkNetUitls;
 import music.hayasi.android.com.mymusic.common.myNet.callback.StringCallback;

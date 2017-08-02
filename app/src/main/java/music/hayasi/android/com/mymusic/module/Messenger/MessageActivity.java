@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.databinding.DataBindingUtil;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -29,22 +28,6 @@ public class MessageActivity extends BaseActivity {
     private Messenger mService;
 
     private MyActivityBinding binding;
-
-    @Override
-    protected int getContentViewResId() {
-        return R.layout.my_activity;
-    }
-
-    @Override
-    public void initViews() {
-        binding = DataBindingUtil.setContentView(this, R.layout.my_activity);
-        binding.setHandlers(new EventHandlers());
-
-        Intent intent = new Intent(this, MessagerService.class);
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-
-    }
-
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -68,25 +51,21 @@ public class MessageActivity extends BaseActivity {
 
         }
     };
-
-    public class EventHandlers {
-        public void handleClick(View view) {
-
-        }
-    }
-
     private Messenger mGetReplyMessenger = new Messenger(new MessengerHandler());
 
-    private class MessengerHandler extends Handler {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 2:
-                    binding.text2.setText(msg.getData().getString("send"));
-                    break;
-                default:
-                    super.handleMessage(msg);
-            }
-        }
+    @Override
+    protected int getContentViewResId() {
+        return R.layout.my_activity;
+    }
+
+    @Override
+    public void initViews() {
+        binding = DataBindingUtil.setContentView(this, R.layout.my_activity);
+        binding.setHandlers(new EventHandlers());
+
+        Intent intent = new Intent(this, MessagerService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
     }
 
     @Override
@@ -122,5 +101,23 @@ public class MessageActivity extends BaseActivity {
     protected void onDestroy() {
         unbindService(mConnection);
         super.onDestroy();
+    }
+
+    public class EventHandlers {
+        public void handleClick(View view) {
+
+        }
+    }
+
+    private class MessengerHandler extends Handler {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 2:
+                    binding.text2.setText(msg.getData().getString("send"));
+                    break;
+                default:
+                    super.handleMessage(msg);
+            }
+        }
     }
 }

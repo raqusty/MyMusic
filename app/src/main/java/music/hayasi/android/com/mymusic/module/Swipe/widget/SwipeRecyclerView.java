@@ -9,10 +9,16 @@ import android.view.MotionEvent;
 public class SwipeRecyclerView extends RecyclerView {
 
 
+    int mLastXIntercept = 0;
+    int mLastYIntercept = 0;
+    //是否经过判断，这个标志位的左右：
+    // 1：如果move的方向是左右，之后所有点都不拦截，
+    // 2：如果是上下，会被拦截，就再不会调用这里了
+    boolean isHasJudge = false;
+
     public SwipeRecyclerView(Context context) {
         this(context, null);
     }
-
     public SwipeRecyclerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
@@ -20,14 +26,6 @@ public class SwipeRecyclerView extends RecyclerView {
     public SwipeRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
-    int mLastXIntercept = 0;
-    int mLastYIntercept = 0;
-
-    //是否经过判断，这个标志位的左右：
-    // 1：如果move的方向是左右，之后所有点都不拦截，
-    // 2：如果是上下，会被拦截，就再不会调用这里了
-    boolean isHasJudge = false;
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {

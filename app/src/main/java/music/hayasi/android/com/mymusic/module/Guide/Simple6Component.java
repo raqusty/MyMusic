@@ -13,30 +13,30 @@ import music.hayasi.android.com.mymusic.module.Guide.Guide.Component;
  */
 public class Simple6Component implements Component {
 
-  @Override
-  public View getView(LayoutInflater inflater) {
+    @Override
+    public View getView(LayoutInflater inflater) {
 
-    LinearLayout ll = (LinearLayout) inflater.inflate(R.layout.layer_frends, null);
-    return ll;
-  }
+        LinearLayout ll = (LinearLayout) inflater.inflate(R.layout.layer_frends, null);
+        return ll;
+    }
 
-  @Override
-  public int getAnchor() {
-    return Component.ANCHOR_LEFT;
-  }
+    @Override
+    public int getAnchor() {
+        return Component.ANCHOR_LEFT;
+    }
 
-  @Override
-  public int getFitPosition() {
-    return Component.FIT_END;
-  }
+    @Override
+    public int getFitPosition() {
+        return Component.FIT_END;
+    }
 
-  @Override
-  public int getXOffset() {
-    return 0;
-  }
+    @Override
+    public int getXOffset() {
+        return 0;
+    }
 
-  @Override
-  public int getYOffset() {
-    return 0;
-  }
+    @Override
+    public int getYOffset() {
+        return 0;
+    }
 }

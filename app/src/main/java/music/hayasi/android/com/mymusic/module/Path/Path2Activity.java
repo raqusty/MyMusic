@@ -157,76 +157,6 @@ public class Path2Activity extends BaseActivity {
         });
     }
 
-    class RadioGroupListener implements RadioGroup.OnCheckedChangeListener {
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            switch (checkedId) {
-                case R.id.radio_point1:
-                    mBezier.setType(1);
-                    Toast.makeText(mContext, "radio_point1", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.radio_point2:
-                    mBezier.setType(2);
-                    Toast.makeText(mContext, "radio_point2", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.radio_point3:
-                    Toast.makeText(mContext, "radio_point3", Toast.LENGTH_SHORT).show();
-                    mBezier.setType(3);
-                    break;
-                case R.id.radio_point4:
-                    mBezier.setType(4);
-                    Toast.makeText(mContext, "radio_point4", Toast.LENGTH_SHORT).show();
-                    break;
-            }
-        }
-    }
-
-    class MenuItemClickListene implements PopupMenu.OnMenuItemClickListener {
-
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.add_group:
-                    setGroup();
-                    Toast.makeText(mContext, "add group", Toast.LENGTH_SHORT).show();
-                    setAdapterData(1);
-                    break;
-                case R.id.add_layout:
-                    setLayout();
-                    Toast.makeText(mContext, "group", Toast.LENGTH_SHORT).show();
-                    setAdapterData(2);
-                    break;
-                case R.id.add_point:
-                    setPoint();
-                    dataBase.insertData(curPoint);
-                    Toast.makeText(mContext, "add point1", Toast.LENGTH_SHORT).show();
-                    setAdapterData(3);
-                    break;
-                default:
-                    break;
-            }
-            return false;
-        }
-    }
-
-    class SeekListten implements SeekBar.OnSeekBarChangeListener {
-
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-            mBezier.setControl(i);
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
-        }
-    }
-
     @OnClick({R.id.huizhi, R.id.add, R.id.sava, R.id.run})
     void onClick(View v) {
         switch (v.getId()) {
@@ -357,41 +287,6 @@ public class Path2Activity extends BaseActivity {
         }
     }
 
-    class listen implements Bezier2.PointListten {
-
-        @Override
-        public void pointChange(float x, float y, int type) {
-            switch (type) {
-                case 1:
-                    curPoint.setPoint1_x(x);
-                    curPoint.setPoint1_y(y);
-                    mX1.setText(curPoint.getPoint1_x() + "");
-                    mY1.setText(curPoint.getPoint1_y() + "");
-                    break;
-                case 2:
-                    curPoint.setPoint2_x(x);
-                    curPoint.setPoint2_y(y);
-                    mX2.setText(curPoint.getPoint2_x() + "");
-                    mY2.setText(curPoint.getPoint2_y() + "");
-
-                    break;
-                case 3:
-                    curPoint.setPoint3_x(x);
-                    curPoint.setPoint3_y(y);
-                    mX3.setText(curPoint.getPoint3_x() + "");
-                    mY3.setText(curPoint.getPoint3_y() + "");
-                    break;
-                case 4:
-                    curPoint.setPoint4_x(x);
-                    curPoint.setPoint4_y(y);
-                    mX4.setText(curPoint.getPoint4_x() + "");
-                    mY4.setText(curPoint.getPoint4_y() + "");
-                    break;
-            }
-        }
-    }
-
-
     @Override
     public int getToolBarResId() {
         return 0;
@@ -427,5 +322,109 @@ public class Path2Activity extends BaseActivity {
             mLinearLayout.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    class RadioGroupListener implements RadioGroup.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            switch (checkedId) {
+                case R.id.radio_point1:
+                    mBezier.setType(1);
+                    Toast.makeText(mContext, "radio_point1", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.radio_point2:
+                    mBezier.setType(2);
+                    Toast.makeText(mContext, "radio_point2", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.radio_point3:
+                    Toast.makeText(mContext, "radio_point3", Toast.LENGTH_SHORT).show();
+                    mBezier.setType(3);
+                    break;
+                case R.id.radio_point4:
+                    mBezier.setType(4);
+                    Toast.makeText(mContext, "radio_point4", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    }
+
+    class MenuItemClickListene implements PopupMenu.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.add_group:
+                    setGroup();
+                    Toast.makeText(mContext, "add group", Toast.LENGTH_SHORT).show();
+                    setAdapterData(1);
+                    break;
+                case R.id.add_layout:
+                    setLayout();
+                    Toast.makeText(mContext, "group", Toast.LENGTH_SHORT).show();
+                    setAdapterData(2);
+                    break;
+                case R.id.add_point:
+                    setPoint();
+                    dataBase.insertData(curPoint);
+                    Toast.makeText(mContext, "add point1", Toast.LENGTH_SHORT).show();
+                    setAdapterData(3);
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        }
+    }
+
+    class SeekListten implements SeekBar.OnSeekBarChangeListener {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            mBezier.setControl(i);
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    }
+
+    class listen implements Bezier2.PointListten {
+
+        @Override
+        public void pointChange(float x, float y, int type) {
+            switch (type) {
+                case 1:
+                    curPoint.setPoint1_x(x);
+                    curPoint.setPoint1_y(y);
+                    mX1.setText(curPoint.getPoint1_x() + "");
+                    mY1.setText(curPoint.getPoint1_y() + "");
+                    break;
+                case 2:
+                    curPoint.setPoint2_x(x);
+                    curPoint.setPoint2_y(y);
+                    mX2.setText(curPoint.getPoint2_x() + "");
+                    mY2.setText(curPoint.getPoint2_y() + "");
+
+                    break;
+                case 3:
+                    curPoint.setPoint3_x(x);
+                    curPoint.setPoint3_y(y);
+                    mX3.setText(curPoint.getPoint3_x() + "");
+                    mY3.setText(curPoint.getPoint3_y() + "");
+                    break;
+                case 4:
+                    curPoint.setPoint4_x(x);
+                    curPoint.setPoint4_y(y);
+                    mX4.setText(curPoint.getPoint4_x() + "");
+                    mY4.setText(curPoint.getPoint4_y() + "");
+                    break;
+            }
+        }
     }
 }

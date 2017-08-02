@@ -12,7 +12,7 @@ public class PhotoViewActivity extends BaseActivity {
 
     @Override
     public void initViews() {
-        mNestedScrollView = (NestedScrollView)findViewById(R.id.nested_scroll_view);
+        mNestedScrollView = (NestedScrollView) findViewById(R.id.nested_scroll_view);
         mNestedScrollView.setSmoothScrollingEnabled(true);
     }
 

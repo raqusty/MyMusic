@@ -21,20 +21,28 @@ import music.hayasi.android.com.mymusic.module.QQReFresh.widget.QQReFreshLayout;
 
 public class ReFreshActivity extends BaseActivity {
 
+    @Bind(R.id.id_recyclerview)
+    RecyclerView mRecyclerView;
+    @Bind(R.id.qq_refresh_layout)
+    QQReFreshLayout mRefreshLayout;
+    List<String> mDataList = new ArrayList<String>();
+    Thread runnable;
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    mRefreshLayout.refreshSuccess();
+                    break;
+            }
+        }
+    };
+
     @Override
     protected int getContentViewResId() {
         return R.layout.qq_refresh_layout_activity;
     }
-
-    @Bind(R.id.id_recyclerview)
-    RecyclerView mRecyclerView;
-
-    @Bind(R.id.qq_refresh_layout)
-    QQReFreshLayout mRefreshLayout;
-
-    List<String> mDataList = new ArrayList<String>();
-
-    Thread runnable;
 
     @Override
     public void initViews() {
@@ -60,7 +68,6 @@ public class ReFreshActivity extends BaseActivity {
         });
     }
 
-
     private void addData() {
         for (int i = 0; i < 25; i++) {
             if (i % 3 == 0) {
@@ -71,18 +78,6 @@ public class ReFreshActivity extends BaseActivity {
 
         }
     }
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 1:
-                    mRefreshLayout.refreshSuccess();
-                    break;
-            }
-        }
-    };
 
     @Override
     public void setListener() {

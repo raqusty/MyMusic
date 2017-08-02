@@ -16,21 +16,19 @@ import music.hayasi.android.com.mymusic.module.Footer.adapter.TestAdapter;
 
 public class FooterActivity extends BaseActivity {
 
-    private int num = 0;
-
-    public void setNum(int n) {
-        num = n;
-    }
-
     @Bind(R.id.id_recyclerview)
     CustomRecyclerView mRecyclerView;
-
     List<String> mDataList = new ArrayList<String>();
     List<Integer> mDataList1 = new ArrayList<Integer>();
     List<testEntity> mDataList2 = new ArrayList<testEntity>();
     StringAdapter mAdatper;
     IntAdapter mAdatper1;
     TestAdapter mAdatper2;
+    private int num = 0;
+
+    public void setNum(int n) {
+        num = n;
+    }
 
     @Override
     public void initViews() {
@@ -61,7 +59,7 @@ public class FooterActivity extends BaseActivity {
         for (int i = 0; i < 7; i++) {
             mDataList1.add(i);
         }
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 2; i++) {
             testEntity entity = new testEntity();
             entity.setA(i + "" + i);
             mDataList2.add(entity);

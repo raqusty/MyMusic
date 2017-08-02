@@ -18,27 +18,21 @@ import music.hayasi.android.com.mymusic.common.utils.UIUtils;
 
 public class Guide implements View.OnClickListener {
 
+    int mCorner = 0;//高亮区域的底部padding
+    //配置属性的
+    int mStyle = Component.ROUNDRECT;
+    int mEnterAnimationId = -1;
+    int mExitAnimationId = -1;
     //引导页的View
     private MaskView mMaskView;
-    //配置属性的
-
     private Context mContext;
-
     private List<Component> mComponents = new ArrayList<Component>();
-
     private GuideListten mGuideListten;
-
     private int mPadding = 0;
     private int mPaddingLeft = 0;
     private int mPaddingTop = 0;
     private int mPaddingRight = 0;
     private int mPaddingBottom = 0;
-    int mCorner = 0;//高亮区域的底部padding
-    int mStyle = Component.ROUNDRECT;
-
-    int mEnterAnimationId = -1;
-
-    int mExitAnimationId = -1;
 
     public Guide(Context context) {
         mContext = context;

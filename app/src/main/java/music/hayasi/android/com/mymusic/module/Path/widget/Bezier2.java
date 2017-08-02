@@ -57,12 +57,12 @@ public class Bezier2 extends View {
         this.isDo = d;
     }
 
-    public void setType(int type) {
-        this.mType = type;
-    }
-
     public int getType() {
         return mType;
+    }
+
+    public void setType(int type) {
+        this.mType = type;
     }
 
     public void setListten(PointListten l) {

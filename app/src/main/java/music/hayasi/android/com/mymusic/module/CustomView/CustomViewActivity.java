@@ -28,8 +28,8 @@ public class CustomViewActivity extends BaseActivity {
         LayoutInflater inflater = getLayoutInflater();
         for (int i = 0; i < 3; i++) {
             ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.custom_list_layout, mScrollviewEx, false);
-            layout.getLayoutParams().width=200;
-            layout.getLayoutParams().height=500;
+            layout.getLayoutParams().width = 200;
+            layout.getLayoutParams().height = 500;
             ListView listview = (ListView) layout.findViewById(R.id.listview);
             ArrayList<String> datas = new ArrayList<String>();
             for (int j = 0; j < 50; j++) {

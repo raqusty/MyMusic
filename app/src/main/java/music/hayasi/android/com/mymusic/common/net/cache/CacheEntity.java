@@ -3,15 +3,15 @@ package music.hayasi.android.com.mymusic.common.net.cache;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import music.hayasi.android.com.mymusic.common.net.model.HttpHeaders;
-import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
+import music.hayasi.android.com.mymusic.common.net.model.HttpHeaders;
+import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
 
 @SuppressWarnings("unchecked")
 public class CacheEntity<T> implements Serializable {

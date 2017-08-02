@@ -3,10 +3,9 @@ package music.hayasi.android.com.mymusic.common.net.interceptor;
 import android.text.TextUtils;
 import android.util.Log;
 
-import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
-
 import java.io.IOException;
 
+import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;

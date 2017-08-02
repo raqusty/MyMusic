@@ -11,11 +11,20 @@ import android.widget.Scroller;
 
 public class HorizontalScrollViewEx extends ViewGroup {
 
+    private int mChildrenSize = 3;
+    private int mChildWidth = 500;
+    private int mChildIndex = 0;
+    private Scroller mScroller;
+    private VelocityTracker mVelocityTracker;
+    private int mLastX = 0;
+    private int mLastY = 0;
+    private int mLastXIntercept;
+    private int mLastYIntercept;
+
     public HorizontalScrollViewEx(Context context) {
         super(context);
         init();
     }
-
     public HorizontalScrollViewEx(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
@@ -25,23 +34,9 @@ public class HorizontalScrollViewEx extends ViewGroup {
         super(context, attrs, defStyleAttr);
         init();
     }
-
     public HorizontalScrollViewEx(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
-
-    private int mChildrenSize=3;
-    private int mChildWidth=500;
-    private int mChildIndex=0;
-
-    private Scroller mScroller;
-    private VelocityTracker mVelocityTracker;
-
-    private int mLastX = 0;
-    private int mLastY = 0;
-
-    private int mLastXIntercept;
-    private int mLastYIntercept;
 
     private void init() {
         mScroller = new Scroller(getContext());

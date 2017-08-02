@@ -5,10 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
 
 public abstract class DataBaseDao<T> {
 
@@ -31,15 +31,21 @@ public abstract class DataBaseDao<T> {
         if (database != null && database.isOpen()) database.close();
     }
 
-    /** 获取对应的表名 */
+    /**
+     * 获取对应的表名
+     */
     protected abstract String getTableName();
 
-    /** 需要数据库中有个 _id 的字段 */
+    /**
+     * 需要数据库中有个 _id 的字段
+     */
     public int count() {
         return countColumn("_id");
     }
 
-    /** 返回一列的总记录数量 */
+    /**
+     * 返回一列的总记录数量
+     */
     public int countColumn(String columnName) {
         String sql = "SELECT COUNT(?) FROM " + getTableName();
         SQLiteDatabase database = openReader();
@@ -62,12 +68,16 @@ public abstract class DataBaseDao<T> {
         return 0;
     }
 
-    /** 删除所有数据 */
+    /**
+     * 删除所有数据
+     */
     public int deleteAll() {
         return delete(null, null);
     }
 
-    /** 根据条件删除数据库中的数据 */
+    /**
+     * 根据条件删除数据库中的数据
+     */
     public int delete(String whereClause, String[] whereArgs) {
         SQLiteDatabase database = openWriter();
         try {
@@ -84,17 +94,23 @@ public abstract class DataBaseDao<T> {
         return 0;
     }
 
-    /** 查询并返回所有对象的集合 */
+    /**
+     * 查询并返回所有对象的集合
+     */
     public List<T> getAll() {
         return get(null, null);
     }
 
-    /** 按条件查询对象并返回集合 */
+    /**
+     * 按条件查询对象并返回集合
+     */
     public List<T> get(String selection, String[] selectionArgs) {
         return get(null, selection, selectionArgs, null, null, null, null);
     }
 
-    /** 按条件查询对象并返回集合 */
+    /**
+     * 按条件查询对象并返回集合
+     */
     public List<T> get(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit) {
         SQLiteDatabase database = openReader();
         List<T> list = new ArrayList<>();
@@ -140,7 +156,9 @@ public abstract class DataBaseDao<T> {
         return 0;
     }
 
-    /** 创建一条记录 */
+    /**
+     * 创建一条记录
+     */
     public long create(T t) {
         SQLiteDatabase database = openWriter();
         try {
@@ -157,7 +175,9 @@ public abstract class DataBaseDao<T> {
         return 0;
     }
 
-    /** 更新一条记录 */
+    /**
+     * 更新一条记录
+     */
     public int update(T t, String whereClause, String[] whereArgs) {
         SQLiteDatabase database = openWriter();
         try {
@@ -174,9 +194,13 @@ public abstract class DataBaseDao<T> {
         return 0;
     }
 
-    /** 将Cursor解析成对应的JavaBean */
+    /**
+     * 将Cursor解析成对应的JavaBean
+     */
     public abstract T parseCursorToBean(Cursor cursor);
 
-    /** 需要替换的列 */
+    /**
+     * 需要替换的列
+     */
     public abstract ContentValues getContentValues(T t);
 }

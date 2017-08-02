@@ -2,12 +2,11 @@ package music.hayasi.android.com.mymusic.common.net.request;
 
 import android.support.annotation.NonNull;
 
-import music.hayasi.android.com.mymusic.common.net.model.HttpParams;
-import music.hayasi.android.com.mymusic.common.net.utils.HttpUtils;
-
 import java.io.File;
 import java.util.List;
 
+import music.hayasi.android.com.mymusic.common.net.model.HttpParams;
+import music.hayasi.android.com.mymusic.common.net.utils.HttpUtils;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
@@ -75,7 +74,9 @@ public abstract class BaseBodyRequest<R extends BaseBodyRequest> extends BaseReq
         return (R) this;
     }
 
-    /** 注意使用该方法上传字符串会清空实体中其他所有的参数，头信息不清除 */
+    /**
+     * 注意使用该方法上传字符串会清空实体中其他所有的参数，头信息不清除
+     */
     @SuppressWarnings("unchecked")
     @Override
     public R upString(String string) {
@@ -84,7 +85,9 @@ public abstract class BaseBodyRequest<R extends BaseBodyRequest> extends BaseReq
         return (R) this;
     }
 
-    /** 注意使用该方法上传字符串会清空实体中其他所有的参数，头信息不清除 */
+    /**
+     * 注意使用该方法上传字符串会清空实体中其他所有的参数，头信息不清除
+     */
     @SuppressWarnings("unchecked")
     @Override
     public R upJson(String json) {
@@ -93,7 +96,9 @@ public abstract class BaseBodyRequest<R extends BaseBodyRequest> extends BaseReq
         return (R) this;
     }
 
-    /** 注意使用该方法上传字符串会清空实体中其他所有的参数，头信息不清除 */
+    /**
+     * 注意使用该方法上传字符串会清空实体中其他所有的参数，头信息不清除
+     */
     @SuppressWarnings("unchecked")
     @Override
     public R upBytes(byte[] bs) {
@@ -104,10 +109,14 @@ public abstract class BaseBodyRequest<R extends BaseBodyRequest> extends BaseReq
 
     @Override
     protected RequestBody generateRequestBody() {
-        if (requestBody != null) return requestBody;                                           //自定义的请求体
-        if (string != null && mediaType != null) return RequestBody.create(mediaType, string); //post上传字符串数据
-        if (json != null && mediaType != null) return RequestBody.create(mediaType, json);     //post上传json数据
-        if (bs != null && mediaType != null) return RequestBody.create(mediaType, bs);         //post上传字节数组
+        if (requestBody != null)
+            return requestBody;                                           //自定义的请求体
+        if (string != null && mediaType != null)
+            return RequestBody.create(mediaType, string); //post上传字符串数据
+        if (json != null && mediaType != null)
+            return RequestBody.create(mediaType, json);     //post上传json数据
+        if (bs != null && mediaType != null)
+            return RequestBody.create(mediaType, bs);         //post上传字节数组
         return HttpUtils.generateMultipartRequestBody(params);
     }
 }

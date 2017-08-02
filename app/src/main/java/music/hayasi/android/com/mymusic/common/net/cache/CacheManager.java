@@ -31,7 +31,9 @@ public enum CacheManager {
         }
     }
 
-    /** 返回带泛型的对象,注意必须确保泛型和对象对应才不会发生类型转换异常 */
+    /**
+     * 返回带泛型的对象,注意必须确保泛型和对象对应才不会发生类型转换异常
+     */
     @SuppressWarnings("unchecked")
     public <T> CacheEntity<T> get(String key, Class<T> clazz) {
         return (CacheEntity<T>) get(key);

@@ -1,8 +1,6 @@
 package music.hayasi.android.com.mymusic.module.Swipe;
 
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.ViewGroup;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;

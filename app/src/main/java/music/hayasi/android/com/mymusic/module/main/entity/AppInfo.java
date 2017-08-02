@@ -1,13 +1,12 @@
 package music.hayasi.android.com.mymusic.module.main.entity;
 
 public class AppInfo {
+    private String name;
+    private String intent;
     public AppInfo(String name, String intent) {
         this.name = name;
         this.intent = intent;
     }
-
-    private String name;
-    private String intent;
 
     public String getName() {
         return name;

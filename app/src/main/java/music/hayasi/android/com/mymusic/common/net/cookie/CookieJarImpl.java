@@ -1,7 +1,5 @@
 package music.hayasi.android.com.mymusic.common.net.cookie;
 
-import music.hayasi.android.com.mymusic.common.net.cookie.store.CookieStore;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import music.hayasi.android.com.mymusic.common.net.cookie.store.CookieStore;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;

@@ -41,14 +41,6 @@ public class MvvmActivity extends BaseActivity {
 
     }
 
-    public class EventHandlers {
-        public void handleClick(View view) {
-            mStudent.setName("linze");
-            mUser.setFirstName("lin333");
-            binding.setStu(mStudent);
-        }
-    }
-
     @Override
     public void setListener() {
 
@@ -62,6 +54,14 @@ public class MvvmActivity extends BaseActivity {
     @Override
     public void initToolBar(ToolBarManager navigationBarMgr) {
 
+    }
+
+    public class EventHandlers {
+        public void handleClick(View view) {
+            mStudent.setName("linze");
+            mUser.setFirstName("lin333");
+            binding.setStu(mStudent);
+        }
     }
 
 }

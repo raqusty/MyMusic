@@ -2,7 +2,6 @@ package music.hayasi.android.com.mymusic.module.model.GuradedSuspension;
 
 import android.util.Log;
 
-import music.hayasi.android.com.mymusic.module.model.GuradedSuspension.entity.Data;
 import music.hayasi.android.com.mymusic.module.model.GuradedSuspension.entity.FutureData;
 import music.hayasi.android.com.mymusic.module.model.GuradedSuspension.entity.RealData;
 
@@ -23,7 +22,7 @@ public class ServerThread extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            FutureData data = (FutureData)request.getData();
+            FutureData data = (FutureData) request.getData();
             RealData real = new RealData("haha");
             data.DataChange(real);
             Log.i("linzehao", request.getName());

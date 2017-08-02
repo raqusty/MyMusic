@@ -37,6 +37,9 @@ android {
     dataBinding {
         enabled = true
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 //buildscript {
 //    repositories {

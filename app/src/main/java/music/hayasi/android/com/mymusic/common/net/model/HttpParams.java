@@ -28,10 +28,14 @@ public class HttpParams implements Serializable {
     public static final MediaType MEDIA_TYPE_STREAM = MediaType.parse("application/octet-stream");
     public static final boolean IS_REPLACE = true;
     private static final long serialVersionUID = 7369819159227055048L;
-    /** 普通的键值对参数 */
+    /**
+     * 普通的键值对参数
+     */
     public LinkedHashMap<String, List<String>> urlParamsMap;
 
-    /** 文件的键值对参数 */
+    /**
+     * 文件的键值对参数
+     */
     public LinkedHashMap<String, List<FileWrapper>> fileParamsMap;
 
     public HttpParams() {
@@ -55,8 +59,10 @@ public class HttpParams implements Serializable {
 
     public void put(HttpParams params) {
         if (params != null) {
-            if (params.urlParamsMap != null && !params.urlParamsMap.isEmpty()) urlParamsMap.putAll(params.urlParamsMap);
-            if (params.fileParamsMap != null && !params.fileParamsMap.isEmpty()) fileParamsMap.putAll(params.fileParamsMap);
+            if (params.urlParamsMap != null && !params.urlParamsMap.isEmpty())
+                urlParamsMap.putAll(params.urlParamsMap);
+            if (params.fileParamsMap != null && !params.fileParamsMap.isEmpty())
+                fileParamsMap.putAll(params.fileParamsMap);
         }
     }
 
@@ -226,7 +232,9 @@ public class HttpParams implements Serializable {
         return result.toString();
     }
 
-    /** 文件类型的包装类 */
+    /**
+     * 文件类型的包装类
+     */
     public static class FileWrapper {
         public File file;
         public String fileName;

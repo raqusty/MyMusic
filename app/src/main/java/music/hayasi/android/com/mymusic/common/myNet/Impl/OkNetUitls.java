@@ -16,6 +16,11 @@ public class OkNetUitls {
 
     private OkHttpClient.Builder okHttpClientBuilder;     //ok请求的客户端
 
+    private OkNetUitls() {
+        okHttpClientBuilder = new OkHttpClient.Builder();
+        mDelivery = new Handler(Looper.getMainLooper());
+    }
+
     /**
      * 初始化
      **/
@@ -34,9 +39,11 @@ public class OkNetUitls {
         return mInstance;
     }
 
-    private OkNetUitls() {
-        okHttpClientBuilder = new OkHttpClient.Builder();
-        mDelivery = new Handler(Looper.getMainLooper());
+    /**
+     * get请求
+     */
+    public static GetRequest get(String url) {
+        return new GetRequest(url);
     }
 
     /**
@@ -53,13 +60,6 @@ public class OkNetUitls {
      */
     public OkHttpClient getOkHttpClient() {
         return okHttpClientBuilder.build();
-    }
-
-    /**
-     * get请求
-     */
-    public static GetRequest get(String url) {
-        return new GetRequest(url);
     }
 
 }

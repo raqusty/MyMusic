@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
-import music.hayasi.android.com.mymusic.MyApplication;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.widget.MultiStateView;
 
@@ -23,7 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IToolBar
     // 上下文
     protected Context mContext;
     // ActionBar实例
-    private Toolbar mToolbar;
+    protected Toolbar mToolbar;
 
     /**
      * 获取ContentView的资源Id

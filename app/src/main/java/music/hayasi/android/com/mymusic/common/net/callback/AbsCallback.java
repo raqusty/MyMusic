@@ -2,11 +2,10 @@ package music.hayasi.android.com.mymusic.common.net.callback;
 
 import android.support.annotation.Nullable;
 
-import music.hayasi.android.com.mymusic.common.net.cache.CacheMode;
-import music.hayasi.android.com.mymusic.common.net.request.BaseRequest;
-
 import java.io.IOException;
 
+import music.hayasi.android.com.mymusic.common.net.cache.CacheMode;
+import music.hayasi.android.com.mymusic.common.net.request.BaseRequest;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -54,34 +53,50 @@ public abstract class AbsCallback<T> {
         }
     };
 
-    /** 请求网络开始前，UI线程 */
+    /**
+     * 请求网络开始前，UI线程
+     */
     public void onBefore(BaseRequest request) {
     }
 
-    /** 拿到响应后，将数据转换成需要的格式，子线程中执行，可以是耗时操作 */
+    /**
+     * 拿到响应后，将数据转换成需要的格式，子线程中执行，可以是耗时操作
+     */
     public abstract T parseNetworkResponse(Response response) throws Exception;
 
-    /** 用于网络错误时在子线程中执行数据耗时操作,子类可以根据自己的需要重写此方法 */
+    /**
+     * 用于网络错误时在子线程中执行数据耗时操作,子类可以根据自己的需要重写此方法
+     */
     public void parseNetworkFail(Call call, IOException e) {
     }
 
-    /** 对返回数据进行操作的回调， UI线程 */
+    /**
+     * 对返回数据进行操作的回调， UI线程
+     */
     public abstract void onSuccess(T t, Call call, Response response);
 
-    /** 缓存成功的回调,UI线程 */
+    /**
+     * 缓存成功的回调,UI线程
+     */
     public void onCacheSuccess(T t, Call call) {
     }
 
-    /** 请求失败，响应错误，数据解析错误等，都会回调该方法， UI线程 */
+    /**
+     * 请求失败，响应错误，数据解析错误等，都会回调该方法， UI线程
+     */
     public void onError(Call call, Response response, Exception e) {
         e.printStackTrace();
     }
 
-    /** 缓存失败的回调,UI线程 */
+    /**
+     * 缓存失败的回调,UI线程
+     */
     public void onCacheError(Call call, Exception e) {
     }
 
-    /** 请求网络结束后，UI线程 */
+    /**
+     * 请求网络结束后，UI线程
+     */
     public void onAfter(@Nullable T t, @Nullable Exception e) {
     }
 

@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -34,16 +33,13 @@ import music.hayasi.android.com.mymusic.R;
  * 3：因为可能嵌套的控件是可滑动控件，所以需要拦截滑动事件，如果是子控件是碰顶，且下拉，就把事件交给this处理
  * 4：提供 一个listten 来监听刷新的结束，可以用来作为触发刷新的点
  * 5：转圈是用Android原生的MaterialProgressDrawable ，我直接把它的源码复制出来调用了
- *
+ * <p>
  * bug：
  * 1:还有各种刷新状态，没有处理好,
  * 2:上拉没有做，不过跟下拉一样的思路的
  */
 
 public class QQReFreshLayout extends LinearLayout {
-
-    private static final int CIRCLE_BG_LIGHT = 0xFFFAFAFA;
-    static final int CIRCLE_DIAMETER = 40;
 
     /**
      * 收回到刷新位置状态
@@ -57,12 +53,6 @@ public class QQReFreshLayout extends LinearLayout {
      * 从头收到尾,不考虑中间状态
      */
     public static final int TAKEBACK_ALL = -3;
-
-    /**
-     * 收回状态
-     */
-    int mTakeBackState = TAKEBACK_RESET;
-
     /**
      * 下拉刷新状态
      */
@@ -73,25 +63,42 @@ public class QQReFreshLayout extends LinearLayout {
     public static final int REFRESHING_FAILD = 4;//刷新失败状态
     public static final int REFRESHING_RESET = 5;//重置状态
     public static final int REFRESHING_IDLE = 6;//空闲状态
-
+    static final int CIRCLE_DIAMETER = 40;
+    private static final int CIRCLE_BG_LIGHT = 0xFFFAFAFA;
+    private static final float SCROLL_RATIO = 0.4f;// 阻尼系数,越小阻力就越大
+    /**
+     * 收回状态
+     */
+    int mTakeBackState = TAKEBACK_RESET;
     private float mLastY = 0;
-
     private LinearLayout mRefreshHeadView;
     private MaterialProgressDrawable mProgress;
     private ImageView mLoadImage;
     private TextView mRefreshText;
-
     private Context mContext;
-
     //这个值要转成dp
     private int refreshTargetTop = dp(-80);
     private boolean mIsButtom = false;
     private int mLastTop = refreshTargetTop;
-    private static final float SCROLL_RATIO = 0.4f;// 阻尼系数,越小阻力就越大
     private int mRefreshState = REFRESHING_IDLE; //状态
 
     private ObjectAnimator anim;
-
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    fling();
+                    break;
+            }
+        }
+    };
+    Thread mRunnable = new Thread(new Runnable() {
+        public void run() {
+            handler.sendEmptyMessage(1);
+        }
+    });
     private RefreashListten mRefreashListten;
 
     public QQReFreshLayout(Context context) {
@@ -388,24 +395,5 @@ public class QQReFreshLayout extends LinearLayout {
     public interface RefreashListten {
         public void refreash();
     }
-
-
-    Thread mRunnable = new Thread(new Runnable() {
-        public void run() {
-            handler.sendEmptyMessage(1);
-        }
-    });
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 1:
-                    fling();
-                    break;
-            }
-        }
-    };
 
 }

@@ -12,11 +12,11 @@ import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseFragment;
 
 public class DesignFragment extends BaseFragment {
-    private int num = 0;
-
-     ;
     @Bind(R.id.nested_scroll_view)
     NestedScrollView mNestedScrollView;
+
+    ;
+    private int num = 0;
 
     public void setNum(int n) {
         num = n;

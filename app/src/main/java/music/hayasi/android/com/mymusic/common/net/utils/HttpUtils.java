@@ -2,15 +2,14 @@ package music.hayasi.android.com.mymusic.common.net.utils;
 
 import android.text.TextUtils;
 
-import music.hayasi.android.com.mymusic.common.net.model.HttpHeaders;
-import music.hayasi.android.com.mymusic.common.net.model.HttpParams;
-
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
+import music.hayasi.android.com.mymusic.common.net.model.HttpHeaders;
+import music.hayasi.android.com.mymusic.common.net.model.HttpParams;
 import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.MultipartBody;
@@ -28,7 +27,9 @@ import okhttp3.Response;
  * ================================================
  */
 public class HttpUtils {
-    /** 将传递进来的参数拼接成 url */
+    /**
+     * 将传递进来的参数拼接成 url
+     */
     public static String createUrlFromParams(String url, Map<String, List<String>> params) {
         try {
             StringBuilder sb = new StringBuilder();
@@ -51,7 +52,9 @@ public class HttpUtils {
         return url;
     }
 
-    /** 通用的拼接请求头 */
+    /**
+     * 通用的拼接请求头
+     */
     public static Request.Builder appendHeaders(HttpHeaders headers) {
         Request.Builder requestBuilder = new Request.Builder();
         if (headers.headersMap.isEmpty()) return requestBuilder;
@@ -69,7 +72,9 @@ public class HttpUtils {
         return requestBuilder;
     }
 
-    /** 生成类似表单的请求体 */
+    /**
+     * 生成类似表单的请求体
+     */
     public static RequestBody generateMultipartRequestBody(HttpParams params) {
         if (params.fileParamsMap.isEmpty()) {
             //表单提交，没有文件
@@ -105,7 +110,9 @@ public class HttpUtils {
         }
     }
 
-    /** 根据响应头或者url获取文件名 */
+    /**
+     * 根据响应头或者url获取文件名
+     */
     public static String getNetFileName(Response response, String url) {
         String fileName = getHeaderFileName(response);
         if (TextUtils.isEmpty(fileName)) fileName = getUrlFileName(url);
@@ -113,7 +120,9 @@ public class HttpUtils {
         return fileName;
     }
 
-    /** 解析文件头 Content-Disposition:attachment;filename=FileName.txt */
+    /**
+     * 解析文件头 Content-Disposition:attachment;filename=FileName.txt
+     */
     private static String getHeaderFileName(Response response) {
         String dispositionHeader = response.header(HttpHeaders.HEAD_KEY_CONTENT_DISPOSITION);
         if (dispositionHeader != null) {
@@ -128,7 +137,9 @@ public class HttpUtils {
         return null;
     }
 
-    /** 通过 ‘？’ 和 ‘/’ 判断文件名 */
+    /**
+     * 通过 ‘？’ 和 ‘/’ 判断文件名
+     */
     private static String getUrlFileName(String url) {
         int index = url.lastIndexOf('?');
         String filename;
@@ -140,7 +151,9 @@ public class HttpUtils {
         return filename;
     }
 
-    /** 根据路径删除文件 */
+    /**
+     * 根据路径删除文件
+     */
     public static boolean deleteFile(String path) {
         if (TextUtils.isEmpty(path)) return true;
         File file = new File(path);

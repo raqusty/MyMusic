@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.util.List;
@@ -13,10 +15,11 @@ import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.module.Footer.testEntity;
 
 public class TestAdapter extends AbstractFooterAdapter<testEntity> {
-
+    private Context mContext;
 
     public TestAdapter(Context context, List<testEntity> list) {
         super(context, list);
+        mContext = context;
     }
 
     @Override
@@ -37,7 +40,9 @@ public class TestAdapter extends AbstractFooterAdapter<testEntity> {
                     ShowFooterView(!mIsShow);
                 }
             });
-
+            Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.animation_2);
+            if (position == mDataList.size() - 1)
+                ((MyViewHolder) holder).tv.setAnimation(animation);
         } else if (getItemViewType(position) == TYPE_TIP_EMPTY_FOOTER) {
             Log.i("linzehao", "111");
         }

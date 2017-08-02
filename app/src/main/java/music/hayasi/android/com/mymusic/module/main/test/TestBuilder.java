@@ -1,7 +1,5 @@
 package music.hayasi.android.com.mymusic.module.main.test;
 
-import android.util.Log;
-
 public class TestBuilder {
 
     public static class Builder {

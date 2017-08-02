@@ -1,6 +1,5 @@
 package music.hayasi.android.com.mymusic.module.Path;
 
-import android.util.Log;
 import android.widget.SeekBar;
 
 import butterknife.Bind;

@@ -18,6 +18,44 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 public class ImageLoaderImpl implements IImageSdk {
     private static ImageLoader mImageLoader;
 
+    private static DisplayImageOptions.Builder getDisplayOptionsBuilder() {
+
+//        BitmapDisplayer displayer = null;
+//        if (options.getCornerRadiusPixels() == null || options.getCornerRadiusPixels() == 0) {
+//            // 如果null或者0，那么就正常显示
+//            displayer = new SimpleBitmapDisplayer();
+//        } else if (options.getCornerRadiusPixels() > 0) {
+//            // 如果大于0，那么就显示圆角图片
+//            displayer = new RoundedBitmapDisplayer(options.getCornerRadiusPixels());
+//        } else {
+//            // 如果小于0，那么就显示方形图片
+//            displayer = new SquareBitmapDisplayer(-options.getCornerRadiusPixels());
+//        }
+
+        return new DisplayImageOptions.Builder()
+                .considerExifParams(true)
+                // 设置RGB值低一点，降低资源的消耗
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                /*
+                 *  图片显示方式：
+				 *  RoundedBitmapDisplayer（int roundPixels）设置圆角图片
+		         *  FakeBitmapDisplayer（）这个类什么都没做
+		         *  FadeInBitmapDisplayer（int durationMillis）设置图片渐显的时间
+		         *　SimpleBitmapDisplayer()正常显示一张图片
+				 */
+//                .displayer(displayer)
+                // 设置图片在下载期间显示的图片
+//                .showImageOnLoading(options.getLoadingImgResID() == null ? 0 : options.getLoadingImgResID())
+//                // 设置图片加载/解码过程中错误时候显示的图片
+//                .showImageOnFail(options.getErrorImgResID() == null ? 0 : options.getErrorImgResID())
+//                // 设置图片Uri为空或是错误的时候显示的图片
+//                .showImageForEmptyUri(options.getEmptyImgResID() == null ? 0 : options.getEmptyImgResID())
+                // 设置缓存到内存中
+                .cacheInMemory(true)
+                // 设置是否缓存到本地磁盘
+//                .cacheOnDisk(options.isCacheOnDisk())
+                ;
+    }
 
     @Override
     public void initImageSDK(Context context) {
@@ -60,7 +98,7 @@ public class ImageLoaderImpl implements IImageSdk {
 
     @Override
     public void displayImage(int imageSouce, String url, final ImageView mImageView) {
-        DisplayImageOptions.Builder options =  getDisplayOptionsBuilder();
+        DisplayImageOptions.Builder options = getDisplayOptionsBuilder();
         mImageLoader.loadImage(url, options.build(), new ImageLoadingListener() {
 
             @Override
@@ -84,44 +122,5 @@ public class ImageLoaderImpl implements IImageSdk {
 
             }
         });
-    }
-
-    private static DisplayImageOptions.Builder getDisplayOptionsBuilder() {
-
-//        BitmapDisplayer displayer = null;
-//        if (options.getCornerRadiusPixels() == null || options.getCornerRadiusPixels() == 0) {
-//            // 如果null或者0，那么就正常显示
-//            displayer = new SimpleBitmapDisplayer();
-//        } else if (options.getCornerRadiusPixels() > 0) {
-//            // 如果大于0，那么就显示圆角图片
-//            displayer = new RoundedBitmapDisplayer(options.getCornerRadiusPixels());
-//        } else {
-//            // 如果小于0，那么就显示方形图片
-//            displayer = new SquareBitmapDisplayer(-options.getCornerRadiusPixels());
-//        }
-
-        return new DisplayImageOptions.Builder()
-                .considerExifParams(true)
-                // 设置RGB值低一点，降低资源的消耗
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                /*
-                 *  图片显示方式：
-				 *  RoundedBitmapDisplayer（int roundPixels）设置圆角图片
-		         *  FakeBitmapDisplayer（）这个类什么都没做
-		         *  FadeInBitmapDisplayer（int durationMillis）设置图片渐显的时间
-		         *　SimpleBitmapDisplayer()正常显示一张图片
-				 */
-//                .displayer(displayer)
-                // 设置图片在下载期间显示的图片
-//                .showImageOnLoading(options.getLoadingImgResID() == null ? 0 : options.getLoadingImgResID())
-//                // 设置图片加载/解码过程中错误时候显示的图片
-//                .showImageOnFail(options.getErrorImgResID() == null ? 0 : options.getErrorImgResID())
-//                // 设置图片Uri为空或是错误的时候显示的图片
-//                .showImageForEmptyUri(options.getEmptyImgResID() == null ? 0 : options.getEmptyImgResID())
-                // 设置缓存到内存中
-                .cacheInMemory(true)
-                // 设置是否缓存到本地磁盘
-//                .cacheOnDisk(options.isCacheOnDisk())
-                ;
     }
 }

@@ -3,9 +3,6 @@ package music.hayasi.android.com.mymusic.common.net.model;
 import android.os.Build;
 import android.text.TextUtils;
 
-import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
-import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +16,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
+
+import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
+import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
 
 /**
  * ================================================
@@ -119,7 +119,8 @@ public class HttpHeaders implements Serializable {
             String language = locale.getLanguage();
             String country = locale.getCountry();
             StringBuilder acceptLanguageBuilder = new StringBuilder(language);
-            if (!TextUtils.isEmpty(country)) acceptLanguageBuilder.append('-').append(country).append(',').append(language).append(";q=0.8");
+            if (!TextUtils.isEmpty(country))
+                acceptLanguageBuilder.append('-').append(country).append(',').append(language).append(";q=0.8");
             acceptLanguage = acceptLanguageBuilder.toString();
             return acceptLanguage;
         }
@@ -221,7 +222,8 @@ public class HttpHeaders implements Serializable {
 
     public void put(HttpHeaders headers) {
         if (headers != null) {
-            if (headers.headersMap != null && !headers.headersMap.isEmpty()) headersMap.putAll(headers.headersMap);
+            if (headers.headersMap != null && !headers.headersMap.isEmpty())
+                headersMap.putAll(headers.headersMap);
         }
     }
 

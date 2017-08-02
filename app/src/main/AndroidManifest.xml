@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 
     <application
@@ -243,6 +243,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".module.AnimationView.ListDetailActivity">
+            <intent-filter>
+                <action android:name="ListDetailActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".module.AnimationView.DetailActivity"></activity>
 
 
         /////////////////////////////////////////////////////////////////////

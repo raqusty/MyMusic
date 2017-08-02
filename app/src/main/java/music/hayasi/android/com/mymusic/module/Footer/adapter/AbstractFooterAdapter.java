@@ -19,9 +19,8 @@ public abstract class AbstractFooterAdapter<T> extends RecyclerView.Adapter<Abst
     protected List<T> mDataList = new ArrayList<T>();
 
     protected Context mContext;
-
-    private View mFooterView;
     protected boolean mIsShow = false;
+    private View mFooterView;
 
     public AbstractFooterAdapter(Context context, List<T> list) {
         mContext = context;

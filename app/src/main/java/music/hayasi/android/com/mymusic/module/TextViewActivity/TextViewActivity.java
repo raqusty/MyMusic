@@ -2,7 +2,6 @@ package music.hayasi.android.com.mymusic.module.TextViewActivity;
 
 import android.databinding.DataBindingUtil;
 import android.text.Layout;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -15,9 +14,8 @@ import music.hayasi.android.com.mymusic.databinding.AnimActivityBinding;
 
 public class TextViewActivity extends BaseActivity {
 
-    private AnimActivityBinding binding;
-
     Animation scaleAnimation;
+    private AnimActivityBinding binding;
 
     @Override
     protected int getContentViewResId() {

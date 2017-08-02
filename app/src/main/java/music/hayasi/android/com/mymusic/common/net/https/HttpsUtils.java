@@ -1,7 +1,5 @@
 package music.hayasi.android.com.mymusic.common.net.https;
 
-import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyManagementException;
@@ -21,7 +19,11 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-/** Https相关的工具类 */
+import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
+
+/**
+ * Https相关的工具类
+ */
 public class HttpsUtils {
 
     public static SSLParams getSslSocketFactory(InputStream bksFile, String password, InputStream[] certificates) {

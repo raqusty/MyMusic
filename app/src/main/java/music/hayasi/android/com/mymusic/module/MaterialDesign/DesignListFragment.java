@@ -25,16 +25,14 @@ import music.hayasi.android.com.mymusic.module.Guide.GuideActivity;
 
 public class DesignListFragment extends BaseFragment {
 
+    @Bind(R.id.id_recyclerview)
+    RecyclerView mRecyclerView;
+    List<String> mDataList = new ArrayList<String>();
     private int num = 0;
 
     public void setNum(int n) {
         num = n;
     }
-
-    @Bind(R.id.id_recyclerview)
-    RecyclerView mRecyclerView;
-
-    List<String> mDataList = new ArrayList<String>();
 
     @Override
     public void initViews() {

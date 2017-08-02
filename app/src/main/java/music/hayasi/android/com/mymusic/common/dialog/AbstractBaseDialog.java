@@ -13,17 +13,10 @@ import music.hayasi.android.com.mymusic.R;
 
 public abstract class AbstractBaseDialog extends Dialog {
 
-    // 上下文
-    protected Context context;
     // 窗口默认的宽度比例
     public float defaultWindowWidthPercent = 0.8f;
-
-    /**
-     * 获取content view
-     *
-     * @return
-     */
-    protected abstract View getContentView();
+    // 上下文
+    protected Context context;
 
     public AbstractBaseDialog(Context context) {
         this(context, R.style.BaseDialog);
@@ -45,6 +38,12 @@ public abstract class AbstractBaseDialog extends Dialog {
         initWindow();
     }
 
+    /**
+     * 获取content view
+     *
+     * @return
+     */
+    protected abstract View getContentView();
 
     private void initWindow() {
         setBaseAnim();

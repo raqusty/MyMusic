@@ -1,7 +1,6 @@
 package music.hayasi.android.com.mymusic.common.net.request;
 
 import music.hayasi.android.com.mymusic.common.net.utils.HttpUtils;
-
 import okhttp3.Request;
 import okhttp3.RequestBody;
 

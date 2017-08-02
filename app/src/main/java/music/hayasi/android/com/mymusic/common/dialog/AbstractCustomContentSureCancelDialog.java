@@ -12,11 +12,6 @@ import music.hayasi.android.com.mymusic.R;
 public abstract class AbstractCustomContentSureCancelDialog extends
         AbstractBaseDialog implements OnSureOrCancelListener {
 
-    // 标题文字
-    private String titleText = "";
-
-    // 根布局
-    private CardView mRootView;
     // 标题TextView
     protected TextView mTitleTV;
     // 包裹内容的Layout，内容显示什么控件需要自己去添加(Layout为RelativeLayout)
@@ -25,16 +20,24 @@ public abstract class AbstractCustomContentSureCancelDialog extends
     protected TextView mSureBtnTV;
     // 取消按钮
     protected TextView mCancelBtnTV;
+    // 标题文字
+    private String titleText = "";
+    // 根布局
+    private CardView mRootView;
+
+    public AbstractCustomContentSureCancelDialog(Context context) {
+        super(context);
+    }
 
     @Override
     protected View getContentView() {
         if (mRootView == null) {
             mRootView = (CardView) getLayoutInflater().inflate(R.layout.dialog_one_title_custom_content_sure_cancel_btn, null);
             // 绑定控件
-            mTitleTV = (TextView)mRootView.findViewById(R.id.dialog_custom_content_tv_title);
-            mContentLayout = (ViewGroup)mRootView.findViewById(R.id.dialog_custom_content_rl_content_container);
-            mSureBtnTV = (TextView)mRootView.findViewById(R.id.dialog_custom_content_tv_sure_btn);
-            mCancelBtnTV = (TextView)mRootView.findViewById(R.id.dialog_custom_content_tv_cancel_btn);
+            mTitleTV = (TextView) mRootView.findViewById(R.id.dialog_custom_content_tv_title);
+            mContentLayout = (ViewGroup) mRootView.findViewById(R.id.dialog_custom_content_rl_content_container);
+            mSureBtnTV = (TextView) mRootView.findViewById(R.id.dialog_custom_content_tv_sure_btn);
+            mCancelBtnTV = (TextView) mRootView.findViewById(R.id.dialog_custom_content_tv_cancel_btn);
         }
 
         mSureBtnTV.setOnClickListener(new View.OnClickListener() {
@@ -53,11 +56,6 @@ public abstract class AbstractCustomContentSureCancelDialog extends
 
         return mRootView;
     }
-
-    public AbstractCustomContentSureCancelDialog(Context context) {
-        super(context);
-    }
-
 
     /**
      * 设置弹出框的圆角大小(单位：px)
@@ -88,9 +86,10 @@ public abstract class AbstractCustomContentSureCancelDialog extends
     }
 
     //不需要标题，就隐藏
-    public void setTitleGone(){
+    public void setTitleGone() {
         mTitleTV.setVisibility(View.GONE);
     }
+
     /**
      * 往包裹内容的Layout添加自定义的控件
      * Layout为RelativeLayout

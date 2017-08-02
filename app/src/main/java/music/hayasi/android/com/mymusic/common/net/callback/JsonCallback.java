@@ -2,7 +2,6 @@ package music.hayasi.android.com.mymusic.common.net.callback;
 
 import android.text.TextUtils;
 
-
 import com.google.gson.Gson;
 
 import org.json.JSONObject;

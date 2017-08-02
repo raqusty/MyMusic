@@ -2,14 +2,13 @@ package music.hayasi.android.com.mymusic.common.net.utils;
 
 import android.text.TextUtils;
 
+import java.util.Locale;
+import java.util.StringTokenizer;
+
 import music.hayasi.android.com.mymusic.common.net.cache.CacheEntity;
 import music.hayasi.android.com.mymusic.common.net.cache.CacheMode;
 import music.hayasi.android.com.mymusic.common.net.model.HttpHeaders;
 import music.hayasi.android.com.mymusic.common.net.request.BaseRequest;
-
-import java.util.Locale;
-import java.util.StringTokenizer;
-
 import okhttp3.Headers;
 
 /**
@@ -127,7 +126,8 @@ public class HeaderParser {
                 String eTag = responseHeaders.get(HttpHeaders.HEAD_KEY_E_TAG);
                 if (eTag != null) request.headers(HttpHeaders.HEAD_KEY_IF_NONE_MATCH, eTag);
                 long lastModified = HttpHeaders.getLastModified(responseHeaders.get(HttpHeaders.HEAD_KEY_LAST_MODIFIED));
-                if (lastModified > 0) request.headers(HttpHeaders.HEAD_KEY_IF_MODIFIED_SINCE, HttpHeaders.formatMillisToGMT(lastModified));
+                if (lastModified > 0)
+                    request.headers(HttpHeaders.HEAD_KEY_IF_MODIFIED_SINCE, HttpHeaders.formatMillisToGMT(lastModified));
             }
         }
     }

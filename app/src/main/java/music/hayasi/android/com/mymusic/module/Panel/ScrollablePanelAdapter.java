@@ -149,6 +149,17 @@ public class ScrollablePanelAdapter extends PanelAdapter {
         }
     }
 
+    public void setRoomInfoList(List<RoomInfo> roomInfoList) {
+        this.roomInfoList = roomInfoList;
+    }
+
+    public void setDateInfoList(List<DateInfo> dateInfoList) {
+        this.dateInfoList = dateInfoList;
+    }
+
+    public void setOrdersList(List<List<OrderInfo>> ordersList) {
+        this.ordersList = ordersList;
+    }
 
     private static class DateViewHolder extends RecyclerView.ViewHolder {
         public TextView dateTextView;
@@ -193,18 +204,5 @@ public class ScrollablePanelAdapter extends PanelAdapter {
             super(view);
             this.titleTextView = (TextView) view.findViewById(R.id.title);
         }
-    }
-
-
-    public void setRoomInfoList(List<RoomInfo> roomInfoList) {
-        this.roomInfoList = roomInfoList;
-    }
-
-    public void setDateInfoList(List<DateInfo> dateInfoList) {
-        this.dateInfoList = dateInfoList;
-    }
-
-    public void setOrdersList(List<List<OrderInfo>> ordersList) {
-        this.ordersList = ordersList;
     }
 }

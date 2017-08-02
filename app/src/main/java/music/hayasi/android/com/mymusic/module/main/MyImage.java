@@ -1,14 +1,8 @@
 package music.hayasi.android.com.mymusic.module.main;
 
-import android.os.Handler;
 import android.support.v7.widget.Toolbar;
-import android.util.LruCache;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;

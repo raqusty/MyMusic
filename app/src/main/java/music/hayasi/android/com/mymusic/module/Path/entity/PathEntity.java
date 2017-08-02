@@ -8,6 +8,7 @@ import java.util.List;
  */
 
 public class PathEntity {
+    public List<PathEntity> mList = new ArrayList<PathEntity>();
     float point1_x;
     float point1_y;
     float point2_x;
@@ -16,12 +17,9 @@ public class PathEntity {
     float point3_y;
     float point4_x;
     float point4_y;
-
     int Id;
     int parentId;
     boolean isRead = false;
-
-    public List<PathEntity> mList = new ArrayList<PathEntity>();
 
     public float getPoint1_x() {
         return point1_x;

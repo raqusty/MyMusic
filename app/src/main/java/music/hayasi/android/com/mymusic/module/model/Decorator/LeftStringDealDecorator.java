@@ -8,8 +8,8 @@ public class LeftStringDealDecorator extends StringDealDecorator {
     }
 
     @Override
-    public String handleString( ) {
-        return "left"+stringDeal.handleString();
+    public String handleString() {
+        return "left" + stringDeal.handleString();
     }
 }
 

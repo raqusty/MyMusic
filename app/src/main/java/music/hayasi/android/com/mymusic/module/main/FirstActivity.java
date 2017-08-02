@@ -42,7 +42,7 @@ public class FirstActivity extends BaseActivity {
 
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
-    String[] mNameList = {"ViewpagerActivity","RadioActivity","CardViewActivity","SwipeActivity","PlayerActivity", "TopWindowActivity", "PanelActivity", "Path3Activity", "Path2Activity", "PathActivity", "GuideActivity", "ReFreshActivity",
+    String[] mNameList = {"ListDetailActivity", "ViewpagerActivity", "RadioActivity", "CardViewActivity", "SwipeActivity", "PlayerActivity", "TopWindowActivity", "PanelActivity", "Path3Activity", "Path2Activity", "PathActivity", "GuideActivity", "ReFreshActivity",
             "FooterActivity", "TextViewActivity", "MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
             , "DesignActivity", "NetActivity", "ModelActivity", "DesignScrollActivity", "PhotoViewActivity", "DialogActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
     };
@@ -151,6 +151,12 @@ public class FirstActivity extends BaseActivity {
 
     }
 
+    public interface OnItemClickLitener {
+        void onItemClick(View view, int position);
+
+        void onItemLongClick(View view, int position);
+    }
+
     class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
 
 
@@ -214,12 +220,6 @@ public class FirstActivity extends BaseActivity {
                 tv = (TextView) view.findViewById(R.id.id_num);
             }
         }
-    }
-
-    public interface OnItemClickLitener {
-        void onItemClick(View view, int position);
-
-        void onItemLongClick(View view, int position);
     }
 
 }

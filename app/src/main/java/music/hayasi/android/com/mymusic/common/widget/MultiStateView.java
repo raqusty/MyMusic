@@ -172,7 +172,6 @@ public class MultiStateView extends FrameLayout {
     }
 
     /**
-     *
      * @return ViewState
      */
     public ViewState getViewState() {
@@ -247,12 +246,11 @@ public class MultiStateView extends FrameLayout {
      * @return boolean
      */
     private boolean isValidContentView(View view) {
-        return !(mContentView != null &&  mContentView != view) &&  view != mLoadingView && view != mErrorView && view != mEmptyView;
+        return !(mContentView != null && mContentView != view) && view != mLoadingView && view != mErrorView && view != mEmptyView;
     }
 
     /**
      * Sets the view for the given view state
-     *
      */
     public void setViewForState(View view, ViewState state, boolean switchToState) {
         switch (state) {

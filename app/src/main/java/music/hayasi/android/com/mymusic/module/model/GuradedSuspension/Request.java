@@ -4,6 +4,7 @@ import music.hayasi.android.com.mymusic.module.model.GuradedSuspension.entity.Da
 
 public class Request {
     private String name;
+    private Data data;
 
     public Request(String n) {
         name = n;
@@ -17,13 +18,11 @@ public class Request {
         return "[ Request  " + name + "]";
     }
 
-    private Data data;
+    public Data getData() {
+        return data;
+    }
 
     public void setData(Data response) {
         this.data = response;
-    }
-
-    public Data getData() {
-        return data;
     }
 }

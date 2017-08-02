@@ -8,17 +8,17 @@
 
     <TextView
         android:id="@+id/date"
-        android:textSize="12sp"
-        android:textColor="@color/text_gray_666666"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_gray_666666"
+        android:textSize="12sp" />
 
 
     <TextView
         android:id="@+id/week"
-        android:textSize="12sp"
-        android:textColor="@color/text_gray_666666"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_gray_666666"
+        android:textSize="12sp" />
 
 </LinearLayout>

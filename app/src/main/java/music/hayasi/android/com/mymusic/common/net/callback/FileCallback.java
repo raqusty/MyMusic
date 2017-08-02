@@ -3,15 +3,14 @@ package music.hayasi.android.com.mymusic.common.net.callback;
 import android.os.Environment;
 import android.text.TextUtils;
 
-import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
-import music.hayasi.android.com.mymusic.common.net.utils.HttpUtils;
-import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import music.hayasi.android.com.mymusic.common.net.OkHttpUtils;
+import music.hayasi.android.com.mymusic.common.net.utils.HttpUtils;
+import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
 import okhttp3.Response;
 
 /**
@@ -49,8 +48,10 @@ public abstract class FileCallback extends AbsCallback<File> {
     }
 
     private File saveFile(Response response) throws IOException {
-        if (TextUtils.isEmpty(destFileDir)) destFileDir = Environment.getExternalStorageDirectory() + DM_TARGET_FOLDER;
-        if (TextUtils.isEmpty(destFileName)) destFileName = HttpUtils.getNetFileName(response, response.request().url().toString());
+        if (TextUtils.isEmpty(destFileDir))
+            destFileDir = Environment.getExternalStorageDirectory() + DM_TARGET_FOLDER;
+        if (TextUtils.isEmpty(destFileName))
+            destFileName = HttpUtils.getNetFileName(response, response.request().url().toString());
 
         File dir = new File(destFileDir);
         if (!dir.exists()) dir.mkdirs();

@@ -25,14 +25,32 @@ public class TopWindowService extends Service {
 
     private static final int HANDLE_SHOW_ACTIVITY = 200;
     private static final int HANDLE_HIDE_ACTIVITY = 201;
-
-    private boolean isAdded = false; // �Ƿ�������������
     private static WindowManager wm;
     private static WindowManager.LayoutParams params;
+    private boolean isAdded = false; // �Ƿ�������������
     private Button btn_floatView;
 
     private List<String> homeList; // ����Ӧ�ó�������б�
     private ActivityManager mActivityManager;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case HANDLE_SHOW_ACTIVITY:
+                    if (!isAdded) {
+                        wm.addView(btn_floatView, params);
+                        isAdded = true;
+                    }
+                    break;
+                case HANDLE_HIDE_ACTIVITY:
+                    if (isAdded) {
+                        wm.removeView(btn_floatView);
+                        isAdded = false;
+                    }
+                    break;
+            }
+        }
+    };
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -67,30 +85,6 @@ public class TopWindowService extends Service {
         }
         return super.onStartCommand(intent, flags, startId);
     }
-
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case HANDLE_SHOW_ACTIVITY:
-                    if (!isAdded) {
-                        wm.addView(btn_floatView, params);
-                        isAdded = true;
-                    }
-                    break;
-                case HANDLE_HIDE_ACTIVITY:
-                    if (isAdded) {
-                        wm.removeView(btn_floatView);
-                        isAdded = false;
-                    }
-                    break;
-            }
-        }
-    };
-
-
-
 
     private void createFloatView() {
         btn_floatView = new Button(getApplicationContext());

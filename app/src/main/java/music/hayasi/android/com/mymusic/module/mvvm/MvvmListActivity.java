@@ -36,7 +36,7 @@ public class MvvmListActivity extends BaseActivity {
         TextView textView = new TextView(mContext);
         textView.setText("hahah");
 
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.animation_2);   //得到一个LayoutAnimationController对象；
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.animation_3);   //得到一个LayoutAnimationController对象；
         controller = new MyLayoutAnimation(animation);   //设置控件显示的顺序；
         controller.setOrder(LayoutAnimationController.ORDER_RANDOM);   //设置控件显示间隔时间；
         controller.setDelay(0.1f);   //为ListView设置LayoutAnimationController属性；

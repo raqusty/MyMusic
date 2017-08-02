@@ -48,7 +48,7 @@ public class SpinnerAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.path, null);
             holder.title = (TextView) convertView.findViewById(R.id.nama);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.title.setText(mPathEntities.get(i).getId() + "");

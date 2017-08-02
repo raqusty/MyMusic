@@ -15,21 +15,6 @@ public class OrderInfo {
     private Status status;
     private boolean isBegin;
 
-    public enum Status {
-        CHECK_IN,
-        REVERSE,
-        BLANK;
-
-        private static final List<Status> VALUES =
-                Collections.unmodifiableList(Arrays.asList(values()));
-        private static final int SIZE = VALUES.size();
-        private static final Random RANDOM = new Random();
-
-        public static Status randomStatus() {
-            return VALUES.get(RANDOM.nextInt(SIZE));
-        }
-    }
-
     public String getGuestName() {
         return guestName;
     }
@@ -60,5 +45,20 @@ public class OrderInfo {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public enum Status {
+        CHECK_IN,
+        REVERSE,
+        BLANK;
+
+        private static final List<Status> VALUES =
+                Collections.unmodifiableList(Arrays.asList(values()));
+        private static final int SIZE = VALUES.size();
+        private static final Random RANDOM = new Random();
+
+        public static Status randomStatus() {
+            return VALUES.get(RANDOM.nextInt(SIZE));
+        }
     }
 }

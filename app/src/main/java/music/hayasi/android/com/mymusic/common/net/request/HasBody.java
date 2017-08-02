@@ -2,11 +2,10 @@ package music.hayasi.android.com.mymusic.common.net.request;
 
 import android.support.annotation.NonNull;
 
-import music.hayasi.android.com.mymusic.common.net.model.HttpParams;
-
 import java.io.File;
 import java.util.List;
 
+import music.hayasi.android.com.mymusic.common.net.model.HttpParams;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 

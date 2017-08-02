@@ -1,17 +1,12 @@
 package music.hayasi.android.com.mymusic.module.Guide.Guide;
 
-import android.graphics.Rect;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 /**
  * Created by binIoter
  */
 class Common {
-  /**
-   * 设置Component
-   */
+    /**
+     * 设置Component
+     */
 //  static View componentToView(LayoutInflater inflater, Component c) {
 //    View view = c.getView(inflater);
 //    final MaskView.LayoutParams lp = new MaskView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -24,8 +19,8 @@ class Common {
 //    return view;
 //  }
 
-  /**
-   * Rect在屏幕上去掉状态栏高度的绝对位置
-   */
+    /**
+     * Rect在屏幕上去掉状态栏高度的绝对位置
+     */
 
 }

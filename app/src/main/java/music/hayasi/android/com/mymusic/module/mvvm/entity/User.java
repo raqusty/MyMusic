@@ -19,6 +19,11 @@ public class User extends BaseObservable {
         return this.firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+        notifyPropertyChanged(BR.firstName);
+    }
+
     @Bindable
     public String getLastName() {
         return this.lastName;
@@ -27,10 +32,5 @@ public class User extends BaseObservable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
         notifyPropertyChanged(BR.lastName);
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-        notifyPropertyChanged(BR.firstName);
     }
 }

@@ -1,7 +1,5 @@
 package music.hayasi.android.com.mymusic.common.utils;
 
-import android.util.Log;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -23,7 +21,7 @@ public class TimeUtils {
 
     public static String getTimeWithFormat(String format, long a) {
         String res;
-        long lt = 1494992947*1000L;
+        long lt = 1494992947 * 1000L;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         Date date = new Date();
@@ -31,7 +29,6 @@ public class TimeUtils {
         res = simpleDateFormat.format(date);
 
         Date date1 = new Date();
-
 
 
         return res;

@@ -3,7 +3,6 @@ package music.hayasi.android.com.mymusic.module.Swipe.widget;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.animation.LinearInterpolator;

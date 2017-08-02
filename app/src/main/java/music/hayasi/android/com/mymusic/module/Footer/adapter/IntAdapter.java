@@ -1,7 +1,6 @@
 package music.hayasi.android.com.mymusic.module.Footer.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,7 @@ public class IntAdapter extends AbstractFooterAdapter<Integer> {
     public void onBindViewHolder(AbstractFooterAdapter.RylViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_CARD) {
             //处理自己的业务
-            ((MyViewHolder) holder).tv.setText(mDataList.get(position)+"");
+            ((MyViewHolder) holder).tv.setText(mDataList.get(position) + "");
             ((MyViewHolder) holder).tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

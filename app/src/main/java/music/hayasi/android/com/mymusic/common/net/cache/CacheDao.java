@@ -11,7 +11,9 @@ class CacheDao<T> extends DataBaseDao<CacheEntity<T>> {
         super(new CacheHelper());
     }
 
-    /** 根据key获取缓存 */
+    /**
+     * 根据key获取缓存
+     */
     public CacheEntity<T> get(String key) {
         String selection = CacheHelper.KEY + "=?";
         String[] selectionArgs = new String[]{key};
@@ -19,7 +21,9 @@ class CacheDao<T> extends DataBaseDao<CacheEntity<T>> {
         return cacheEntities.size() > 0 ? cacheEntities.get(0) : null;
     }
 
-    /** 移除一个缓存 */
+    /**
+     * 移除一个缓存
+     */
     public boolean remove(String key) {
         String whereClause = CacheHelper.KEY + "=?";
         String[] whereArgs = new String[]{key};

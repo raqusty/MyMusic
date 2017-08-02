@@ -8,7 +8,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,9 +25,8 @@ import music.hayasi.android.com.mymusic.databinding.AnimActivityBinding;
 
 public class DialogActivity extends BaseActivity implements View.OnKeyListener {
 
-    private AnimActivityBinding binding;
-
     Animation scaleAnimation;
+    private AnimActivityBinding binding;
 
     @Override
     protected int getContentViewResId() {

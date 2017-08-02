@@ -18,10 +18,10 @@
 
     <ImageView
         android:id="@+id/image"
-        android:background="@color/colorPrimary"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary" />
 
 
 </LinearLayout>

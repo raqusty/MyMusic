@@ -14,6 +14,13 @@ import android.util.Log;
 public class MessagerService extends Service {
 
     private static final String TAG = "linzehao";
+    private final Messenger mMessenger = new Messenger(new MessengerHandler());
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mMessenger.getBinder();
+    }
 
     private static class MessengerHandler extends Handler {
         public void handleMessage(Message msg) {
@@ -38,13 +45,5 @@ public class MessagerService extends Service {
                     super.handleMessage(msg);
             }
         }
-    }
-
-    private final Messenger mMessenger = new Messenger(new MessengerHandler());
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return mMessenger.getBinder();
     }
 }

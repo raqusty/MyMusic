@@ -4,7 +4,6 @@ import android.support.v7.widget.Toolbar;
 
 /**
  * 导航栏相关的接口
- *
  */
 public interface IToolBar {
 
@@ -23,7 +22,7 @@ public interface IToolBar {
      * 获取导航栏的R
      *
      * @return 导航栏的R
-     *  普通： -1 ，其他：对应的R文件
+     * 普通： -1 ，其他：对应的R文件
      */
     int getToolBarResId();
 

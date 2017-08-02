@@ -1,7 +1,7 @@
 package music.hayasi.android.com.mymusic.common.myNet.exception;
 
 /**
-===========================================
+ * ===========================================
  */
 public class OkHttpException extends Exception {
 

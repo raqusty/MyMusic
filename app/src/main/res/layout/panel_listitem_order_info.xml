@@ -4,8 +4,8 @@
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:background="@drawable/bg_item"
-    android:gravity="center"
     android:clickable="true"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView

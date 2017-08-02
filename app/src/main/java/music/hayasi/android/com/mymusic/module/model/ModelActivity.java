@@ -7,7 +7,6 @@ import android.view.View;
 
 import java.util.Hashtable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
@@ -27,7 +26,16 @@ import music.hayasi.android.com.mymusic.module.model.Future.RealData;
 public class ModelActivity extends BaseActivity {
 
     private AnimActivityBinding binding;
+    Handler h = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    binding.textview1.setText((String) msg.obj);
+            }
+        }
 
+
+    };
 
     @Override
     protected int getContentViewResId() {
@@ -42,7 +50,6 @@ public class ModelActivity extends BaseActivity {
         binding.button1.setText("Future");
         binding.button2.setText("FutureJdk");
     }
-
 
     @Override
     public void setListener() {
@@ -88,14 +95,14 @@ public class ModelActivity extends BaseActivity {
                 ExecutorService executorService = Executors.newFixedThreadPool(1);
                 executorService.submit(future);
                 try {
-                    h.obtainMessage(1,  future.get().toString()).sendToTarget();
+                    h.obtainMessage(1, future.get().toString()).sendToTarget();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
 
-                Hashtable<Integer,String> s = new Hashtable<Integer, String>();
+                Hashtable<Integer, String> s = new Hashtable<Integer, String>();
             }
         });
     }
@@ -109,16 +116,5 @@ public class ModelActivity extends BaseActivity {
     public void initToolBar(ToolBarManager navigationBarMgr) {
 
     }
-
-    Handler h = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 1:
-                    binding.textview1.setText((String) msg.obj);
-            }
-        }
-
-
-    };
 
 }

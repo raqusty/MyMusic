@@ -1,11 +1,10 @@
 package music.hayasi.android.com.mymusic.common.net.request;
 
+import java.io.IOException;
+
 import music.hayasi.android.com.mymusic.common.net.model.HttpHeaders;
 import music.hayasi.android.com.mymusic.common.net.utils.HttpUtils;
 import music.hayasi.android.com.mymusic.common.net.utils.OkLogger;
-
-import java.io.IOException;
-
 import okhttp3.Request;
 import okhttp3.RequestBody;
 

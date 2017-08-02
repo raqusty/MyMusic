@@ -1,7 +1,6 @@
 package music.hayasi.android.com.mymusic.module.NetWork;
 
 import android.databinding.DataBindingUtil;
-import android.util.Log;
 import android.view.View;
 
 import java.io.IOException;

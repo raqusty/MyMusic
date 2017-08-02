@@ -30,23 +30,19 @@ public class GuideBuilder {
 
     public static class Builder {
 
-        private Context mContext;
-        private List<Component> mComponents = new ArrayList<Component>();
-        private View mTargetView;
-        private Guide.GuideListten mListten;
-
         int mPadding = 0;//高亮区域的padding
         int mPaddingLeft = 0;//高亮区域的左侧padding
         int mPaddingTop = 0;//高亮区域的顶部padding
         int mPaddingRight = 0;//高亮区域的右侧padding
         int mPaddingBottom = 0;//高亮区域的底部padding
-
         int mCorner = 0;//高亮区域的底部padding
         int mEnterAnimationId = -1;
-
         int mExitAnimationId = -1;
-
         int mStyle = Component.ROUNDRECT;
+        private Context mContext;
+        private List<Component> mComponents = new ArrayList<Component>();
+        private View mTargetView;
+        private Guide.GuideListten mListten;
 
         public Builder(Context context, View view) {
             mContext = context;

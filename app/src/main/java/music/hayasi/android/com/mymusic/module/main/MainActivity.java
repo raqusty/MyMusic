@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
@@ -27,9 +26,8 @@ import okhttp3.Response;
 
 public class MainActivity extends BaseActivity {
 
-    Activity mActivity;
-
     final MyHandler handler = new MyHandler();
+    Activity mActivity;
     @Bind(R.id.toolbar)
     Toolbar mToolBar;
     @Bind(R.id.common_lv_multi_state_view)
@@ -87,7 +85,7 @@ public class MainActivity extends BaseActivity {
                             public void onError(Call call, Response response, Exception e) {
                                 super.onError(call, response, e);
 //                            handleError(call, response);
-                                Log.i("linzehao", "response "+e.getMessage());
+                                Log.i("linzehao", "response " + e.getMessage());
                             }
                         });
             }

@@ -14,7 +14,7 @@
         android:toDegrees="720" />
 
     <translate
-        android:toXDelta="100"
-        android:fromXDelta="-100"/>
+        android:fromXDelta="-100"
+        android:toXDelta="100" />
 
 </set>
