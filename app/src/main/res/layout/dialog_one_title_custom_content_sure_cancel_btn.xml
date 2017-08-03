@@ -30,7 +30,7 @@
             <RelativeLayout
                 android:id="@+id/dialog_custom_content_rl_content_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></RelativeLayout>
+                android:layout_height="wrap_content"/>
         </ScrollView>
 
 
