@@ -36,6 +36,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/bb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/aa"
@@ -77,6 +78,17 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:visibility="gone" />
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bb"
+            android:layout_marginTop="20dp"
+            android:max="100"
+            android:progress="0"
+            android:progressDrawable="@drawable/bg_bar"
+            android:thumb="@drawable/thumb_bar" />
 
 
     </RelativeLayout>

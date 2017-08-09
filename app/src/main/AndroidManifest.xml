@@ -74,7 +74,7 @@
 
         <activity android:name=".module.AnimationView.AnimActivity">
             <intent-filter>
-                <action android:name="Anim" />
+                <action android:name="AnimActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -251,6 +251,12 @@
         </activity>
         <activity android:name=".module.AnimationView.DetailActivity"></activity>
 
+        <activity android:name=".module.liftActivity.liftActivity">
+            <intent-filter>
+                <action android:name="liftActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         /////////////////////////////////////////////////////////////////////
 

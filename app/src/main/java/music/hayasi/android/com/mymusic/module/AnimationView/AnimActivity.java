@@ -6,17 +6,22 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeAnimator;
 import android.animation.ValueAnimator;
 import android.databinding.DataBindingUtil;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.Transformation;
+import android.widget.SeekBar;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import butterknife.Bind;
 import music.hayasi.android.com.mymusic.R;
 import music.hayasi.android.com.mymusic.common.activity.BaseActivity;
 import music.hayasi.android.com.mymusic.common.activity.ToolBarManager;
 import music.hayasi.android.com.mymusic.databinding.AnimActivityBinding;
+import music.hayasi.android.com.mymusic.module.Path.Path2Activity;
 
 public class AnimActivity extends BaseActivity {
 
@@ -36,6 +41,8 @@ public class AnimActivity extends BaseActivity {
         binding.button3.setText("ValueAnimator");
         binding.button1.setText("startAnimation");
         binding.button2.setText("ObjectAnimator");
+
+        binding.seekbar.setOnSeekBarChangeListener(new SeekListten());
 
         ValueAnimator a;
         ObjectAnimator b;
@@ -102,6 +109,7 @@ public class AnimActivity extends BaseActivity {
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                scaleAnimation.setDuration(3000);
                 binding.textview1.startAnimation(scaleAnimation);
 
             }
@@ -124,6 +132,52 @@ public class AnimActivity extends BaseActivity {
         });
 
     }
+
+    class SeekListten implements SeekBar.OnSeekBarChangeListener {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            scaleAnimation.setStartTime(0);
+            scaleAnimation.restrictDuration(100);
+            Transformation transformation = new Transformation();
+            scaleAnimation.getTransformation((long) (i ), transformation);
+            BehaviorAnimation animation = new BehaviorAnimation(transformation);
+//            Log.i("linzehao","i  "+i);
+            binding.textview1.startAnimation(animation);
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    }
+
+    private static class BehaviorAnimation extends Animation {
+
+        private Transformation mTransformation;
+
+        public BehaviorAnimation(Transformation transformation) {
+            mTransformation = transformation;
+            setDuration(0);
+            setFillAfter(true);
+        }
+
+        @Override
+        protected void applyTransformation(float interpolatedTime, Transformation t) {
+//            t.set(mTransformation);
+            t.compose(mTransformation);
+//            t.getMatrix().
+            Log.i("linzehao","interpolatedTime "+interpolatedTime);
+            super.applyTransformation(interpolatedTime, t);
+        }
+    }
+
 
     @Override
     public int getToolBarResId() {
