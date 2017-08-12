@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -42,7 +42,7 @@ public class FirstActivity extends BaseActivity {
 
     List<AppInfo> mDatas;
     HomeAdapter mAdapter;
-    String[] mNameList = {"liftActivity","AnimActivity","ListDetailActivity", "ViewpagerActivity", "RadioActivity", "CardViewActivity", "SwipeActivity", "PlayerActivity", "TopWindowActivity", "PanelActivity", "Path3Activity", "Path2Activity", "PathActivity", "GuideActivity", "ReFreshActivity",
+    String[] mNameList = {"liftActivity", "AnimActivity", "ListDetailActivity", "ViewpagerActivity", "RadioActivity", "CardViewActivity", "SwipeActivity", "PlayerActivity", "TopWindowActivity", "PanelActivity", "Path3Activity", "Path2Activity", "PathActivity", "GuideActivity", "ReFreshActivity",
             "FooterActivity", "TextViewActivity", "MVVMList", "MVVM", "MessageActivity", "MyImage", "DragMove", "CustomViewActivity", "Anim"
             , "DesignActivity", "NetActivity", "ModelActivity", "DesignScrollActivity", "PhotoViewActivity", "DialogActivity", "MVVM1", "MVVM1", "MVVM1", "MVVM1"
     };
@@ -66,7 +66,10 @@ public class FirstActivity extends BaseActivity {
     @Override
     public void initViews() {
         initData();
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+//        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(mContext);
+        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter = new HomeAdapter());
 
         mAdapter.setOnItemClickLitener(new OnItemClickLitener() {
