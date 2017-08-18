@@ -257,6 +257,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".module.Drag.DragActivity">
+            <intent-filter>
+                <action android:name="DragActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
 
         /////////////////////////////////////////////////////////////////////
 

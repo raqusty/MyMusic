@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<music.hayasi.android.com.mymusic.common.widget.CustomRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/id_recyclerview"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="#ffff0000"
-    android:dividerHeight="10dp" />
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <music.hayasi.android.com.mymusic.common.widget.CustomRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/id_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#aafafa"
+        android:clipToPadding="false"
+        android:dividerHeight="10dp"
+        android:paddingTop="100dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="asdfadf" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/red"
+        android:clipChildren="false"
+        android:gravity="center"
+        android:text="asdfadf" />
+</RelativeLayout>
