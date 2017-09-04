@@ -3,6 +3,7 @@ package music.hayasi.android.com.mymusic.module.MaterialDesign;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,13 +45,6 @@ public class DesignListFragment extends BaseFragment {
         mRecyclerView.setAdapter(new ItemAdapter());
 
         Intent intent = new Intent(mContext, GuideActivity.class);
-        startActivityForResult(intent, 222);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.i("linzehao", "fasdfadf ");
     }
 
     @Override
@@ -77,6 +71,20 @@ public class DesignListFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.i("linzehao","onDestroyView  "+num);
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i("linzehao","onStart  "+num);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.i("linzehao","onViewCreated  "+num);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

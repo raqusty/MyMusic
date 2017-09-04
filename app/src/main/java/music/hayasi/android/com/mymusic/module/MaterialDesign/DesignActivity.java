@@ -68,7 +68,7 @@ public class DesignActivity extends BaseActivity {
         tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(3)));
 
         fAdapter = new Find_tab_Adapter(this.getSupportFragmentManager(), list_fragment, list_title);
-
+        vp_FindFragment_pager.setOffscreenPageLimit(1);
         //viewpager加载adapter
         vp_FindFragment_pager.setAdapter(fAdapter);
         //tab_FindFragment_title.setViewPager(vp_FindFragment_pager);
