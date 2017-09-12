@@ -1,9 +1,11 @@
 package music.hayasi.android.com.mymusic.module.MaterialDesign;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +23,18 @@ public class DesignActivity extends BaseActivity {
     private List<Fragment> list_fragment;                                //定义要装fragment的列表
     private List<String> list_title;                                     //tab名称列表
 
-    private DesignListFragment hotRecommendFragment;              //热门推荐fragment
+    private DesignFragment hotRecommendFragment;              //热门推荐fragment
     private DesignFragment hotCollectionFragment;            //热门收藏fragment
-    private DesignListFragment hotMonthFragment;                      //本月热榜fragment
+    private DesignFragment hotMonthFragment;                      //本月热榜fragment
     private DesignFragment hotToday;                                      //今日热榜fragment
+    private DesignFragment hotToday2;
+    private DesignFragment hotToday3;
+    private DesignFragment hotToday4;
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+    }
 
     /**
      * 初始化各控件
@@ -36,14 +45,20 @@ public class DesignActivity extends BaseActivity {
         vp_FindFragment_pager = (ViewPager) findViewById(R.id.vp_FindFragment_pager);
 
         //初始化各fragment
-        hotRecommendFragment = new DesignListFragment();
+        hotRecommendFragment = new DesignFragment();
         hotRecommendFragment.setNum(11);
         hotCollectionFragment = new DesignFragment();
         hotCollectionFragment.setNum(22);
-        hotMonthFragment = new DesignListFragment();
+        hotMonthFragment = new DesignFragment();
         hotMonthFragment.setNum(33);
         hotToday = new DesignFragment();
         hotToday.setNum(44);
+        hotToday2 = new DesignFragment();
+        hotToday2.setNum(55);
+        hotToday3 = new DesignFragment();
+        hotToday3.setNum(66);
+        hotToday4 = new DesignFragment();
+        hotToday4.setNum(77);
 
         //将fragment装进列表中
         list_fragment = new ArrayList<>();
@@ -51,6 +66,9 @@ public class DesignActivity extends BaseActivity {
         list_fragment.add(hotCollectionFragment);
         list_fragment.add(hotMonthFragment);
         list_fragment.add(hotToday);
+        list_fragment.add(hotToday2);
+        list_fragment.add(hotToday3);
+        list_fragment.add(hotToday4);
 
         //将名称加载tab名字列表，正常情况下，我们应该在values/arrays.xml中进行定义然后调用
         list_title = new ArrayList<>();
@@ -58,6 +76,10 @@ public class DesignActivity extends BaseActivity {
         list_title.add("热门收藏");
         list_title.add("本月热榜");
         list_title.add("今日热榜");
+        list_title.add("今日热榜");
+        list_title.add("今日热榜");
+        list_title.add("今日热榜");
+
 
         //设置TabLayout的模式
         tab_FindFragment_title.setTabMode(TabLayout.MODE_FIXED);
@@ -66,6 +88,10 @@ public class DesignActivity extends BaseActivity {
         tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(1)));
         tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(2)));
         tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(3)));
+        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(4)));
+        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(5)));
+        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(6)));
+
 
         fAdapter = new Find_tab_Adapter(this.getSupportFragmentManager(), list_fragment, list_title);
         vp_FindFragment_pager.setOffscreenPageLimit(1);
@@ -79,6 +105,7 @@ public class DesignActivity extends BaseActivity {
 
     @Override
     public void initViews() {
+        Log.i("linzehao","initViews");
         initControls();
     }
 
@@ -100,5 +127,11 @@ public class DesignActivity extends BaseActivity {
     @Override
     protected int getContentViewResId() {
         return R.layout.fragment_find;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("linzehao", "onDestroyView  1" );
     }
 }
